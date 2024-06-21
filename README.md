@@ -1,3 +1,4 @@
+<img src ="./pictures/TitleScreen.png" alt="Characters on a cliff overlooking a dense forest, the title screen" width =520px/>
 # ***DND Tracker - ADVENTURER'S ATLAS***
 
 ## Wireframming/ERDS
@@ -13,7 +14,7 @@ User can create campaigns and characters. They can see a list of campaigns and c
 
 ## STREEEEEEEEEEEEEETCHHHHHHH Goals
 
-<img src ="./pictures/StretchGoals.PNG" alt="Bullet list showing the project's stretch goals" width =520px/> pictures/StretchGoals.PNG /home/gideoncove/ga/projects/dnd_tracker/pictures/StretchGoals.PNG
+<img src ="./pictures/StretchGoals.PNG" alt="Bullet list showing the project's stretch goals" width =520px/> 
 
 # Credit
 Created by: 
