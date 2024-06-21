@@ -1,5 +1,3 @@
-// Ability.js
-
 const mongoose = require('mongoose');
 const { Schema, model } = mongoose;
 
@@ -16,11 +14,10 @@ const abilitySchema = new Schema({
         type: Boolean,
         required: true,
     },
-    character: {
-        type: Schema.Types.ObjectId,
-        ref: 'Character',
-        required: true,
-    }
+    ability_class: {
+    type: String,
+    required: true,  
+},
 });
 
 const Ability = model('Ability', abilitySchema);
