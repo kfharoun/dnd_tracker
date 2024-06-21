@@ -3,21 +3,20 @@ const { Ability } = require('../models')
 
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
-const resetCollections = async () => {
-    try {
-        await Ability.deleteMany({})
-        console.log('All collection reset')
-    } catch (error) {
-        console.error('Error resetting collections:', error)
-    }
-}
-
+// const resetCollections = async () => {
+//     try {
+//         await Ability.deleteMany({})
+//         console.log('All collection reset')
+//     } catch (error) {
+//         console.error('Error resetting collections:', error)
+//     }
+// }
 
 
 const main = async () => {
-    await resetCollections()
+    // await resetCollections()
 
-    [
+   const abilities = [
         // Wizard Spells
         { "ability_name": "Magic Missile", "level_learned": 1, "ability_class": "Wizard", "ability_equipped": true },
         { "ability_name": "Mage Armor", "level_learned": 1, "ability_class": "Wizard", "ability_equipped": true },
@@ -441,7 +440,7 @@ const main = async () => {
         { "ability_name": "Time Stop", "level_learned": 9, "ability_class": "Warlock", "ability_equipped": true },
         { "ability_name": "True Polymorph", "level_learned": 9, "ability_class": "Warlock", "ability_equipped": true },
         { "ability_name": "Wish", "level_learned": 9, "ability_class": "Warlock", "ability_equipped": true }
-    ];
+    ]
 await Ability.insertMany(abilities)
 console.log(`Created abilities`)
 }
