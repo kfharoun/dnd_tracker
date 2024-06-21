@@ -5,7 +5,8 @@
 ## Wireframming/ERDS
 <img src ="./pictures/ERD.png" alt="ERD" width =520px/>
 
-![dataerd](./pictures/dataERD.png)
+<img src ="./pictures/dataERD.png" alt="ERDMongo" width =520px/>
+
 
 Adventurer's Atlas is a DND Character and Campaign creator. Users will be able to create and update their own DND characters. Users can edit their characters names, what campaigns they are on, their race, level, gender and even update the characters own backstory and lore. 
 
@@ -18,9 +19,6 @@ User can create campaigns and characters. They can see a list of campaigns and c
 ## STREEEEEEEEEEEEEETCHHHHHHH Goals
 
 <img src ="./pictures/StretchGoals.PNG" alt="Bullet list showing the project's stretch goals" width =520px/> 
-
-## Questions we have
-* should campaign be a child of character or should we just include it in character
 
 # Credit
 Created by: 
