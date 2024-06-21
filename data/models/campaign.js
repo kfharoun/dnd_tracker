@@ -10,4 +10,4 @@ const CampaignSchema = new Schema(
   { timestamps: true }
 )
 
-module.exports = CampaignSchema;
+module.exports = CampaignSchema

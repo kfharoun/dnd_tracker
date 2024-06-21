@@ -16,6 +16,18 @@ const resetCollections = async () => {
 
 const main = async () => {
     const ranger = await Ability.find({class_name:"Ranger"})
+    const fighter = await Ability.find({class_name:"Fighter"})
+    const barbarian = await Ability.find({class_name:"Barbarian"})
+    const bard = await Ability.find({class_name:"Bard"})
+    const cleric = await Ability.find({class_name:"Cleric"})
+    const druid = await Ability.find({class_name:"Druid"})
+    const rogue = await Ability.find({class_name:"Rogue"})
+    const paladin = await Ability.find({class_name:"Paladin"})
+    const sorcerer = await Ability.find({class_name:"Sorcerer"})
+    const warlock = await Ability.find({class_name:"Warlock"})
+    const wizard = await Ability.find({class_name:"Wizard"})
+    const artificer = await Ability.find({class_name:"Artificer"})
+    const monk = await Ability.find({class_name:"Monk"})
     const drizzt = await Campaign.find({campaign_name: "Adventures of Drizzt Do'Urden"})
     await resetCollections()
   
