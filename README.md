@@ -1,4 +1,6 @@
 <img src ="./pictures/TitleScreen.png" alt="Characters on a cliff overlooking a dense forest, the title screen" width =520px/>
+<img src ="./pictures/campaignPage.png" alt="campaignpage" width =520px/>
+<img src ="./pictures/characterPage.png" alt="campaignpage" width =520px/>
 
 # ***DND Tracker - ADVENTURER'S ATLAS***
 
@@ -11,6 +13,7 @@
 Adventurer's Atlas is a DND Character and Campaign creator. Users will be able to create and update their own DND characters. Users can edit their characters names, what campaigns they are on, their race, level, gender and even update the characters own backstory and lore. 
 
 <img src ="./pictures/ProjectGoals.PNG" alt="Bullet list showing project goals"/>
+
 
 ## MVP/User Story
 
