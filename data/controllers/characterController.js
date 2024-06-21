@@ -92,6 +92,36 @@ const createCharacter  = async (req, res) => {
     }
 }
 
+const getCharacterByCampaignId = async (req, res) => {
+    try {
+        const CampaignId = req.params.campaignId
+        console.log("campaignId:", campaignId)
+        const campaigns = await Campaign.find({ campaignId })
+        console.log("campaigns:", campaigns)
+        console.log("objectID2:", campaignId)
+        console.log("Campaign:", Campaign)
+        res.json(campaigns)
+    } catch (error) {
+        console.error("Error fetching campaignss by  ID:", error)
+        res.status(500).json({ error: error.message })
+    }
+}
+
+const getCharacterByAbilityId = async (req, res) => {
+    try {
+        const abilityId = req.params.abilityId
+        console.log("abilityId:", abilityId)
+        const abilities = await Ability.find({ abilityId })
+        console.log("campaigns:", abilities)
+        console.log("objectID2:", abilityId)
+        console.log("abilities:", abilities)
+        res.json(abilities)
+    } catch (error) {
+        console.error("Error fetching ability by  ID:", error)
+        res.status(500).json({ error: error.message })
+    }
+}
+
 module.exports = {
     getAllCharacters,   
     getCharactersById,
@@ -99,6 +129,7 @@ module.exports = {
     getCharactersByWord,
     deleteCharacter, 
     updateCharacter,   
-    createCharacter
-
+    createCharacter, 
+    getCharacterByCampaignId, 
+    getCharacterByAbilityId
 }
