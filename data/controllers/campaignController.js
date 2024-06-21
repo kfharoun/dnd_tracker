@@ -25,28 +25,28 @@ const getCampaignById = async (req, res) => {
     }
 }
 
-const getCampaignsByType = async (req, res) => {
+const getCampaignsByDM = async (req, res) => {
     try {
-        const type = req.params.type
-        const campaigns = await Campaign.find({ type: { $regex: new RegExp(type, "i") } })
+        const dungeon_master = req.params.dungeon_master
+        const campaigns = await Campaign.find({ dungeon_master: { $regex: new RegExp(dungeon_master, "i") } })
         res.json(campaigns)
     } catch (error) {
-        console.error("Error fetching campaigns by type:", error)
+        console.error("Error fetching campaigns by dm:", error)
         res.status(500).json({ error: error.message })
     }
 }
 
 
-// const getCampaignsByColor = async (req, res) => {
-//     try {
-//         const color = req.params.color
-//         const campaigns = await Campaign.find({ color: { $regex: new RegExp(color, "i") } })
-//         res.json(campaigns)
-//     } catch (error) {
-//         console.error("Error fetching campaigns by color:", error)
-//         res.status(500).json({ error: error.message })
-//     }
-// }
+const getCampaignsByPlayers = async (req, res) => {
+    try {
+        const players = req.params.players
+        const campaigns = await Campaign.find({ players: { $regex: new RegExp(players, "i") } })
+        res.json(campaigns)
+    } catch (error) {
+        console.error("Error fetching campaigns by color:", error)
+        res.status(500).json({ error: error.message })
+    }
+}
 
 const getCampaignsByWord = async (req, res) => {
     try {
@@ -128,7 +128,8 @@ module.exports = {
     createCampaign,
     updateCampaign,
     deleteCampaign, 
-    getCampaignsByType,   
+    getCampaignsByPlayers,
+    getCampaignsByDM,  
     getCampaignsByWord
     
 }
