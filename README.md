@@ -3,7 +3,7 @@
 ## Wireframming/ERDS
 <img src ="./pictures/ERD.png" alt="ERD" width =520px/>
 
-*Adventurer's Atlas is a DND Character and Campaign creator. Users will be able to create and update their own DND characters. Users can edit their characters names, what campaigns they are on, their race, level, gender and even update the characters own backstory and lore. 
+Adventurer's Atlas is a DND Character and Campaign creator. Users will be able to create and update their own DND characters. Users can edit their characters names, what campaigns they are on, their race, level, gender and even update the characters own backstory and lore. 
 
 <img src ="./pictures/ProjectGoals.PNG" alt="Bullet list showing project goals" width =520px/>
 
