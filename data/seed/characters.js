@@ -23,7 +23,7 @@ const main = async () => {
   const characters = [
     {
         character_name: "Drizzt Do'Urden",
-        character_image: "drizzt_image.jpg", 
+        character_image: "https://miro.medium.com/v2/resize:fit:1135/1*g-7NcjhvVteOq7tsSevvsw.jpeg", 
         played_by: "Kass",
         race: "Drow", 
         class_name: "Ranger", 
@@ -47,7 +47,7 @@ const main = async () => {
     }, 
     {
         character_name: "Bruenor Battlehammer",
-        character_image: "bruenor_image.jpg",
+        character_image: "https://static.wikia.nocookie.net/forgottenrealms/images/c/c2/Bruenor_Battlehammer_AFR.jpg/revision/latest?cb=20210701120700",
         played_by: "Tanner",
         race: "Dwarf",
         class_name: "Fighter",
@@ -71,7 +71,7 @@ const main = async () => {
     }, 
     {
         character_name: "Catti-brie",
-        character_image: "cattibrie_image.jpg",
+        character_image: "https://cdnb.artstation.com/p/assets/images/images/037/985/033/large/clint-cearley-cattie-brie-2k.jpg?1621869320",
         played_by: "Bobby Joe",
         race: "Human",
         class_name: "Fighter",
