@@ -25,13 +25,35 @@ const getAbilitiesById = async (req, res) => {
     }
 }
 
-const getAbilitiesByType = async (req, res) => {
+const getAbilitiesByName = async (req, res) => {
     try {
-        const type = req.params.type
-        const abilities = await Character.find({ type: { $regex: new RegExp(type, "i") } })
+        const ability_name = req.params.ability_name
+        const abilities = await Ability.find({ ability_name: { $regex: new RegExp(ability_name, "i") } })
         res.json(abilities)
     } catch (error) {
         console.error("Error fetching abilities by type:", error)
+        res.status(500).json({ error: error.message })
+    }
+}
+
+const getAbilitiesByClass = async (req, res) => {
+    try {
+        const ability_class = req.params.ability_class
+        const abilities = await Ability.find({ ability_class: { $regex: new RegExp(ability_class, "i") } })
+        res.json(abilities)
+    } catch (error) {
+        console.error("Error fetching abilities by type:", error)
+        res.status(500).json({ error: error.message })
+    }
+}
+
+const getAbilitiesByLevel = async (req, res) => {
+    try {
+        const level_learned = parseInt(req.params.level_learned)
+        const abilities = await Ability.find({ level_learned: level_learned })
+        res.json(abilities)
+    } catch (error) {
+        console.error("Error fetching abilities by level:", error)
         res.status(500).json({ error: error.message })
     }
 }
@@ -97,10 +119,12 @@ const createAbility  = async (req, res) => {
 module.exports = {
     getAllAbilities,   
     getAbilitiesById,
-    getAbilitiesByType,
+    getAbilitiesByLevel,
     getAbilitiesByWord,
     deleteAbility, 
     updateAbility,   
-    createAbility
+    createAbility, 
+    getAbilitiesByName, 
+    getAbilitiesByClass
 
 }
