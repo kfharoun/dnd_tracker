@@ -3,6 +3,7 @@ const { Character, Campaign, Ability } = require('../models')
 
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
+
 const resetCollections = async () => {
     try {
         await Character.deleteMany({})
@@ -11,6 +12,7 @@ const resetCollections = async () => {
         console.error('Error resetting collections:', error)
     }
 }
+
 
 
 
@@ -29,7 +31,7 @@ const main = async () => {
     const artificer = await Ability.find({class_name:"Artificer"})
     const monk = await Ability.find({class_name:"Monk"})
     const drizzt = await Campaign.find({campaign_name: "Adventures of Drizzt Do'Urden"})
-    await resetCollections()
+    // await resetCollections()
   
 
   const characters = [
