@@ -1,7 +1,7 @@
 # ***DND Tracker - ADVENTURER'S ATLAS***
 
 ## Wireframming/ERDS
-<img src ="./pictures/ERD.PNG" alt="ERD" width =520px/>
+<img src ="./pictures/ERD.png" alt="ERD" width =520px/>
 
 *Adventurer's Atlas is a DND Character and Campaign creator. Users will be able to create and update their own DND characters. Users can edit their characters names, what campaigns they are on, their race, level, gender and even update the characters own backstory and lore. 
 
@@ -13,7 +13,7 @@ User can create campaigns and characters. They can see a list of campaigns and c
 
 ## STREEEEEEEEEEEEEETCHHHHHHH Goals
 
-<img src ="./dnd_tracker/pictures/StretchGoals.PNG" alt="Bullet list showing the project's stretch goals" width =520px/> pictures/StretchGoals.PNG /home/gideoncove/ga/projects/dnd_tracker/pictures/StretchGoals.PNG
+<img src ="./pictures/StretchGoals.PNG" alt="Bullet list showing the project's stretch goals" width =520px/> pictures/StretchGoals.PNG /home/gideoncove/ga/projects/dnd_tracker/pictures/StretchGoals.PNG
 
 # Credit
 Created by: 
