@@ -57,7 +57,7 @@ const getCampaignsByWord = async (req, res) => {
                 { dungeon_master: { $regex: new RegExp(searchTerm, "i") } }
             ]
         })
-        console.log("Campaigns by search term:", accessories)
+        console.log("Campaigns by search term:", campaigns)
         res.json(campaigns)
     } catch (error) {
         console.error("Error fetching Campaigns by search term:", error)

@@ -45,7 +45,7 @@ const getCharactersByWord = async (req, res) => {
                 { played_by: { $regex: new RegExp(searchTerm, "i") } }
             ]
         })
-        console.log("Campaigns by search term:", accessories)
+        console.log("Campaigns by search term:", characters)
         res.json(campaigns)
     } catch (error) {
         console.error("Error fetching Campaigns by search term:", error)
