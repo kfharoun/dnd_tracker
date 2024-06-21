@@ -4,19 +4,19 @@ const { Campaign } = require('../models')
 
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
-// const resetCollections = async () => {
-//     try {
-//         await Campaign.deleteMany({})
-//         console.log('All collection reset')
-//     } catch (error) {
-//         console.error('Error resetting collections:', error)
-//     }
-// }
+const resetCollections = async () => {
+    try {
+        await Campaign.deleteMany({})
+        console.log('All collection reset')
+    } catch (error) {
+        console.error('Error resetting collections:', error)
+    }
+}
 
 
 
 const main = async () => {
-    // await resetCollections()
+    await resetCollections()
   
 
   const campaigns = [

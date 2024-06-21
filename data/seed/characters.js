@@ -5,7 +5,7 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
 const resetCollections = async () => {
     try {
-        await Campaign.deleteMany({})
+        await Character.deleteMany({})
         console.log('All collection reset')
     } catch (error) {
         console.error('Error resetting collections:', error)
