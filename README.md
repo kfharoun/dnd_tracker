@@ -1,4 +1,5 @@
 <img src ="./pictures/TitleScreen.png" alt="Characters on a cliff overlooking a dense forest, the title screen" width =520px/>
+
 # ***DND Tracker - ADVENTURER'S ATLAS***
 
 ## Wireframming/ERDS
