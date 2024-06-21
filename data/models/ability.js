@@ -1,7 +1,6 @@
-const mongoose = require('mongoose');
-const { Schema, model } = mongoose;
+const { Schema } = require('mongoose')
 
-const abilitySchema = new Schema({
+const AbilitySchema = new Schema({
     ability_name: {
         type: String,
         required: true,
@@ -20,6 +19,5 @@ const abilitySchema = new Schema({
 },
 });
 
-const Ability = model('Ability', abilitySchema);
 
-module.exports = Ability;
+module.exports = AbilitySchema;
