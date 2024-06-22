@@ -15,7 +15,7 @@ export default function CharacterList () {
     useEffect (()=>{
         const getCharacters = async () => {
             const response = await axios.get(`http://localhost:3001/Character`)
-            setCharacters(response.data.characters)
+            setCharacters(response.data)
         }
         getCharacters()
     },[])
