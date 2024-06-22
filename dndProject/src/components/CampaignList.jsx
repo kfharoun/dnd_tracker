@@ -15,7 +15,7 @@ export default function CampaignList () {
     useEffect (() => {
         const getCampaigns = async() => {
             const response = await axios.get(`http://localhost:3001/Campaign`)
-            setCampaigns(response.data.campaigns)
+            setCampaigns(response.data)
         }
         getCampaigns()
     },[])
