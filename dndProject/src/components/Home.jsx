@@ -3,9 +3,12 @@ import { Link } from 'react-router-dom'
 export default function Home () {
     return(
         <div className="Home">
-            <h1>Welcome Traveler</h1>
-            <button ><Link to ="/Campaign">record your adventures</Link></button>
-            <button><Link to="/Character">new party members?</Link></button>
+            <div class="homepic"></div>
+            <div className='welcomehome'>
+                <h1 className='welcome'>Welcome Traveler</h1>
+                <button className='linkbutton'><Link to ="/Campaign" className='buttonlink'>record your adventures</Link></button>
+                <Link to="/Character" className='buttonlink'><button className='linkbutton'>new party members?</button></Link>
+            </div>
         </div>
     )
 }
