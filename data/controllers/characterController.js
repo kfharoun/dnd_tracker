@@ -1,4 +1,4 @@
-const Character = require('../models/campaigns')
+const { Character } = require('../models')
 
 
 const getAllCharacters = async (req,res) => {
