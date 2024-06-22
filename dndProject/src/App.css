@@ -1,42 +1,95 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+/* HOME PAGE */
+.Main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.Home {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* Ensure no scrollbars due to absolute positioning */
+}
+
+.welcomehome {
   text-align: center;
+  z-index: 1;
+  padding: 2rem;
+  margin-left: 20rem; 
+  margin-top: -6vw;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.welcome {
+  font-family: "IM Fell DW Pica", serif;
+  font-weight: 400;
+  font-style: normal;
+  text-transform: uppercase;
+  color: #223030;
+  font-size: 4vw;
+  margin-bottom: 2rem;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.linkbutton {
+  margin: 0.5rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.buttonlink {
+  text-decoration: none;
+  color: inherit;
 }
 
-.card {
-  padding: 2em;
+.homepic {
+  background-image: url("../../dndProject/src/images/mainbackground.svg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  filter: blur(1px);
 }
 
-.read-the-docs {
-  color: #888;
+
+
+
+
+
+/* NAV */
+
+.NavBar {
+  background-color: #bba58f9b;
+  width: 100%; 
+  padding: 1em 0;
+  position: fixed;
+  display: flex;
+  top: 0;
+  justify-content: space-between;
+  z-index: 2;
+}
+
+/* FOOTER */
+
+.Footer{
+  background-color: #bba58f9b;
+  width: 100%; 
+  padding: 1em 0;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  z-index: 1;
+}
+
+.footerlink {
+  color:#EFEFE9;
+}
+
+.footerlink:hover {
+  color:#efefe9a1;
 }
