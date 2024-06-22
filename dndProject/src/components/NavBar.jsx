@@ -1,43 +1,25 @@
-import { Link } from 'react-router-dom'
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+import { Link } from 'react-router-dom';
+import Dropdown from 'react-bootstrap/Dropdown';
 
-
-export default function NavBar () {
-    return(
+export default function NavBar() {
+    return (
         <div className="NavBar">
-        <Navbar expand="lg" className="bg-body-tertiary">
-            <Container>
-                <Navbar.Brand href="#home">
-                    <Link className="pageTitle" to="/">ADVENTURER'S ATLAS </Link>
-                </Navbar.Brand>
+            <Link className="pageTitle" to="/">ADVENTURER'S ATLAS</Link>
             <div className='navGroup'>
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
-                <NavDropdown className="campaignNav listNav" title="campaigns" id="basic-nav-dropdown">
-
-                <NavDropdown.Item href="#action/3.1">
-                    <Link className="campaignNav listNav" to="/Campaign">all campaigns </Link>
-                </NavDropdown.Item>
-
-                <NavDropdown.Item href="#action/3.2">
-                    <Link className="campaignNav listNav" to="/Campaign">campaign name</Link>
-                </NavDropdown.Item>
-
-                 </NavDropdown>
-            <Link className="characterNav listNav" to="/Character">characters </Link>
-            {/* <Link to="/Abilities">abilities</Link> */}
-            
-            
-          </Nav>
-        </Navbar.Collapse>
+                <Dropdown>
+                    <Dropdown.Toggle variant="success" id="dropdown-basic">
+                        Categories
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu>
+                        <Dropdown.Item>
+                            <Link className="campaignNav listNav" to="/Campaign">Campaigns</Link>
+                        </Dropdown.Item>
+                    </Dropdown.Menu>
+                </Dropdown>
+                <Link className="characterNav listNav" to="/Character">Characters</Link>
+                {/* Uncomment the following Link when needed */}
+                {/* <Link className="abilitiesNav listNav" to="/Abilities">Abilities</Link> */}
+            </div>
         </div>
-        </Container>
-        </Navbar>
-        
-        </div>
-    )
+    );
 }
