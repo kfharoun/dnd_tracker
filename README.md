@@ -37,3 +37,16 @@ Currently, two official plugins are available:
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+
+## saturday notes
+
+for tanner: 
+* change booleans in ability to false 
+* change level_learned to be the level the ability is learned, not the level of the ability 
+* change magician to sorcerer 
+
+gideon: 
+abilities page 
+* set boolean of equipped to true if clicked on, change classname to equipped or not equipped ? 
+* show abilities of all abilities learned by level of that character (usecontext + dropdown?)
