@@ -8,7 +8,7 @@ export default function Home () {
                 
                 <h1 className='welcome'>Welcome Traveler</h1>
 
-                <button className='linkbutton one'><Link to ="/Campaign" className='buttonlink'>record your adventures</Link></button>
+                <Link to ="/Campaign" className='buttonlink'><button className='linkbutton one'>record your adventures</button></Link>
 
                 <Link to="/Character" className='buttonlink'><button className='linkbutton two'>new party members?</button></Link>
 

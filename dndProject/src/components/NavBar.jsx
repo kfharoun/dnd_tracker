@@ -1,25 +1,21 @@
-import { Link } from 'react-router-dom';
-import Dropdown from 'react-bootstrap/Dropdown';
+import { Link } from 'react-router-dom'
+import NavDropdown from 'react-bootstrap/NavDropdown';
 
-export default function NavBar() {
-    return (
+
+export default function NavBar () {
+    return(
         <div className="NavBar">
-            <Link className="pageTitle" to="/">ADVENTURER'S ATLAS</Link>
+            <Link className="pageTitle" to="/">ADVENTURER'S ATLAS </Link>
             <div className='navGroup'>
-                <Dropdown>
-                    <Dropdown.Toggle variant="success" id="dropdown-basic">
-                        Categories
-                    </Dropdown.Toggle>
-                    <Dropdown.Menu>
-                        <Dropdown.Item>
-                            <Link className="campaignNav listNav" to="/Campaign">Campaigns</Link>
-                        </Dropdown.Item>
-                    </Dropdown.Menu>
-                </Dropdown>
-                <Link className="characterNav listNav" to="/Character">Characters</Link>
-                {/* Uncomment the following Link when needed */}
-                {/* <Link className="abilitiesNav listNav" to="/Abilities">Abilities</Link> */}
+            <NavDropdown title="campaigns" id="basic-nav-dropdown">
+            <NavDropdown.Item as={Link} to="/Campaign">All Campaigns</NavDropdown.Item>
+            <NavDropdown.Item as={Link} to="/Campaign">Campaign Name</NavDropdown.Item>
+                </NavDropdown>
+                <NavDropdown title="characters" id="basic-nav-dropdown">
+                <NavDropdown.Item as={Link} to="/Character">all characters</NavDropdown.Item>
+                </NavDropdown>
+            {/* <Link to="/Abilities">abilities</Link> */}
             </div>
         </div>
-    );
+    )
 }
