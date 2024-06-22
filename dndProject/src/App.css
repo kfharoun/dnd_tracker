@@ -78,7 +78,7 @@
   font-weight: 900;
   color:#EFEFE9;
   font-size: 1.5em;
-  margin-left: -20vw;
+  margin-left: -15vw;
   text-shadow: 4px 2px 2px rgba(0, 0, 0, 0.57);
 }
 
@@ -89,15 +89,44 @@
 .navGroup {
   display: flex;
   justify-content: space-between;
-  gap: 80%;
+  gap: 40%;
   margin-right: -5vw;
   font-size: 1.3em;
 }
 
-.listNav {
+.listNav, .nav-link {
   font-weight: 900;
   font-style: italic;
 }
+
+.dropdown-menu {
+  font-family: "IM Fell DW Pica", serif;
+  text-transform: lowercase;
+  font-style: italic;
+  background-color: #efefe984;
+  border: none;
+}
+.dropdown-toggle::after {
+      vertical-align: .07em;
+}
+
+.dropdown-item{
+  color:#523D35;
+  font-style: italic;
+  transition: all .45s ease;
+}
+.dropdown-item:hover,
+.dropdown-item:focus {
+    background-color: #bba58f65;
+    color: #523d35c2; 
+    text-decoration: none; 
+}
+
+.dropdown-menu {
+  transition: all 0.3s ease;
+}
+
+
 /* FOOTER */
 
 .Footer{
