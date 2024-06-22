@@ -11,14 +11,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden; /* Ensure no scrollbars due to absolute positioning */
+  overflow: hidden; 
+  margin: 0 auto;
 }
 
 .welcomehome {
+  position: relative;
   text-align: center;
   z-index: 1;
   padding: 2rem;
-  margin-left: 20rem; 
+  margin-left: 31vw; 
   margin-top: -6vw;
 }
 
@@ -28,7 +30,7 @@
   font-style: normal;
   text-transform: uppercase;
   color: #223030;
-  font-size: 4vw;
+  font-size: 3rem;
   margin-bottom: 2rem;
 }
 
@@ -53,10 +55,9 @@
   left: 0;
   z-index: -1;
   filter: blur(1px);
+  /* -webkit-transform: scaleX(-1);
+  transform: scaleX(-1); */
 }
-
-
-
 
 
 
@@ -76,20 +77,30 @@
 /* FOOTER */
 
 .Footer{
-  background-color: #bba58f9b;
   width: 100%; 
   padding: 1em 0;
   position: fixed;
   bottom: 0;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   z-index: 1;
 }
 
 .footerlink {
   color:#EFEFE9;
+  transition: font-size .3s ease;
+  text-shadow: 4px 4px 4px #223030bc;
 }
 
 .footerlink:hover {
   color:#efefe9a1;
+  font-style: italic;
+}
+
+.kass {
+  margin-left: 30px;
+}
+
+.git {
+  margin-right: 30px;
 }
