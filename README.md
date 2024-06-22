@@ -1,7 +1,7 @@
 <img src ="./pictures/TitleScreen.png" alt="Characters on a cliff overlooking a dense forest, the title screen" width =520px/>
 <img src ="./pictures/campaignPage.png" alt="campaignpage" width =520px/>
 <img src ="./pictures/characterPage.png" alt="campaignpage" width =520px/>
-<img src ="./pictures/abilityandcharPage.png" alt="ability and char page" width =520px/>
+<img src ="./pictures/abilityandchar.png" alt="ability and char page" width =520px/>
 
 # ***DND Tracker - ADVENTURER'S ATLAS***
 
