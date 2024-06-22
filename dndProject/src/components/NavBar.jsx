@@ -4,10 +4,12 @@ import { Link } from 'react-router-dom'
 export default function NavBar () {
     return(
         <div className="NavBar">
-            <Link to="/">ADVENTURER'S ATLAS </Link>
-            <Link to="/Character">characters </Link>
-            <Link to="/Campaign">campaigns </Link>
-            <Link to="/Abilities">abilities</Link>
+            <Link className="pageTitle" to="/">ADVENTURER'S ATLAS </Link>
+            <div className='navGroup'>
+            <Link className="campaignNav listNav" to="/Campaign">campaigns </Link>
+            <Link className="characterNav listNav" to="/Character">characters </Link>
+            {/* <Link to="/Abilities">abilities</Link> */}
+            </div>
         </div>
     )
 }
