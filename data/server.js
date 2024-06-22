@@ -30,3 +30,27 @@ app.delete('/Campaign/id', campaignController.deleteCampaign)
 app.get('/Campaign/search/:searchTerm', campaignController.getCampaignsByWord)
 app.get('/Campaign/search/:players', campaignController.getCampaignsByPlayers)
 app.get('/Campaign/search/:dungeon_master', campaignController.getCampaignsByDM)
+
+
+app.get('/Character', characterController.getAllCharacters)
+app.get('/Character/:id', characterController.getCharactersById)
+app.post('/Character', characterController.createCharacter)
+app.put('/Character/id', characterController.updateCharacter)
+app.delete('/Character/id', characterController.deleteCharacter)
+app.get('/Character/search/:searchTerm', characterController.getCharactersByWord)
+app.get('/Character/search/:abilityId', characterController.getCharactersById)
+app.get('/Character/search/:type', characterController.getCharactersByType)
+app.get('/Character/search/campaignId', characterController.getCharacterByCampaignId)
+
+
+app.get('/Ability', abilityController.getAllAbilities)
+app.get('/Ability/:id', abilityController.getAbilitiesById)
+app.post('/Ability', abilityController.createAbility)
+app.put('/Ability/id', abilityController.updateAbility)
+app.delete('/Ability/id', abilityController.deleteAbility)
+app.get('/Ability/search/:searchTerm', abilityController.getAbilitiesByWord)
+app.get('/Ability/search/:abilityId', abilityController.getAbilitiesById)
+app.get('/Ability/search/:level_learned', abilityController.getAbilitiesByLevel)
+app.get('/Ability/search/ability_class', abilityController.getAbilitiesByClass)
+app.get('/Ability/search/ability_name', abilityController.getAbilitiesByName)
+
