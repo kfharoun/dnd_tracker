@@ -1,4 +1,4 @@
-const Ability = require('../models/ability')
+const { Ability } = require('../models')
 
 
 const getAllAbilities = async (req,res) => {
