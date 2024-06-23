@@ -4,7 +4,7 @@ const CharacterSchema = new Schema(
   {
     character_name: { type: String, required: true },
     played_by: {type: String, required: true}, 
-    character_image: {type: String, required: false},
+    character_image: {type: String, required: false, default:'https://www.gamersdecide.com/sites/default/files/styles/news_images/public/screenhunter_02_6.jpg'},
     race: { type: String, required: true },
     class_name: {type: String, required: true},
     subclass_name: { type: String, required: true },

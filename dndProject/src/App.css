@@ -155,6 +155,49 @@
 .git {
   margin-right: 30px;
 }
+/* Character List */
+.charListImage {
+  background-image: url("../../dndProject/src/images/charPage.svg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  filter: blur(1px);
+}
+
+.CharacterList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 20px; 
+  margin: 0 auto;
+  max-width: 1000px; 
+}
+
+.charPic {
+  width: 200px; 
+  height: 190px; 
+  object-fit: cover;
+  border-radius: 30px;
+}
+
+.charListName {
+  flex: 1 0 30%; 
+  color: #959D90;
+  font-style: italic;
+  font-size: 1.2em;
+  background-color: #223030;
+  padding: 20px;
+  border-radius: 30px;
+  text-align: center;
+}
+
+
 
 /* Character Page */
 
