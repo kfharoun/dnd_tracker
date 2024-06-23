@@ -43,9 +43,9 @@ Currently, two official plugins are available:
 ## saturday notes
 
 for tanner: 
-* change booleans in ability to false 
+* change booleans in ability to false (done)
 * change level_learned to be the level the ability is learned, not the level of the ability 
-* change magician to sorcerer 
+* change magician to sorcerer (done)
 
 gideon: 
 abilities page 
