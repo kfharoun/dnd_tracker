@@ -155,3 +155,21 @@
 .git {
   margin-right: 30px;
 }
+
+/* Character Page */
+
+.CharacterPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.char-list {
+  max-width: 406px;
+}
+
+.stattitle{
+  display: flex;
+  justify-content: space-between;
+  gap: 40%;
+}

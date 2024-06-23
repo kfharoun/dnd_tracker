@@ -1,4 +1,4 @@
-const { Character } = require('../models')
+const { Character, Campaign, Ability } = require('../models')
 
 
 const getAllCharacters = async (req,res) => {
@@ -94,18 +94,20 @@ const createCharacter  = async (req, res) => {
 
 const getCharacterByCampaignId = async (req, res) => {
     try {
-        const CampaignId = req.params.campaignId
-        console.log("campaignId:", campaignId)
-        const campaigns = await Campaign.find({ campaignId })
+        const campaignId = req.params.campaignId
+        const campaigns = await Campaign.find({ CampaignId: campaignId })
+        if (!campaigns) {
+            return res.status(404).json({ error: "Campaigns not found" })
+        }
         console.log("campaigns:", campaigns)
-        console.log("objectID2:", campaignId)
-        console.log("Campaign:", Campaign)
         res.json(campaigns)
     } catch (error) {
-        console.error("Error fetching campaignss by  ID:", error)
+        console.error("Error fetching campaigns by ID:", error)
         res.status(500).json({ error: error.message })
     }
 }
+
+
 
 const getCharacterByAbilityId = async (req, res) => {
     try {

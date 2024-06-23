@@ -19,7 +19,7 @@ const CharacterSchema = new Schema(
     level: {type: Number, required: true}, 
     lore: {type: String, required: true},
     campaignId: { type: Schema.Types.ObjectId, ref: 'Campaign'}, 
-    abilityId: {type: Schema.Types.ObjectId, red: 'Ability'}
+    abilityId: {type: Schema.Types.ObjectId, ref: 'Ability'}
   },
   { timestamps: true }
 )
