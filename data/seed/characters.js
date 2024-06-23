@@ -15,7 +15,7 @@ const resetCollections = async () => {
 
 const main = async () => {
     const drizzt = await Campaign.findOne({ campaign_name: "Adventures of Drizzt Do'Urden" })
-
+await resetCollections()
   const characters = [
     {
         character_name: "Drizzt Do'Urden",
@@ -42,7 +42,7 @@ const main = async () => {
     }, 
     {
         character_name: "Bruenor Battlehammer",
-        character_image: "https://static.wikia.nocookie.net/forgottenrealms/images/1/1f/Streams_Of_Silver_Original_Cover_%28Bruenor_Close_Up%29.jpg/revision/latest?cb=20230601143335",
+        character_image: "https://www.wizardtower.com/wp-content/uploads/Bruenor2.jpg",
         played_by: "Tanner",
         race: "Dwarf",
         class_name: "Fighter",
