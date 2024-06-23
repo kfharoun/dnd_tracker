@@ -13,26 +13,28 @@ const resetCollections = async () => {
     }
 }
 
-
-
-
 const main = async () => {
-    const ranger = await Ability.find({class_name:"Ranger"})
-    const fighter = await Ability.find({class_name:"Fighter"})
-    const barbarian = await Ability.find({class_name:"Barbarian"})
-    const bard = await Ability.find({class_name:"Bard"})
-    const cleric = await Ability.find({class_name:"Cleric"})
-    const druid = await Ability.find({class_name:"Druid"})
-    const rogue = await Ability.find({class_name:"Rogue"})
-    const paladin = await Ability.find({class_name:"Paladin"})
-    const sorcerer = await Ability.find({class_name:"Sorcerer"})
-    const warlock = await Ability.find({class_name:"Warlock"})
-    const wizard = await Ability.find({class_name:"Wizard"})
-    const artificer = await Ability.find({class_name:"Artificer"})
-    const monk = await Ability.find({class_name:"Monk"})
-    const drizzt = await Campaign.find({campaign_name: "Adventures of Drizzt Do'Urden"})
+    const abilitiesByClass = {};
+    const classes = ["Ranger", "Fighter"]
+    // const ranger = await Ability.find({ ability_class: "Ranger" })
+    // const fighter = await Ability.find({ability_class:"Fighter"})
+    // const barbarian = await Ability.find({ability_class:"Barbarian"})
+    // const bard = await Ability.find({ability_class:"Bard"})
+    // const cleric = await Ability.find({ability_class:"Cleric"})
+    // const druid = await Ability.find({ability_class:"Druid"})
+    // const rogue = await Ability.find({ability_class:"Rogue"})
+    // const paladin = await Ability.find({ability_class:"Paladin"})
+    // const sorcerer = await Ability.find({ability_class:"Sorcerer"})
+    // const warlock = await Ability.find({ability_class:"Warlock"})
+    // const wizard = await Ability.find({ability_class:"Wizard"})
+    // const artificer = await Ability.find({ability_class:"Artificer"})
+    // const monk = await Ability.find({ability_class:"Monk"})
+    const drizzt = await Campaign.findOne({ campaign_name: "Adventures of Drizzt Do'Urden" })
     await resetCollections()
   
+    for (const className of classes) {
+        abilitiesByClass[className] = await Ability.find({ ability_class: className });
+    }
 
   const characters = [
     {
@@ -57,11 +59,11 @@ const main = async () => {
 
         Drizzt's tale is one of courage, resilience, and the enduring struggle between darkness and light. He remains a beacon of hope and inspiration, demonstrating that even in the darkest of times, true heroes emerge to champion the cause of righteousness.`,
         campaignId: drizzt._id, 
-        abilityId: ranger._id
+        abilityId: abilitiesByClass["Ranger"]._id
     }, 
     {
         character_name: "Bruenor Battlehammer",
-        character_image: "https://static.wikia.nocookie.net/forgottenrealms/images/c/c2/Bruenor_Battlehammer_AFR.jpg/revision/latest?cb=20210701120700",
+        character_image: "https://static.wikia.nocookie.net/forgottenrealms/images/1/1f/Streams_Of_Silver_Original_Cover_%28Bruenor_Close_Up%29.jpg/revision/latest?cb=20230601143335",
         played_by: "Tanner",
         race: "Dwarf",
         class_name: "Fighter",
@@ -81,7 +83,7 @@ const main = async () => {
     
         Despite his gruff exterior, Bruenor possesses a heart of gold and a strong sense of justice. His leadership has inspired dwarves across Faerûn to stand against tyranny and defend their ancestral lands, making him a legendary figure among his people and a stalwart companion to Drizzt in their quests for justice and honor.`,
         campaignId: drizzt._id,
-        abilityId: fighter._id
+        abilityId: abilitiesByClass["Fighter"]._id
     }, 
     {
         character_name: "Catti-brie",
@@ -105,7 +107,7 @@ const main = async () => {
     
         Beyond her prowess in combat, Catti-brie is known for her unwavering loyalty and compassion. Her bond with Drizzt and her commitment to their shared ideals of justice and bravery have made her an indispensable member of their adventuring party, facing danger and adversity with courage and resilience.`,
         campaignId: drizzt._id,
-        abilityId: fighter._id
+        abilityId: abilitiesByClass["Fighter"]._id
     }
 ]
 
