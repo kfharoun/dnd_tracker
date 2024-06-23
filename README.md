@@ -52,3 +52,5 @@ abilities page
 * set boolean of equipped to true if clicked on, change classname to equipped or not equipped ? 
 * show abilities of all abilities learned by level of that character (usecontext + dropdown?)
 
+## sources
+* used chatgpt to learn to time out an error message
