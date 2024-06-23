@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import NavDropdown from 'react-bootstrap/NavDropdown';
+import NavDropdown from 'react-bootstrap/NavDropdown'
 
 
 export default function NavBar () {
