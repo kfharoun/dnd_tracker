@@ -113,7 +113,6 @@
 .dropdown-item{
   color:#523D35;
   font-style: italic;
-  transition: all .45s ease;
 }
 .dropdown-item:hover,
 .dropdown-item:focus {
@@ -146,7 +145,7 @@
 
 .footerlink:hover {
   color:#efefe9a1;
-  font-style: italic;
+  letter-spacing: 1px;
 }
 
 .kass {
