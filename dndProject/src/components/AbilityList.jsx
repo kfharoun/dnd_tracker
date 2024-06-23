@@ -1,6 +1,9 @@
 import axios from "axios"
 import { useState, useEffect} from "react"
 import { useNavigate } from "react-router-dom"
+import Dropdown from 'react-bootstrap/Dropdown'
+import Accordion from 'react-bootstrap/Accordion'
+
 
 export default function AbilityList () {
 
@@ -10,26 +13,51 @@ export default function AbilityList () {
     //     navigate(`${index}`)
     // }
 
-    const [abilities, setAbilities] = useState([])
+//    const setTrue = (index) =>{
+//           ability.ability_equipped === false ? ability.ability_equipped = true : ability.ability_equipped = false
+//           abilities.push(ability.ability_equipped)
+//     }
 
-    useEffect (() => {
-        const getAbilities = async() => {
-            const response = await axios.get(`http://localhost:3001/Ability`)
-            setAbilities(response.data)
-        }
-        getAbilities()
-    },[])
-    console.log('Abilties', abilities)
-    return (
-        <div className ="AbilityList">
-            <h1>Campaign List!</h1>
-            {
-                abilities.map((ability, index)=> (
-                    <div className="just checking to see if you are paying attention muahahahaha" key = {index}>
-                        <h3>{ability.ability_name}</h3>
-                        </div>
-                ))
-            }
-        </div>
-    )
+
+
+    // const [abilities, setAbilities] = useState([])
+
+    // useEffect (() => {
+    //     const getAbilities = async() => {
+    //         const response = await axios.get(`http://localhost:3001/Ability`)
+    //         setAbilities(response.data)
+    //     }
+    //     getAbilities()
+    // },[])
+    // console.log('Abilties', abilities)
+return (
+    
+            
+                <div className ="AbilityList">
+                    <h1>Character's Abilities!</h1>
+                         <Accordion defaultActiveKey={["0"]} alwaysOpen>
+                            <Accordion.Item eventKey="0">
+                                <Accordion.Header>Acid Splash</Accordion.Header>
+                                <Accordion.Body>
+                                    Throw some dang acid on them man
+                                </Accordion.Body>
+                            </Accordion.Item>
+                            <Accordion.Item eventKey="1">
+                                <Accordion.Header>Fire Bolt</Accordion.Header>
+                                <Accordion.Body>
+                                    Throw some dang fire on them man
+                                </Accordion.Body>
+                            </Accordion.Item>
+                         </Accordion>  
+
+
+                         </div>
+                 
+
+                
+                
+            
+        )
+        
+    
 }
