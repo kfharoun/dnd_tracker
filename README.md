@@ -53,4 +53,6 @@ abilities page
 * show abilities of all abilities learned by level of that character (usecontext + dropdown?)
 
 ## sources
-* used chatgpt to learn to time out an error message
+* used chatgpt to 
+    * learn to time out an error message
+    * get the navbar to work
