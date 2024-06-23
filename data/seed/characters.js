@@ -13,26 +13,8 @@ const resetCollections = async () => {
     }
 }
 
-
-
-
 const main = async () => {
-    const ranger = await Ability.find({class_name:"Ranger"})
-    const fighter = await Ability.find({class_name:"Fighter"})
-    const barbarian = await Ability.find({class_name:"Barbarian"})
-    const bard = await Ability.find({class_name:"Bard"})
-    const cleric = await Ability.find({class_name:"Cleric"})
-    const druid = await Ability.find({class_name:"Druid"})
-    const rogue = await Ability.find({class_name:"Rogue"})
-    const paladin = await Ability.find({class_name:"Paladin"})
-    const sorcerer = await Ability.find({class_name:"Sorcerer"})
-    const warlock = await Ability.find({class_name:"Warlock"})
-    const wizard = await Ability.find({class_name:"Wizard"})
-    const artificer = await Ability.find({class_name:"Artificer"})
-    const monk = await Ability.find({class_name:"Monk"})
-    const drizzt = await Campaign.find({campaign_name: "Adventures of Drizzt Do'Urden"})
-    await resetCollections()
-  
+    const drizzt = await Campaign.findOne({ campaign_name: "Adventures of Drizzt Do'Urden" })
 
   const characters = [
     {
@@ -56,12 +38,11 @@ const main = async () => {
         Driven by a deep-seated desire to prove that individuals are not defined by their race or heritage, Drizzt ventured to the surface world where he continued to uphold his values as a protector of the innocent and a relentless foe of evil. Throughout his adventures, he faced numerous challenges, battled formidable foes, and forged lasting bonds with companions who shared his commitment to justice.
 
         Drizzt's tale is one of courage, resilience, and the enduring struggle between darkness and light. He remains a beacon of hope and inspiration, demonstrating that even in the darkest of times, true heroes emerge to champion the cause of righteousness.`,
-        campaignId: drizzt._id, 
-        abilityId: ranger._id
+        campaignId: drizzt._id
     }, 
     {
         character_name: "Bruenor Battlehammer",
-        character_image: "https://static.wikia.nocookie.net/forgottenrealms/images/c/c2/Bruenor_Battlehammer_AFR.jpg/revision/latest?cb=20210701120700",
+        character_image: "https://static.wikia.nocookie.net/forgottenrealms/images/1/1f/Streams_Of_Silver_Original_Cover_%28Bruenor_Close_Up%29.jpg/revision/latest?cb=20230601143335",
         played_by: "Tanner",
         race: "Dwarf",
         class_name: "Fighter",
@@ -80,8 +61,7 @@ const main = async () => {
         From a young age, Bruenor showed exceptional skill in battle and a keen understanding of tactics, earning him respect among dwarves and allies alike. His deep-seated determination to protect his kin and reclaim lost dwarven territories has driven him to forge alliances with unlikely allies, including the renowned drow ranger Drizzt Do'Urden.
     
         Despite his gruff exterior, Bruenor possesses a heart of gold and a strong sense of justice. His leadership has inspired dwarves across Faerûn to stand against tyranny and defend their ancestral lands, making him a legendary figure among his people and a stalwart companion to Drizzt in their quests for justice and honor.`,
-        campaignId: drizzt._id,
-        abilityId: fighter._id
+        campaignId: drizzt._id
     }, 
     {
         character_name: "Catti-brie",
@@ -104,8 +84,7 @@ const main = async () => {
         Gifted with exceptional agility and marksmanship, Catti-brie wields a deadly bow and blade with unmatched precision, making her a formidable adversary in battle. Her time spent with Drizzt and Bruenor has honed her skills as a fighter and strategist, earning her respect among allies and fear among enemies.
     
         Beyond her prowess in combat, Catti-brie is known for her unwavering loyalty and compassion. Her bond with Drizzt and her commitment to their shared ideals of justice and bravery have made her an indispensable member of their adventuring party, facing danger and adversity with courage and resilience.`,
-        campaignId: drizzt._id,
-        abilityId: fighter._id
+        campaignId: drizzt._id
     }
 ]
 

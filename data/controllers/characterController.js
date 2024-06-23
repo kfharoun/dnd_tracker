@@ -95,34 +95,34 @@ const createCharacter  = async (req, res) => {
 const getCharacterByCampaignId = async (req, res) => {
     try {
         const campaignId = req.params.campaignId
-        const campaigns = await Campaign.find({ CampaignId: campaignId })
-        if (!campaigns) {
-            return res.status(404).json({ error: "Campaigns not found" })
-        }
+        console.log("campaignId:", campaignId)
+        const campaigns = await Character.find({ campaignId })
         console.log("campaigns:", campaigns)
+        console.log("objectID2:", campaignId)
+        console.log("Campaign:", Campaign)
         res.json(campaigns)
+        
     } catch (error) {
-        console.error("Error fetching campaigns by ID:", error)
+        console.error("Error fetching campaigns by campaign ID:", error)
         res.status(500).json({ error: error.message })
     }
 }
-
 
 
 const getCharacterByAbilityId = async (req, res) => {
     try {
         const abilityId = req.params.abilityId
         console.log("abilityId:", abilityId)
-        const abilities = await Ability.find({ abilityId })
-        console.log("campaigns:", abilities)
-        console.log("objectID2:", abilityId)
-        console.log("abilities:", abilities)
-        res.json(abilities)
+        const characters = await Character.find({ abilityId })
+
+        console.log("characters:", characters)
+
+        res.json(characters)
     } catch (error) {
-        console.error("Error fetching ability by  ID:", error)
+        console.error("Error fetching characters by abilityId:", error)
         res.status(500).json({ error: error.message })
     }
-}
+};
 
 module.exports = {
     getAllCharacters,   

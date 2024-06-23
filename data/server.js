@@ -38,9 +38,9 @@ app.post('/Character', characterController.createCharacter)
 app.put('/Character/id', characterController.updateCharacter)
 app.delete('/Character/id', characterController.deleteCharacter)
 app.get('/Character/search/:searchTerm', characterController.getCharactersByWord)
-app.get('/Character/search/:abilityId', characterController.getCharactersById)
+app.get('/Character/ability/:abilityId', characterController.getCharacterByAbilityId)
 app.get('/Character/search/:type', characterController.getCharactersByType)
-app.get('/Character/search/:campaignId', characterController.getCharacterByCampaignId)
+app.get('/Character/campaign/:campaignId', characterController.getCharacterByCampaignId)
 
 
 app.get('/Ability', abilityController.getAllAbilities)

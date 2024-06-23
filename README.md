@@ -51,3 +51,6 @@ gideon:
 abilities page 
 * set boolean of equipped to true if clicked on, change classname to equipped or not equipped ? 
 * show abilities of all abilities learned by level of that character (usecontext + dropdown?)
+
+## Sources
+* used chatgpt to help with getting abilities to link to char levels
