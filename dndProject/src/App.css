@@ -205,14 +205,84 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-left: 10vw;
+  gap: 15vw;
+  font-family: "IM Fell DW Pica", serif;
+  color: #523D35;
 }
 
 .char-list {
   max-width: 406px;
+  background-color: #bba58fa0;
+  border-radius: 30px;
+  padding: 10px;
 }
 
+.char-list-two{
+  background-color: #bba58fa0;
+  padding: 50px;
+  border-radius: 30px;
+}
 .stattitle{
   display: flex;
   justify-content: space-between;
   gap: 40%;
+  
+}
+
+.charLore {
+  background-color: #e8d9cdb3; 
+  overflow: auto;
+  max-height: 200px; 
+  border-radius: 30px; 
+  padding: 12px;
+
+  scrollbar-width: none; 
+  -ms-overflow-style: none; 
+}
+
+.charLore::-webkit-scrollbar {
+  display: none; 
+}
+.charPageBack {
+  background-image: url("../../dndProject/src/images/charpageback.svg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  filter: blur(1px);
+}
+
+.campaignName{
+  color: white;
+  font-style: italic;
+  font-size: 20px;
+  text-align: center;
+}
+
+.CharNameText{
+  color: white;
+  font-family: "Cinzel Decorative", sans-serif; 
+  font-size: 30px;
+  text-align: center;
+}
+
+.stats {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.stats p {
+  margin: 5px 0;
+}
+
+.stat-name {
+  font-weight: bold;
+  margin-right: 5px;
 }
