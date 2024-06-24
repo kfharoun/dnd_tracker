@@ -10,10 +10,11 @@ const CharacterList = () => {
   useEffect(() => {
     const getCharacters = async () => {
         const response = await axios.get('http://localhost:3001/Character')
+        console.log(response.data)
         const characterNames = response.data.map(character => ({
           name: character.character_name,
           id: character._id
-        }));
+        }))
         setCharacters(response.data)
         setCharInfo({
           names: characterNames.map(character => character.name),
