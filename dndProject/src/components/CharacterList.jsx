@@ -17,7 +17,6 @@ const CharacterList = () => {
         }))
         setCharacters(response.data)
 
-        
         if (charInfo.names.length === 0 && charInfo.ids.length === 0) {
           setCharInfo({
             names: characterNames.map(character => character.name),
@@ -25,12 +24,12 @@ const CharacterList = () => {
           })
         }
       } catch (error) {
-        console.error('cannot get characters:', error);
+        console.error('Error fetching characters:', error)
       }
-    };
+    }
 
-    getCharacters();
-  }, [setCharInfo, charInfo.names, charInfo.ids]);
+    getCharacters()
+  }, [setCharInfo, charInfo.names, charInfo.ids])
 
   return (
     <div className="CharacterList">
