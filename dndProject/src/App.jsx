@@ -13,15 +13,13 @@ function App() {
   })
 
   useEffect(() => {
-    axios.get('http://localhost:3001/Character')
-      .then(response => {
+    const contextData = async () => {
+        const response = await axios.get('http://localhost:3001/Character')
         const names = response.data.map(character => character.character_name)
         const ids = response.data.map(character => character._id)
         setCharInfo({ names, ids })
-      })
-      .catch(error => {
-        console.error('Error fetching character data:', error)
-      })
+      }
+       contextData()
   }, [])
 
   const updateCharInfo = (name, id) => {
