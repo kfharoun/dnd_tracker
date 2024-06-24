@@ -13,10 +13,19 @@ export default function AbilityList () {
     //     navigate(`${index}`)
     // }
 
-//    const setTrue = (index) =>{
-//           ability.ability_equipped === false ? ability.ability_equipped = true : ability.ability_equipped = false
-//           abilities.push(ability.ability_equipped)
-//     }
+    const setTrue = (array,index) =>{
+        
+          array.ability_equipped === false ? array.ability_equipped = true : array.ability_equipped = false
+          
+          abilities.forEach((abilities) => {
+            if (abilities.ability_name == array.ability_name) {
+                abilities.ability_equipped = array.ability_equipped
+                console.log("here",abilities.ability_equipped,"break", abilities)
+            }
+            
+          })
+        //    abilities.push(ability.ability_equipped)
+     }
 
 
 
@@ -107,7 +116,7 @@ return (
                     <div className ="Accordion">
 
 
-                         <Accordion defaultActiveKey={["0"]} alwaysOpen>
+                         <Accordion  alwaysOpen>
                             <Accordion.Item eventKey="0">
                                 <Accordion.Header>Acid Splash</Accordion.Header>
                                 <Accordion.Body>
@@ -131,7 +140,7 @@ return (
                                 ))} */}
                                 {
                                     levelAbilities.map((levelAbility, index) => (
-                                        <li key ={index}>{levelAbility.ability_name}</li>
+                                        <li key ={index} onClick={()=>setTrue(levelAbility,index)}>{levelAbility.ability_name}</li>
                                     ))
                                 }
                             </ul>
