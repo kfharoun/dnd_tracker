@@ -12,6 +12,16 @@ export default function AbilityList () {
     // const showCharacter = (index) => {
     //     navigate(`${index}`)
     // }
+    let abiltitiesEquipped = []
+
+    // useEffect(()=> {
+    //     const addEquipped = async() => {
+    //         abiltitiesEquipped = await axios.post(`http://localhost:3001/Ability`) 
+    //     }
+    //     addEquipped()
+    // })
+
+
 
     const setTrue = (array,index) =>{
         
@@ -20,11 +30,31 @@ export default function AbilityList () {
           abilities.forEach((abilities) => {
             if (abilities.ability_name == array.ability_name) {
                 abilities.ability_equipped = array.ability_equipped
+                abiltitiesEquipped.push(abilities)
+                const addEquipped = async() => {
+                    try{
+                   const response = await axios.post(`http://localhost:3001/Ability`,{
+                    ability_name: abilities.ability_name,
+                    level_learned: abilities.level_learned,
+                    ability_equipped: abilities.ability_equipped,
+                    ability_class: abilities.ability_class
+                   }, ) 
+                    console.log("Added ability", response.data)  
+                    } catch (error) {
+                        console.error('Slippery fingers! Could not equip ability!', error)
+                    }
+                }
+                addEquipped()
                 console.log("here",abilities.ability_equipped,"break", abilities)
-            }
-            
+                console.log('equipped', abiltitiesEquipped)            
+            }            
           })
-        //    abilities.push(ability.ability_equipped)
+        // abilities.forEach((abilities, index) => {
+        //     if (abilities.ability_equipped === true) {
+        //         abiltitiesEquipped.push(abilities)
+        //         console.log('equipped', abiltitiesEquipped)
+        //     }
+        // })
      }
 
 //     ~~~~~~~~~~ psuedocode ~~~~~~~~~~~~
@@ -121,31 +151,11 @@ return (
                 <div className ="AbilityList">
                     <h1>Character's Abilities!</h1>
 
-                    <div className ="Accordion">
-
-
-                         <Accordion  alwaysOpen>
-                            <Accordion.Item eventKey="0">
-                                <Accordion.Header>Acid Splash</Accordion.Header>
-                                <Accordion.Body>
-                                    Throw some dang acid on them man
-                                </Accordion.Body>
-                            </Accordion.Item>
-                            <Accordion.Item eventKey="1">
-                                <Accordion.Header>Fire Bolt</Accordion.Header>
-                                <Accordion.Body>
-                                    Throw some dang fire on them man
-                                </Accordion.Body>
-                            </Accordion.Item>
-
-                         </Accordion>
-                         </div>
+                    
                          <div className ="chooseAbility">
-                            <input type="number" value={levelFilter} onChange={e => setLevelFilter(e.target.value)} />
+                            <input type="number" value={levelFilter} onChange={e => setLevelFilter(e.target.value)} min = {1} />
                             <ul>
-                                {/* {filterLevel.map(ability, index => (
-                                    <li key={index}>{ability.ability_name}</li>
-                                ))} */}
+                               
                                 {
                                     levelAbilities.map((levelAbility, index) => (
                                         <li key ={index} onClick={()=>setTrue(levelAbility,index)}>{levelAbility.ability_name}</li>
@@ -171,3 +181,27 @@ return (
         
     
 }
+
+
+
+
+
+
+
+
+
+  {/* <Accordion  alwaysOpen>
+                            <Accordion.Item eventKey="0">
+                                <Accordion.Header>Acid Splash</Accordion.Header>
+                                <Accordion.Body>
+                                    Throw some dang acid on them man
+                                </Accordion.Body>
+                            </Accordion.Item>
+                            <Accordion.Item eventKey="1">
+                                <Accordion.Header>Fire Bolt</Accordion.Header>
+                                <Accordion.Body>
+                                    Throw some dang fire on them man
+                                </Accordion.Body>
+                            </Accordion.Item>
+
+                         </Accordion> */}
