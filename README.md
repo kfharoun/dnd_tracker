@@ -56,3 +56,4 @@ abilities page
 * used chatgpt to 
     * learn to time out an error message
     * get the navbar to work
+    * used chatgpt to figure out how to combine a bootstrap modal with existing code
