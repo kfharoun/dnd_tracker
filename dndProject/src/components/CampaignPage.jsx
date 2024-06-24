@@ -1,57 +1,66 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
-const CampaignPage = () => {
-  const [campaign, setCampaign] = useState(null);
+export default function CharacterList() {
+  const [characterInfo, setCharacterInfo] = useState(null);
+  const [campaign, setCampaign] = useState({});
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const navigate = useNavigate();
-  const { id } = useParams();
+  const { id } = useParams(); // This is the campaign ID
 
   useEffect(() => {
-    const getCampaign = async () => {
-      setLoading(true);
+    const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:3001/Campaign/${id}`);
-        setCampaign(response.data);
+        // Fetch campaign details
+        const campaignResponse = await axios.get(`http://localhost:3001/Campaign/${id}`);
+        const campaignData = campaignResponse.data;
+        setCampaign(campaignData);
+
+        // Check if campaignData contains a character_id or another identifier for character
+        if (campaignData._id) {
+          // Fetch character details if character_id is present
+          const characterResponse = await axios.get(`http://localhost:3001/Character/campaign/${id}`);
+          setCharacterInfo(characterResponse.data);
+        } else {
+          console.log('No character ID found in campaign data')
+          setCharacterInfo(null); // Reset character state if no valid character ID
+        }
+
         setLoading(false);
       } catch (error) {
-        console.error("Campaign not found:", error);
-        setError("Campaign not found. Please try again.");
+        console.error('Error fetching data:', error);
         setLoading(false);
       }
     };
+    fetchData();
+  }, [id])
 
-    getCampaign();
-  }, [id]);
 
   if (loading) {
     return <div>Loading...</div>;
   }
 
-  if (error) {
-    return <div>{error}</div>;
-  }
-
-  // Check if campaign is null or undefined (handle unexpected cases)
-  if (!campaign) {
-    return <div>Campaign data is not available.</div>;
-  }
-
-  // Join player names directly from the array
-  const playerNames = campaign.players && campaign.players.length > 0
-    ? campaign.players.join(", ")
-    : "No players found";
-
   return (
-    <div className="campaign-page">
-      <h1>{campaign.campaign_name}</h1>
-      <p>Campaign Information: {campaign.campaign_info}</p>
-      <p>Dungeon Master: {campaign.dungeon_master}</p>
-      <p>Players: {playerNames}</p>
+    <div>
+      <h2>Character Details</h2>
+      {characterInfo.length > 0 ? (
+        characterInfo.map((character) => (
+          <div key={character._id}>
+            <h3>{character.character_name}</h3>
+            {/* Display other character details as needed */}
+          </div>
+        ))
+      ) : (
+        <p>No characters found for this campaign.</p>
+      )}
+
+      <h2>Campaign Details</h2>
+      <div>
+        <h3>{campaign.campaign_name}</h3>
+        <p>{campaign.campaign_info}</p>
+        <p>Dungeon Master: {campaign.dungeon_master}</p>
+        <p>Players: {campaign.players ? campaign.players.join(', ') : ''}</p>
+      </div>
     </div>
   );
-};
-
-export default CampaignPage;
+}
