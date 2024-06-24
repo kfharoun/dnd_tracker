@@ -10,7 +10,7 @@ const NavBar = () => {
     <div className="NavBar">
       <Link className="pageTitle" to="/">ADVENTURER'S ATLAS</Link>
       <div className='navGroup'>
-      <NavDropdown title="campaigns" id="campaigns-dropdown">
+        <NavDropdown title="campaigns" id="campaigns-dropdown">
           <NavDropdown.Item as={Link} to="/Campaign">All Campaigns</NavDropdown.Item>
           <NavDropdown.Item as={Link} to="/Campaign/:campaignId">Campaign Name</NavDropdown.Item>
         </NavDropdown>
@@ -28,6 +28,7 @@ const NavBar = () => {
 }
 
 export default NavBar
+
 
 
 
