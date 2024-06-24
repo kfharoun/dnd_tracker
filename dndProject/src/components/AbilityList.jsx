@@ -30,6 +30,7 @@ export default function AbilityList () {
     //     getAbilities()
     // },[])
     // console.log('Abilties', abilities)
+
     const [levelFilter, setLevelFilter] = useState(0)
 
 
@@ -102,7 +103,10 @@ return (
             
                 <div className ="AbilityList">
                     <h1>Character's Abilities!</h1>
+
                     <div className ="Accordion">
+
+
                          <Accordion defaultActiveKey={["0"]} alwaysOpen>
                             <Accordion.Item eventKey="0">
                                 <Accordion.Header>Acid Splash</Accordion.Header>
@@ -116,6 +120,7 @@ return (
                                     Throw some dang fire on them man
                                 </Accordion.Body>
                             </Accordion.Item>
+
                          </Accordion>
                          </div>
                          <div className ="chooseAbility">
@@ -134,6 +139,9 @@ return (
                          </div>
 
                            
+
+                         </Accordion>  
+
 
 
                          </div>
