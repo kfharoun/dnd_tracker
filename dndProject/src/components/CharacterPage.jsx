@@ -4,7 +4,7 @@ import { useParams, useNavigate } from "react-router-dom"
 import { Modal, Form, Button, Row, Col } from 'react-bootstrap'
 import DataContext from '../DataContext'
 
-export default function CharacterList() {
+export default function CharacterList(props) {
   const { updateCharInfo } = useContext(DataContext)
   const [character, setCharacter] = useState(null)
   const [campaignName, setCampaignName] = useState(null)
@@ -117,17 +117,20 @@ export default function CharacterList() {
     <h1>Loading...</h1>
   ) : character ? (
     <div className="CharacterPage">
+      <div className="charPageBack"></div>
       <div className="char-list">
         <img
           src={character.character_image}
           width="250px"
           alt={`Image of ${character.character_name}`}
         />
-        <h1>{character.character_name}</h1>
-        <p>
-          <b>{campaignName}</b>
+        <h1 className="CharNameText">{character.character_name}</h1>
+        <p className="campaignName">
+          {campaignName}
         </p>
-        <p className="charLore">{character.lore}</p>
+        <div className="charLore">
+        <p className="charLoreText">{character.lore}</p>
+        </div>
       </div>
 
       <div className="char-list-two">
@@ -143,14 +146,15 @@ export default function CharacterList() {
           </div>
         </div>
         <div className="stats">
-          <p>Armor Class: {character.armor_class}</p>
-          <p>Hit Points: {character.hit_points}</p>
-          <p>Strength: {character.strength}</p>
-          <p>Dexterity: {character.dexterity}</p>
-          <p>Constitution: {character.constitution}</p>
-          <p>Intelligence: {character.intelligence}</p>
-          <p>Wisdom: {character.wisdom}</p>
-          <p>Charisma: {character.charisma}</p>
+        <p><span className="stat-name">Armor Class:</span> {character.armor_class}</p>
+        <p><span className="stat-name">Hit Points:</span> {character.hit_points}</p>
+        <p><span className="stat-name">Strength:</span> {character.strength}</p>
+        <p><span className="stat-name">Dexterity:</span> {character.dexterity}</p>
+        <p><span className="stat-name">Constitution:</span> {character.constitution}</p>
+        <p><span className="stat-name">Intelligence:</span> {character.intelligence}</p>
+        <p><span className="stat-name">Wisdom:</span> {character.wisdom}</p>
+        <p><span className="stat-name">Charisma:</span> {character.charisma}</p>
+
         </div>
         <div className="charPageButtons">
           <button className="abilityButton">Ability Log</button>
@@ -160,10 +164,10 @@ export default function CharacterList() {
       </div>
 
       {/* Modal for update form */}
-      <Modal show={showModal} onHide={toggleModal} size="lg"> 
+      <Modal show={showModal} onHide={toggleModal} size="lg" aria-labelledby="contained-modal-title-vcenter" centered> 
       <Modal.Header closeButton>
-        <Modal.Title>Update Character</Modal.Title>
-      </Modal.Header>
+        <Modal.Title id="contained-modal-title-vcenter">Update Character</Modal.Title>
+  </Modal.Header>
       <Modal.Body>
         <Form onSubmit={handleSubmit}>
           <Row>
