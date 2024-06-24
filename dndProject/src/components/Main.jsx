@@ -4,6 +4,7 @@ import CharacterList from './CharacterList'
 import CampaignList from './CampaignList'
 import AbilityList from './AbilityList'
 import CharacterPage from './CharacterPage'
+import CampaignPage from './CampaignPage'
 
 
 export default function Main () {
@@ -15,6 +16,7 @@ export default function Main () {
             <Route path ="/Campaign" element ={<CampaignList />}/>
             <Route path ="/Abilities" element = {<AbilityList />}/>
             <Route path ="/Character/:id" element = {<CharacterPage/>}/>
+            <Route path="/Campaign/:id" element= {<CampaignPage/>}/>
         </Routes>
        </div>
     )
