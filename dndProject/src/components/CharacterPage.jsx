@@ -1,9 +1,11 @@
 import axios from "axios"
-import { useState, useEffect } from "react"
+import { useState, useEffect , useContext} from "react"
 import { useParams, useNavigate } from "react-router-dom"
 import { Modal, Form, Button, Row, Col } from 'react-bootstrap'
+import DataContext from '../DataContext'
 
 export default function CharacterList() {
+  const { updateCharInfo } = useContext(DataContext)
   const [character, setCharacter] = useState(null)
   const [campaignName, setCampaignName] = useState(null)
   const [loading, setLoading] = useState(true)
@@ -104,7 +106,7 @@ export default function CharacterList() {
 
       const updatedCharacterResponse = await axios.get(`http://localhost:3001/Character/${id}`)
       setCharacter(updatedCharacterResponse.data)
-
+      updateCharInfo(formData.character_name, id)
       toggleModal() 
     } catch (error) {
       console.error('cant update character:', error)
@@ -158,14 +160,13 @@ export default function CharacterList() {
       </div>
 
       {/* Modal for update form */}
-      <Modal show={showModal} onHide={toggleModal} size="lg"> {/* Added size="lg" for a larger modal */}
+      <Modal show={showModal} onHide={toggleModal} size="lg"> 
       <Modal.Header closeButton>
         <Modal.Title>Update Character</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form onSubmit={handleSubmit}>
           <Row>
-            {/* First Column - Adjusted width to take 6 columns (half of 12) on large screens and full width on smaller screens */}
             <Col lg={6}>
               <Form.Group controlId="formCharacterName">
                 <Form.Label>Character Name</Form.Label>
@@ -200,7 +201,7 @@ export default function CharacterList() {
                 <Form.Label>Lore</Form.Label>
                 <Form.Control
                   as="textarea"
-                  rows={11}
+                  rows={12}
                   name="lore"
                   value={formData.lore}
                   onChange={handleChange}
@@ -341,7 +342,6 @@ export default function CharacterList() {
                   onChange={handleChange}
                   required
                 />
-                
               </Form.Group>
 
               <Form.Group controlId="formCharacterImage">
