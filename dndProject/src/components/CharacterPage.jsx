@@ -12,8 +12,20 @@ export default function CharacterList() {
   const [showModal, setShowModal] = useState(false) 
   const [formData, setFormData] = useState({
     character_name: "",
-    lore: ""
-
+    lore: "",
+    level:"", 
+    race: "", 
+    class_name: "", 
+    subclass_name: "", 
+    armor_class: "", 
+    hit_points: "", 
+    strength: "", 
+    dexterity:"", 
+    constitution:"", 
+    intelligence:"", 
+    wisdom:"", 
+    played_by:"",
+    character_image: ""
   })
   const navigate = useNavigate()
   const { id } = useParams()
@@ -33,6 +45,20 @@ export default function CharacterList() {
         setFormData({
           character_name: characterData.character_name,
           lore: characterData.lore,
+          level: characterData.level,
+          race: characterData.race,
+          class_name: characterData.class_name,
+          subclass_name: characterData.subclass_name,
+          armor_class: characterData.armor_class,
+          hit_points: characterData.hit_points,
+          strength: characterData.strength,
+          dexterity: characterData.dexterity,
+          constitution: characterData.constitution,
+          intelligence: characterData.intelligence,
+          wisdom: characterData.wisdom,
+          played_by: characterData.played_by,
+          character_image: characterData.character_image
+
         })
         setLoading(false)
       } catch (error) {
@@ -116,7 +142,7 @@ export default function CharacterList() {
       </div>
 
       {/* Modal for update form */}
-      <Modal show={showModal} onHide={toggleModal}>
+            <Modal show={showModal} onHide={toggleModal}>
         <Modal.Header closeButton>
           <Modal.Title>Update Character</Modal.Title>
         </Modal.Header>
@@ -145,7 +171,148 @@ export default function CharacterList() {
               />
             </Form.Group>
 
-            {/* Add more Form.Group components for other fields */}
+            <Form.Group controlId="formLevel">
+              <Form.Label>Level</Form.Label>
+              <Form.Control
+                type="number"
+                name="level"
+                value={formData.level}
+                onChange={handleChange}
+                required
+              />
+            </Form.Group>
+
+            <Form.Group controlId="formRace">
+              <Form.Label>Race</Form.Label>
+              <Form.Control
+                type="text"
+                name="race"
+                value={formData.race}
+                onChange={handleChange}
+                required
+              />
+            </Form.Group>
+
+            <Form.Group controlId="formClassName">
+              <Form.Label>Class Name</Form.Label>
+              <Form.Control
+                type="text"
+                name="class_name"
+                value={formData.class_name}
+                onChange={handleChange}
+                required
+              />
+            </Form.Group>
+
+            <Form.Group controlId="formSubclassName">
+              <Form.Label>Subclass Name</Form.Label>
+              <Form.Control
+                type="text"
+                name="subclass_name"
+                value={formData.subclass_name}
+                onChange={handleChange}
+                required
+              />
+            </Form.Group>
+
+            <Form.Group controlId="formArmorClass">
+              <Form.Label>Armor Class</Form.Label>
+              <Form.Control
+                type="number"
+                name="armor_class"
+                value={formData.armor_class}
+                onChange={handleChange}
+                required
+              />
+            </Form.Group>
+
+            <Form.Group controlId="formHitPoints">
+              <Form.Label>Hit Points</Form.Label>
+              <Form.Control
+                type="number"
+                name="hit_points"
+                value={formData.hit_points}
+                onChange={handleChange}
+                required
+              />
+            </Form.Group>
+
+            <Form.Group controlId="formStrength">
+              <Form.Label>Strength</Form.Label>
+              <Form.Control
+                type="number"
+                name="strength"
+                value={formData.strength}
+                onChange={handleChange}
+                required
+              />
+            </Form.Group>
+
+            <Form.Group controlId="formDexterity">
+              <Form.Label>Dexterity</Form.Label>
+              <Form.Control
+                type="number"
+                name="dexterity"
+                value={formData.dexterity}
+                onChange={handleChange}
+                required
+              />
+            </Form.Group>
+
+            <Form.Group controlId="formConstitution">
+              <Form.Label>Constitution</Form.Label>
+              <Form.Control
+                type="number"
+                name="constitution"
+                value={formData.constitution}
+                onChange={handleChange}
+                required
+              />
+            </Form.Group>
+
+            <Form.Group controlId="formIntelligence">
+              <Form.Label>Intelligence</Form.Label>
+              <Form.Control
+                type="number"
+                name="intelligence"
+                value={formData.intelligence}
+                onChange={handleChange}
+                required
+              />
+            </Form.Group>
+
+            <Form.Group controlId="formWisdom">
+              <Form.Label>Wisdom</Form.Label>
+              <Form.Control
+                type="number"
+                name="wisdom"
+                value={formData.wisdom}
+                onChange={handleChange}
+                required
+              />
+            </Form.Group>
+
+            <Form.Group controlId="formPlayedBy">
+              <Form.Label>Played By</Form.Label>
+              <Form.Control
+                type="text"
+                name="played_by"
+                value={formData.played_by}
+                onChange={handleChange}
+                required
+              />
+            </Form.Group>
+
+            <Form.Group controlId="formCharacterImage">
+              <Form.Label>Character Image</Form.Label>
+              <Form.Control
+                type="text"
+                name="character_image"
+                value={formData.character_image}
+                onChange={handleChange}
+                required
+              />
+            </Form.Group>
 
             <Button variant="primary" type="submit">
               Save Changes
@@ -153,6 +320,7 @@ export default function CharacterList() {
           </Form>
         </Modal.Body>
       </Modal>
+
 
     </div>
   ) : (
