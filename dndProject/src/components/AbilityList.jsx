@@ -83,9 +83,15 @@ export default function AbilityList () {
         { "ability_name": "Wish", "level_learned": 17, "ability_class": "Wizard", "ability_equipped": false },
         { "ability_name": "True Polymorph", "level_learned": 17, "ability_class": "Wizard", "ability_equipped": false }
     ]
-    const filterLevel = abilities.filter(ability => abilities.level_learned > levelFilter)
+    // const filterLevel = abilities.filter(ability => abilities.level_learned > levelFilter)
+
+    function filterLevel (element){
+        return element.level_learned > levelFilter
+    }
 
     console.log('abilities', abilities)
+
+    const levelAbilities = abilities.filter(filterLevel)
 
 
 
@@ -115,9 +121,14 @@ return (
                          <div className ="chooseAbility">
                             <input type="number" value={levelFilter} onChange={e => setLevelFilter(e.target.value)} />
                             <ul>
-                                {filterLevel.map(ability, index => (
+                                {/* {filterLevel.map(ability, index => (
                                     <li key={index}>{ability.ability_name}</li>
-                                ))}
+                                ))} */}
+                                {
+                                    levelAbilities.map((levelAbility, index) => (
+                                        <li key ={index}>{levelAbility.ability_name}</li>
+                                    ))
+                                }
                             </ul>
 
                          </div>
