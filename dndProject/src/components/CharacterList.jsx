@@ -4,26 +4,33 @@ import axios from 'axios'
 import DataContext from '../DataContext'
 
 const CharacterList = () => {
-  const { setCharInfo } = useContext(DataContext)
+  const { charInfo, setCharInfo, updateCharInfo } = useContext(DataContext)
   const [characters, setCharacters] = useState([])
 
   useEffect(() => {
     const getCharacters = async () => {
+      try {
         const response = await axios.get('http://localhost:3001/Character')
-        console.log(response.data)
         const characterNames = response.data.map(character => ({
           name: character.character_name,
           id: character._id
         }))
         setCharacters(response.data)
-        setCharInfo({
-          names: characterNames.map(character => character.name),
-          ids: characterNames.map(character => character.id)
-        })
-    }
 
-    getCharacters()
-  }, [setCharInfo])
+        
+        if (charInfo.names.length === 0 && charInfo.ids.length === 0) {
+          setCharInfo({
+            names: characterNames.map(character => character.name),
+            ids: characterNames.map(character => character.id)
+          })
+        }
+      } catch (error) {
+        console.error('cannot get characters:', error);
+      }
+    };
+
+    getCharacters();
+  }, [setCharInfo, charInfo.names, charInfo.ids]);
 
   return (
     <div className="CharacterList">
@@ -47,7 +54,8 @@ const CharacterList = () => {
   )
 }
 
-export default CharacterList
+export default CharacterList;
+
 
 
 
