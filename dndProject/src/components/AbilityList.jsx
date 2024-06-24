@@ -2,26 +2,20 @@ import axios from "axios"
 import { useState, useEffect} from "react"
 import { useNavigate } from "react-router-dom"
 import Dropdown from 'react-bootstrap/Dropdown'
+import DropdownButton from 'react-bootstrap/DropdownButton'
 import Accordion from 'react-bootstrap/Accordion'
 
 
 export default function AbilityList () {
 
-    // let navigate = useNavigate()
+    let dropdownValue = "Choose Your Class"
 
-    // const showCharacter = (index) => {
-    //     navigate(`${index}`)
-    // }
     let abiltitiesEquipped = []
 
-    // useEffect(()=> {
-    //     const addEquipped = async() => {
-    //         abiltitiesEquipped = await axios.post(`http://localhost:3001/Ability`) 
-    //     }
-    //     addEquipped()
-    // })
-
-
+    function changeDropdownValue (){
+        dropdownValue = classFilter
+    }
+    
 
     const setTrue = (array,index) =>{
         
@@ -49,37 +43,12 @@ export default function AbilityList () {
                 console.log('equipped', abiltitiesEquipped)            
             }            
           })
-        // abilities.forEach((abilities, index) => {
-        //     if (abilities.ability_equipped === true) {
-        //         abiltitiesEquipped.push(abilities)
-        //         console.log('equipped', abiltitiesEquipped)
-        //     }
-        // })
+        
      }
-
-//     ~~~~~~~~~~ psuedocode ~~~~~~~~~~~~
-
-// abilities.forEach((abilities) => {
-    // if (abilities.abilities.class = buttonValue){
-    // map it out
-    //}})
-
-
-
-    // ~~~~~~~~~~~~~~~~~~~abilities call ~~~~~~~~~~~~
-    // const [abilities, setAbilities] = useState([])
-
-    // useEffect (() => {
-    //     const getAbilities = async() => {
-    //         const response = await axios.get(`http://localhost:3001/Ability`)
-    //         setAbilities(response.data)
-    //     }
-    //     getAbilities()
-    // },[])
-    // console.log('Abilties', abilities)
 
     const [levelFilter, setLevelFilter] = useState(0)
 
+    const [classFilter, setClassFilter] = useState("Choose Your Class")
 
     const abilities = [
         { "ability_name": "Magic Missile", "level_learned": 1, "ability_class": "Wizard", "ability_equipped": false },
@@ -130,25 +99,38 @@ export default function AbilityList () {
         { "ability_name": "Shapechange", "level_learned": 17, "ability_class": "Wizard", "ability_equipped": false },
         { "ability_name": "Wish", "level_learned": 17, "ability_class": "Wizard", "ability_equipped": false },
         { "ability_name": "True Polymorph", "level_learned": 17, "ability_class": "Wizard", "ability_equipped": false }
-    ]
-    
+    ]    
 
     function filterLevel (element){
         return element.level_learned <= levelFilter
     }
 
+    function filterClass (element){
+       return element.ability_class == classFilter
+    }
+
     console.log('abilities', abilities)
+    console.log('CLASS', classFilter)
 
     const levelAbilities = abilities.filter(filterLevel)
-
-
-
-
-
 return (
     
             
                 <div className ="AbilityList">
+                    <DropdownButton id="drop-basic-button" title={classFilter} onClick={()=>changeDropdownValue}>
+                        <Dropdown.Item href="#/action-1" onClick={()=>setClassFilter("Barbarian")} >Barbarian</Dropdown.Item>
+                        <Dropdown.Item href="#/action-2" onClick={()=>setClassFilter("Bard")}>Bard</Dropdown.Item>
+                        <Dropdown.Item href="#/action-3" onClick={()=>setClassFilter("Cleric")}>Cleric</Dropdown.Item>
+                        <Dropdown.Item href="#/action-4" onClick={()=>setClassFilter("Druid")}>Druid</Dropdown.Item>
+                        <Dropdown.Item href="#/action-5" onClick={()=>setClassFilter("Fighter")}>Fighter</Dropdown.Item>
+                        <Dropdown.Item href="#/action-6" onClick={()=>setClassFilter("Monk")}>Monk</Dropdown.Item>
+                        <Dropdown.Item href="#/action-7" onClick={()=>setClassFilter("Paladin")}>Paladin</Dropdown.Item>
+                        <Dropdown.Item href="#/action-8" onClick={()=>setClassFilter("Ranger")}>Ranger</Dropdown.Item>
+                        <Dropdown.Item href="#/action-9" onClick={()=>setClassFilter("Rogue")}>Rogue</Dropdown.Item>
+                        <Dropdown.Item href="#/action-10" onClick={()=>setClassFilter("Sorcerer")}>Sorcerer</Dropdown.Item>
+                        <Dropdown.Item href="#/action-11" onClick={()=>setClassFilter("Warlock")}>Warlock</Dropdown.Item>
+                        <Dropdown.Item href="#/action-12" onClick={()=>setClassFilter("Wizard")}>Wizard</Dropdown.Item>
+                    </DropdownButton>
                     <h1>Character's Abilities!</h1>
 
                     
