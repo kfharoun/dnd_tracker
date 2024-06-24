@@ -8,14 +8,9 @@ import Accordion from 'react-bootstrap/Accordion'
 
 export default function AbilityList () {
 
-    let dropdownValue = "Choose Your Class"
-
     let abiltitiesEquipped = []
 
-    function changeDropdownValue (){
-        dropdownValue = classFilter
-    }
-    
+   
 
     const setTrue = (array,index) =>{
         
