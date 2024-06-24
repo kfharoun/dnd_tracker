@@ -27,8 +27,16 @@ export default function AbilityList () {
         //    abilities.push(ability.ability_equipped)
      }
 
+//     ~~~~~~~~~~ psuedocode ~~~~~~~~~~~~
+
+// abilities.forEach((abilities) => {
+    // if (abilities.abilities.class = buttonValue){
+    // map it out
+    //}})
 
 
+
+    // ~~~~~~~~~~~~~~~~~~~abilities call ~~~~~~~~~~~~
     // const [abilities, setAbilities] = useState([])
 
     // useEffect (() => {
@@ -93,10 +101,10 @@ export default function AbilityList () {
         { "ability_name": "Wish", "level_learned": 17, "ability_class": "Wizard", "ability_equipped": false },
         { "ability_name": "True Polymorph", "level_learned": 17, "ability_class": "Wizard", "ability_equipped": false }
     ]
-    // const filterLevel = abilities.filter(ability => abilities.level_learned > levelFilter)
+    
 
     function filterLevel (element){
-        return element.level_learned > levelFilter
+        return element.level_learned <= levelFilter
     }
 
     console.log('abilities', abilities)
