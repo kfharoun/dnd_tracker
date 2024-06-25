@@ -64,8 +64,6 @@ const getAbilitiesByWord = async (req, res) => {
         const abilities = await Ability.find({
             $or: [
                 { ability_name: { $regex: new RegExp(searchTerm, "i") } },
-                { ability_equipped: { $regex: new RegExp(searchTerm, "i") } },
-                { level_learned: { $regex: new RegExp(searchTerm, "i") } },
                 { ability_class: { $regex: new RegExp(searchTerm, "i") } },
             ]
         })
@@ -73,6 +71,19 @@ const getAbilitiesByWord = async (req, res) => {
         res.json(abilities)
     } catch (error) {
         console.error("Error fetching Abilities by search term:", error)
+        res.status(500).json({ error: error.message })
+    }
+}
+
+const getAbilitiesByCharacterId = async (req, res) => {
+    try {
+        const characterId = req.params.characterId
+        console.log("characterId:", characterId)
+        const abilities = await Ability.find({ characterId })
+        res.json(abilities)
+        
+    } catch (error) {
+        console.error("Error fetching campaigns by campaign ID:", error)
         res.status(500).json({ error: error.message })
     }
 }
@@ -121,6 +132,7 @@ module.exports = {
     getAbilitiesById,
     getAbilitiesByLevel,
     getAbilitiesByWord,
+    getAbilitiesByCharacterId,
     deleteAbility, 
     updateAbility,   
     createAbility, 
