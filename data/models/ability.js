@@ -1,4 +1,3 @@
-const { ObjectId } = require('mongodb');
 const { Schema } = require('mongoose')
 
 const AbilitySchema = new Schema({
