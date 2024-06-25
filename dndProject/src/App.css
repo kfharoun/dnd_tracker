@@ -1,27 +1,26 @@
+/* .Main {
+  width: 100%;
+  max-width: 2500px; 
+} */
+
 /* HOME PAGE */
-.Main {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
 .Home {
-  position: relative;
   height: 100vh;
+  width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden; 
-  margin: 0 auto;
+  overflow: hidden;
 }
 
 .welcomehome {
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
   z-index: 1;
-  padding: 2rem;
-  margin-left: 31vw; 
-  margin-top: -6vw;
+  margin: 0 auto;
+  margin-top: -40px;
 }
 
 .welcome {
@@ -55,8 +54,6 @@
   left: 0;
   z-index: -1;
   filter: blur(1px);
-  /* -webkit-transform: scaleX(-1);
-  transform: scaleX(-1); */
 }
 
 
@@ -103,7 +100,7 @@
   font-family: "IM Fell DW Pica", serif;
   text-transform: lowercase;
   font-style: italic;
-  background-color: #efefe984;
+  background-color: #e8d9cddc;
   border: none;
 }
 .dropdown-toggle::after {
@@ -201,12 +198,18 @@
 
 /* Character Page */
 
+.Main {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+}
+
 .CharacterPage {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  margin-left: 10vw;
-  gap: 15vw;
+  margin:0 auto;
+  width: 100vh;
   font-family: "IM Fell DW Pica", serif;
   color: #523D35;
 }
@@ -215,27 +218,42 @@
   max-width: 406px;
   background-color: #bba58fa0;
   border-radius: 30px;
-  padding: 10px;
+  padding: 41px 0;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.258);
 }
 
 .char-list-two{
   background-color: #bba58fa0;
-  padding: 50px;
+  padding: 10px 25px;
   border-radius: 30px;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.258);
+  text-transform: lowercase;
+  font-style: italic;
 }
 .stattitle{
   display: flex;
-  justify-content: space-between;
-  gap: 40%;
-  
+  justify-content: space-around;
 }
-
+.stat-info{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin-top: .5em;
+  margin-bottom: 1em;
+}
+.topstats {
+  margin: .5em 0em 1em 1em;
+}
+.stat-info p {
+  margin: 0px 10px;
+}
 .charLore {
   background-color: #e8d9cdb3; 
   overflow: auto;
-  max-height: 200px; 
+  max-height: 220px; 
   border-radius: 30px; 
   padding: 12px;
+  margin: 0 1.5em 1.5em 1.5em;
 
   scrollbar-width: none; 
   -ms-overflow-style: none; 
@@ -274,8 +292,16 @@
 
 .stats {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  justify-content: space-between;
+  align-items: center; 
+  width: 300px; 
+  margin-bottom: 10px; 
+  background-color: #e8d9cdb3;
+  border-radius: 30px;
+  margin: 0 1em 1em 1em;
+  padding: 0 1em 0 1em;
+  text-transform: lowercase;
+  font-size: 1.1em;
 }
 
 .stats p {
@@ -285,4 +311,69 @@
 .stat-name {
   font-weight: bold;
   margin-right: 5px;
+}
+
+.characterIMAGE {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  width: 320px;
+  height: 200px;
+  object-fit: cover;
+  object-position: center top; 
+  border-radius: 30px;
+  margin-bottom: 2em;
+}
+
+.charPageButtons {
+  display: flex;
+  justify-content: space-around;
+  margin: 1.5em 0 1em 0;
+}
+
+.characterlists {
+  display: flex;
+  margin: 0 auto;
+  justify-content: space-between;
+  gap: 100px;
+}
+
+.modal-content {
+  font-family: "IM Fell DW Pica", serif;
+  background-color: #bba58fcf;
+  color:#523D35;
+  border-radius: 30px;
+  text-align: center;
+  overflow: auto;
+  max-height: 60rem;
+}
+.form-label {
+  margin-top: .5em;
+  font-size: 1em;
+}
+.form-control {
+  background-color: #E8D9CD;
+  border: none;
+  color:#523D35;
+  border-radius: 30px;
+}
+.modal-header{
+  font-family: "Cinzel Decorative", sans-serif; 
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 900;
+  border-bottom: none;
+  padding: 2em 0 0 0 ;
+}
+
+.modal-title {
+  font-weight: 500;
+}
+.loreinput{
+  scrollbar-width: none; 
+  -ms-overflow-style: none;
+  max-height: 330px; 
 }
