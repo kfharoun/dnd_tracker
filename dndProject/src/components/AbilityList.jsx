@@ -481,23 +481,27 @@ export default function AbilityList () {
         { "ability_name": "Wish", "level_learned": 9, "ability_class": "Warlock", "ability_equipped": false }
     ]    
 
-    function filterLevel (element){
-        return element.level_learned <= levelFilter
-    }
+    // function filterLevel (element){
+    //     return element.level_learned <= levelFilter 
+    // }
 
-    function filterClass (element){
-       return element.ability_class == classFilter
+    // function filterClass (element){
+    //    return element.ability_class == classFilter
+    // }
+
+    function omegaFilter (element){
+        return element.level_learned == 0 ? element.level_learned >= 0 : element.level_learned <= levelFilter && element.ability_class == null ? element.level_learned >= 0 : element.ability_class == classFilter
     }
 
     console.log('abilities', abilities)
     console.log('CLASS', classFilter)
 
-    const levelAbilities = abilities.filter(filterLevel)
+    const levelAbilities = abilities.filter(omegaFilter)
 return (
     
             
                 <div className ="AbilityList">
-                    <DropdownButton id="drop-basic-button" title={classFilter} onClick={()=>changeDropdownValue}>
+                    <DropdownButton id="drop-basic-button" title={classFilter} >
                         <Dropdown.Item href="#/action-1" onClick={()=>setClassFilter("Barbarian")} >Barbarian</Dropdown.Item>
                         <Dropdown.Item href="#/action-2" onClick={()=>setClassFilter("Bard")}>Bard</Dropdown.Item>
                         <Dropdown.Item href="#/action-3" onClick={()=>setClassFilter("Cleric")}>Cleric</Dropdown.Item>
