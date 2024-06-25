@@ -43,7 +43,7 @@ function App() {
   return (
     <div className="App">
       <DataContext.Provider value={{ charInfo, setCharInfo, updateCharInfo }}>
-        {/* <Header /> */}
+        <Header />
         <Main />
         <Footer />
       </DataContext.Provider>
