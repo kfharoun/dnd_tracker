@@ -12,6 +12,9 @@ export default function AbilityList () {
 
     const [equippedAbilities, setEquippedAbilities] = useState([])
 
+    const [character, setCharacter]= useState([])
+
+
 
     useEffect(()=>{
         const getAbilities = async () => {
@@ -19,6 +22,11 @@ export default function AbilityList () {
             setEquippedAbilities(response.data)
         }
         getAbilities()
+        const getCharacters = async () => {
+            const characterRes = await axios.get(`http://localhost:3001/Character`)
+            setCharacter(characterRes.data)
+        }
+        getCharacters()
     })
 
    
@@ -552,6 +560,17 @@ return (
                                     <div className="equipABilityDiv" key ={index}>
                                         <h3>{equippedAbility.ability_name}</h3>
 
+                                    </div>
+                                ))
+                            }
+                         </div>
+
+                         <div className ="chooseCharacter">
+                            <h3>Select your character</h3>
+                            {
+                                character.map((char, index) => (
+                                    <div className="characterNames" key = {index}>
+                                        <h3>{char.character_name}</h3>
                                     </div>
                                 ))
                             }
