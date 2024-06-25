@@ -117,55 +117,76 @@ export default function CharacterList(props) {
     <h1>Loading...</h1>
   ) : character ? (
     <div className="CharacterPage">
-      <div className="charPageBack"></div>
-      <div className="char-list">
-        <img
-          src={character.character_image}
-          width="250px"
-          alt={`Image of ${character.character_name}`}
-        />
-        <h1 className="CharNameText">{character.character_name}</h1>
-        <p className="campaignName">
-          {campaignName}
-        </p>
-        <div className="charLore">
-        <p className="charLoreText">{character.lore}</p>
-        </div>
-      </div>
+  <div className="charPageBack"></div>
+  <div className="characterlists">
+  <div className="char-list">
+    <img
+      className="characterIMAGE"
+      src={character.character_image}
+      alt={`Image of ${character.character_name}`}
+    />
+    <h1 className="CharNameText">{character.character_name}</h1>
+    <p className="campaignName">
+      {campaignName}
+    </p>
+    <div className="charLore">
+      <p className="charLoreText">{character.lore}</p>
+    </div>
+  </div>
 
-      <div className="char-list-two">
-        <div className="stattitle">
-          <h1>Stats</h1>
-          <div className="stat-info">
-            <p>Played by {character.played_by}</p>
-            <p>Level {character.level}</p>
-            <p>
-              {character.race} {character.class_name}
-            </p>
-            <p>{character.subclass_name}</p>
-          </div>
-        </div>
-        <div className="stats">
-        <p><span className="stat-name">Armor Class:</span> {character.armor_class}</p>
-        <p><span className="stat-name">Hit Points:</span> {character.hit_points}</p>
-        <p><span className="stat-name">Strength:</span> {character.strength}</p>
-        <p><span className="stat-name">Dexterity:</span> {character.dexterity}</p>
-        <p><span className="stat-name">Constitution:</span> {character.constitution}</p>
-        <p><span className="stat-name">Intelligence:</span> {character.intelligence}</p>
-        <p><span className="stat-name">Wisdom:</span> {character.wisdom}</p>
-        <p><span className="stat-name">Charisma:</span> {character.charisma}</p>
-
-        </div>
-        <div className="charPageButtons">
-          <button className="abilityButton">Ability Log</button>
-          {/* Button to open modal */}
-          <button className="updateButton" onClick={toggleModal}>Update Character</button>
-        </div>
+  <div className="char-list-two">
+    <div className="stattitle">
+      <h1 className="topstats">Stats</h1>
+      <div className="stat-info">
+        <p>Played by {character.played_by}</p>
+        <p>Level {character.level}</p>
+        <p>{character.race} {character.class_name}</p>
+        <p>{character.subclass_name}</p>
       </div>
+    </div>
+    
+    <div className="stats">
+      <p className="statinfo">Armor Class</p><p>{character.armor_class}</p>
+    </div>
+
+    <div className="stats">
+      <p className="statinfo">Hit Points</p><p>{character.hit_points}</p>
+    </div>
+
+    <div className="stats">
+      <p className="statinfo">Strength</p><p>{character.strength}</p>
+    </div>
+
+    <div className="stats">
+      <p className="statinfo">Dexterity</p><p>{character.dexterity}</p>
+    </div>
+
+    <div className="stats">
+      <p className="statinfo">Constitution</p><p>{character.constitution}</p>
+    </div>
+
+    <div className="stats">
+      <p className="statinfo">Intelligence</p><p>{character.intelligence}</p>
+    </div>
+
+    <div className="stats">
+      <p className="statinfo">Wisdom</p><p>{character.wisdom}</p>
+    </div>
+
+    <div className="stats">
+      <p className="statinfo">Charisma</p><p>{character.charisma}</p>
+    </div>
+    
+    <div className="charPageButtons">
+      <button className="abilityButton two">Ability Log</button>
+      <button className="updateButton one" onClick={toggleModal}>Update Character</button>
+    </div>
+  </div>
+  </div>
 
       {/* Modal for update form */}
       <Modal show={showModal} onHide={toggleModal} size="lg" aria-labelledby="contained-modal-title-vcenter" centered> 
-      <Modal.Header closeButton>
+      <Modal.Header>
         <Modal.Title id="contained-modal-title-vcenter">Update Character</Modal.Title>
   </Modal.Header>
       <Modal.Body>
@@ -190,7 +211,6 @@ export default function CharacterList(props) {
                   name="campaignId"
                   value={formData.campaignId}
                   onChange={handleChange}
-                  required
                 >
                   <option value="">Select Campaign</option>
                   {campaigns.map((campaign) => (
@@ -204,6 +224,7 @@ export default function CharacterList(props) {
               <Form.Group controlId="formLore">
                 <Form.Label>Lore</Form.Label>
                 <Form.Control
+                className="loreinput"
                   as="textarea"
                   rows={12}
                   name="lore"
@@ -236,17 +257,31 @@ export default function CharacterList(props) {
                   required
                 />
               </Form.Group>
-
+              
               <Form.Group controlId="formClassName">
-                <Form.Label>Class Name</Form.Label>
-                <Form.Control
-                  type="text"
-                  name="class_name"
-                  value={formData.class_name}
-                  onChange={handleChange}
-                  required
-                />
-              </Form.Group>
+              <Form.Label>Class Name</Form.Label>
+              <Form.Control
+                as="select"
+                name="class_name"
+                value={formData.class_name}
+                onChange={handleChange}
+                required
+              >
+                <option value="">Select Class</option>
+                <option value="Barbarian">Barbarian</option>
+                <option value="Bard">Bard</option>
+                <option value="Cleric">Cleric</option>
+                <option value="Druid">Druid</option>
+                <option value="Fighter">Fighter</option>
+                <option value="Monk">Monk</option>
+                <option value="Paladin">Paladin</option>
+                <option value="Ranger">Ranger</option>
+                <option value="Rogue">Rogue</option>
+                <option value="Sorcerer">Sorcerer</option>
+                <option value="Warlock">Warlock</option>
+                <option value="Wizard">Wizard</option>
+              </Form.Control>
+            </Form.Group>
 
               <Form.Group controlId="formSubclassName">
                 <Form.Label>Subclass Name</Form.Label>
@@ -257,9 +292,19 @@ export default function CharacterList(props) {
                   onChange={handleChange}
                   required
                 />
+
+                <Form.Group controlId="formCharacterImage">
+                <Form.Label>Character Image</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="character_image"
+                  value={formData.character_image}
+                  onChange={handleChange}
+                  required
+                />
               </Form.Group>
-                  </Col>
-                  <Col lg={3}>
+              </Form.Group>
+                  
               <Form.Group controlId="formArmorClass">
                 <Form.Label>Armor Class</Form.Label>
                 <Form.Control
@@ -282,6 +327,8 @@ export default function CharacterList(props) {
                 />
               </Form.Group>
 
+                </Col>
+                  <Col lg={3}>
               <Form.Group controlId="formStrength">
                 <Form.Label>Strength</Form.Label>
                 <Form.Control
@@ -348,16 +395,7 @@ export default function CharacterList(props) {
                 />
               </Form.Group>
 
-              <Form.Group controlId="formCharacterImage">
-                <Form.Label>Character Image</Form.Label>
-                <Form.Control
-                  type="text"
-                  name="character_image"
-                  value={formData.character_image}
-                  onChange={handleChange}
-                  required
-                />
-              </Form.Group>
+              
             </Col>
           </Row>
 
