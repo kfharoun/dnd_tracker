@@ -41,7 +41,7 @@ export default function AbilityList () {
         
      }
 
-    const [levelFilter, setLevelFilter] = useState(0)
+    const [levelFilter, setLevelFilter] = useState(1)
 
     const [classFilter, setClassFilter] = useState("Choose Your Class")
 
@@ -490,13 +490,17 @@ export default function AbilityList () {
     // }
 
     function omegaFilter (element){
-        return element.level_learned == 0 ? element.level_learned >= 0 : element.level_learned <= levelFilter && element.ability_class == null ? element.level_learned >= 0 : element.ability_class == classFilter
+        
+        return  element.level_learned <= levelFilter &&  element.ability_class == classFilter
+        
     }
+    // console.log("level", element.level_learned)
 
     console.log('abilities', abilities)
     console.log('CLASS', classFilter)
 
     const levelAbilities = abilities.filter(omegaFilter)
+    console.log('level', levelFilter)
 return (
     
             
@@ -519,7 +523,7 @@ return (
 
                     
                          <div className ="chooseAbility">
-                            <input type="number" value={levelFilter} onChange={e => setLevelFilter(e.target.value)} min = {1} />
+                            <input type="number" value={levelFilter} onChange={e => setLevelFilter(e.target.value)} min = {1} max = {20} />
                             <ul>
                                
                                 {
@@ -532,11 +536,6 @@ return (
                          </div>
 
                            
-
-                         
-
-
-
                          </div>
                  
 
