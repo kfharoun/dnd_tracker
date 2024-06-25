@@ -44,7 +44,7 @@ app.get('/Character/campaign/:campaignId', characterController.getCharacterByCam
 
 
 app.get('/Ability', abilityController.getAllAbilities)
-app.get('/Ability/:id', abilityController.getAbilitiesById)
+
 app.post('/Ability', abilityController.createAbility)
 app.put('/Ability/:id', abilityController.updateAbility)
 app.delete('/Ability/:id', abilityController.deleteAbility)
@@ -53,4 +53,5 @@ app.get('/Ability/search/:abilityId', abilityController.getAbilitiesById)
 app.get('/Ability/search/:level_learned', abilityController.getAbilitiesByLevel)
 app.get('/Ability/search/:ability_class', abilityController.getAbilitiesByClass)
 app.get('/Ability/search/:ability_name', abilityController.getAbilitiesByName)
-
+app.get('/Ability/character/:characterid', abilityController.getAbilitiesByCharacterId)
+app.get('/Ability/:id', abilityController.getAbilitiesById)

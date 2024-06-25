@@ -8,7 +8,7 @@ const AbilitySchema = new Schema({
     },
     level_learned: {
         type: Number,
-        required: true,
+        
     },
     ability_equipped: {
         type: Boolean,
