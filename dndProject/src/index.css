@@ -51,6 +51,40 @@ h1 {
   transition: all .3s ease;
 }
 
+.abilityButton, .updateButton, .btn-primary {
+  padding: 0.4em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #959D90;
+  color: #F9FAEF;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all .3s ease;
+}
+.btn-primary {
+  background-color: #959d90 !important;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.332) !important;
+  border-color: #959d90 !important;
+  color: #fff !important;
+  margin-top: 2em;
+}
+
+.btn-primary:hover {
+  background-color: #959d90 !important;
+  transform: rotate(3deg); 
+}
+
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active {
+  background-color: #959d90 !important;
+  box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.332) !important;
+}
+
 .one {
   transform: rotate(-3deg);
 }
@@ -73,6 +107,12 @@ h1 {
 .linkbutton:active{
   border: none;
 }
+
+button:focus-visible, button:focus{
+  outline: none;
+}
+
+
 
 /* button:focus,
 button:focus-visible {
