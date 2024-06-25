@@ -50,7 +50,7 @@ app.put('/Ability/:id', abilityController.updateAbility)
 app.delete('/Ability/:id', abilityController.deleteAbility)
 app.get('/Ability/search/:searchTerm', abilityController.getAbilitiesByWord)
 app.get('/Ability/search/:abilityId', abilityController.getAbilitiesById)
-app.get('/Ability/search/:level_learned', abilityController.getAbilitiesByLevel)
+app.get('/Ability/level/:level_learned', abilityController.getAbilitiesByLevel)
 app.get('/Ability/search/:ability_class', abilityController.getAbilitiesByClass)
 app.get('/Ability/search/:ability_name', abilityController.getAbilitiesByName)
 

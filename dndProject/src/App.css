@@ -153,6 +153,11 @@
   margin-right: 30px;
 }
 /* Character List */
+.Main {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+}
 .charListImage {
   background-image: url("../../dndProject/src/images/charPage.svg");
   background-size: cover;
@@ -170,10 +175,21 @@
 .CharacterList {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
-  gap: 20px; 
-  margin: 0 auto;
-  max-width: 1000px; 
+  justify-content: flex-start;
+  align-items: center;
+  align-content: flex-start; 
+  max-width: 50em;
+  margin: auto; 
+  gap: 5em; 
+  overflow-y: auto; 
+  height: calc(100vh - 200px);
+  max-height: calc(100vh - 80px); 
+  scrollbar-width: none; 
+  -ms-overflow-style: none; 
+}
+
+.CharacterList::-webkit-scrollbar {
+  display: none;
 }
 
 .charPic {
@@ -184,7 +200,6 @@
 }
 
 .charListName {
-  flex: 1 0 30%; 
   color: #959D90;
   font-style: italic;
   font-size: 1.2em;
@@ -198,11 +213,7 @@
 
 /* Character Page */
 
-.Main {
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-}
+
 
 .CharacterPage {
   display: flex;
