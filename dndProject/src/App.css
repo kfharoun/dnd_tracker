@@ -197,16 +197,23 @@
   height: 190px; 
   object-fit: cover;
   border-radius: 30px;
+  filter:brightness(80%);
+  transition: all .3s ease;
+}
+
+.charPic:hover {
+  filter:brightness(100%);
 }
 
 .charListName {
   color: #959D90;
   font-style: italic;
-  font-size: 1.2em;
+  font-size: 1.1em;
   background-color: #223030;
   padding: 20px;
   border-radius: 30px;
   text-align: center;
+  z-index: 3;
 }
 
 
@@ -387,4 +394,14 @@
   scrollbar-width: none; 
   -ms-overflow-style: none;
   max-height: 330px; 
+}
+
+.returncharacter {
+  display: flex;
+  justify-content: center;
+}
+
+.returncharacter:hover{
+  color:#efefe9a1;
+  letter-spacing: 1px;
 }

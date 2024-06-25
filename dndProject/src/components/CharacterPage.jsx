@@ -1,6 +1,6 @@
 import axios from "axios"
 import { useState, useEffect , useContext} from "react"
-import { useParams, useNavigate } from "react-router-dom"
+import { useParams, useNavigate, Link } from "react-router-dom"
 import { Modal, Form, Button, Row, Col } from 'react-bootstrap'
 import DataContext from '../DataContext'
 
@@ -116,9 +116,12 @@ export default function CharacterList(props) {
   return loading ? (
     <h1>Loading...</h1>
   ) : character ? (
-    <div className="CharacterPage">
+  <div className="CharacterPage">
+      
   <div className="charPageBack"></div>
+  
   <div className="characterlists">
+ 
   <div className="char-list">
     <img
       className="characterIMAGE"
@@ -132,9 +135,10 @@ export default function CharacterList(props) {
     <div className="charLore">
       <p className="charLoreText">{character.lore}</p>
     </div>
+    <Link to="/Character" className='returncharacter'>return to character list</Link>
   </div>
-
   <div className="char-list-two">
+  
     <div className="stattitle">
       <h1 className="topstats">Stats</h1>
       <div className="stat-info">
