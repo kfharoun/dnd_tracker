@@ -46,7 +46,6 @@ const NewCharacter = ({ campaignId }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Fetch available campaigns
     const fetchCampaigns = async () => {
       try {
         const response = await axios.get("http://localhost:3001/Campaign");
@@ -84,7 +83,6 @@ const NewCharacter = ({ campaignId }) => {
       );
       console.log("Character created:", response.data);
 
-      // Clear form fields after successful submission
       setCharacterData({
         character_name: "",
         played_by: "",
@@ -105,7 +103,6 @@ const NewCharacter = ({ campaignId }) => {
         campaignId: campaignId,
       });
 
-      // Navigate to the campaign page after character creation
       navigate(`/campaign/${characterData.campaignId}`);
     } catch (error) {
       console.error("Error creating character:", error);
