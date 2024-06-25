@@ -75,11 +75,15 @@ const getAbilitiesByWord = async (req, res) => {
     }
 }
 
+
 const getAbilitiesByCharacterId = async (req, res) => {
     try {
         const characterId = req.params.characterId
         console.log("characterId:", characterId)
         const abilities = await Ability.find({ characterId })
+        console.log("abilities:", abilities)
+        console.log("objectID2:", characterId)
+        console.log("Ability:", Ability)
         res.json(abilities)
         
     } catch (error) {
@@ -132,11 +136,11 @@ module.exports = {
     getAbilitiesById,
     getAbilitiesByLevel,
     getAbilitiesByWord,
-    getAbilitiesByCharacterId,
     deleteAbility, 
     updateAbility,   
     createAbility, 
     getAbilitiesByName, 
-    getAbilitiesByClass
+    getAbilitiesByClass, 
+    getAbilitiesByCharacterId
 
 }
