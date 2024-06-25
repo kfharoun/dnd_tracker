@@ -10,6 +10,17 @@ export default function AbilityList () {
 
     let abiltitiesEquipped = []
 
+    const [equippedAbilities, setEquippedAbilities] = useState([])
+
+
+    useEffect(()=>{
+        const getAbilities = async () => {
+            const response = await axios.get(`http://localhost:3001/Ability`)
+            setEquippedAbilities(response.data)
+        }
+        getAbilities()
+    })
+
    
 
     const setTrue = (array,index) =>{
@@ -533,6 +544,17 @@ return (
                                 }
                             </ul>
 
+                         </div>
+                         <div className="equippedAbilities">
+                            <h3> Character's equipped abilities</h3>
+                            {
+                                equippedAbilities.map((equippedAbility, index)=> (
+                                    <div className="equipABilityDiv" key ={index}>
+                                        <h3>{equippedAbility.ability_name}</h3>
+
+                                    </div>
+                                ))
+                            }
                          </div>
 
                            
