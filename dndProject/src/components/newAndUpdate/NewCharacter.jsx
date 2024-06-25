@@ -1,6 +1,6 @@
 // NewCharacter.jsx
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -21,6 +21,8 @@ const classesOptions = [
 ];
 
 const NewCharacter = ({ campaignId }) => {
+  const [campaigns, setCampaigns] = useState([]);
+  const [selectedCampaign, setSelectedCampaign] = useState(campaignId || "");
   const [characterData, setCharacterData] = useState({
     character_name: "",
     played_by: "",
@@ -43,11 +45,32 @@ const NewCharacter = ({ campaignId }) => {
 
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const fetchCampaigns = async () => {
+      try {
+        const response = await axios.get("http://localhost:3001/Campaign");
+        setCampaigns(response.data);
+      } catch (error) {
+        console.error("Error fetching campaigns:", error);
+      }
+    };
+
+    fetchCampaigns();
+  }, []);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setCharacterData((prevData) => ({
       ...prevData,
       [name]: value,
+    }));
+  };
+
+  const handleCampaignChange = (e) => {
+    setSelectedCampaign(e.target.value);
+    setCharacterData((prevData) => ({
+      ...prevData,
+      campaignId: e.target.value,
     }));
   };
 
@@ -59,11 +82,11 @@ const NewCharacter = ({ campaignId }) => {
         characterData
       );
       console.log("Character created:", response.data);
-      
-      // Clear form fields after successful submission
+
       setCharacterData({
         character_name: "",
         played_by: "",
+        character_image: "https://www.gamersdecide.com/sites/default/files/styles/news_images/public/screenhunter_02_6.jpg",
         race: "",
         class_name: "",
         subclass_name: "",
@@ -80,8 +103,7 @@ const NewCharacter = ({ campaignId }) => {
         campaignId: campaignId,
       });
 
-      // Optionally: Navigate back to NewCampaign or CampaignPage after character creation
-      navigate(`/campaign/${campaignId}`);
+      navigate(`/campaign/${characterData.campaignId}`);
     } catch (error) {
       console.error("Error creating character:", error);
     }
@@ -126,10 +148,17 @@ const NewCharacter = ({ campaignId }) => {
         <br />
         <label>
           Class:
-          <select name="class_name" value={characterData.class_name} onChange={handleChange} required>
+          <select
+            name="class_name"
+            value={characterData.class_name}
+            onChange={handleChange}
+            required
+          >
             <option value="">Select Class</option>
             {classesOptions.map((classOption) => (
-              <option key={classOption} value={classOption}>{classOption}</option>
+              <option key={classOption} value={classOption}>
+                {classOption}
+              </option>
             ))}
           </select>
         </label>
@@ -254,6 +283,22 @@ const NewCharacter = ({ campaignId }) => {
           />
         </label>
         <br />
+        <label>
+          Campaign:
+          <select
+            value={selectedCampaign}
+            onChange={handleCampaignChange}
+            required
+          >
+            <option value="">Select Campaign</option>
+            {campaigns.map((campaign) => (
+              <option key={campaign._id} value={campaign._id}>
+                {campaign.campaign_name}
+              </option>
+            ))}
+          </select>
+        </label>
+        <br />
         <button type="submit">Create Character</button>
       </form>
     </div>
@@ -261,3 +306,7 @@ const NewCharacter = ({ campaignId }) => {
 };
 
 export default NewCharacter;
+
+
+
+
