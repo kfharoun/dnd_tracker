@@ -520,7 +520,7 @@ return (
     
             
                 <div className ="AbilityList">
-                    <DropdownButton id="drop-basic-button" title={classFilter} >
+                    {/* <DropdownButton id="drop-basic-button" title={classFilter} >
                         <Dropdown.Item href="#/action-1" onClick={()=>setClassFilter("Barbarian")} >Barbarian</Dropdown.Item>
                         <Dropdown.Item href="#/action-2" onClick={()=>setClassFilter("Bard")}>Bard</Dropdown.Item>
                         <Dropdown.Item href="#/action-3" onClick={()=>setClassFilter("Cleric")}>Cleric</Dropdown.Item>
@@ -533,7 +533,8 @@ return (
                         <Dropdown.Item href="#/action-10" onClick={()=>setClassFilter("Sorcerer")}>Sorcerer</Dropdown.Item>
                         <Dropdown.Item href="#/action-11" onClick={()=>setClassFilter("Warlock")}>Warlock</Dropdown.Item>
                         <Dropdown.Item href="#/action-12" onClick={()=>setClassFilter("Wizard")}>Wizard</Dropdown.Item>
-                    </DropdownButton>
+                    </DropdownButton> */}
+                    <h1>{character.class_name}</h1>
                     <h1>Character's Abilities!</h1>
 
                     
