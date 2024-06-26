@@ -560,12 +560,6 @@ export default function AbilityList () {
         console.log('TEST',equippedAbilities[index])        
         navigate(``)
      }
-
-    
-
-     
-
-
     
 
     function equipFilter (element) {
