@@ -60,7 +60,8 @@ export default function AbilityList () {
                     level_learned: abilities.level_learned,
                     ability_equipped: abilities.ability_equipped,
                     ability_class: `${character.class_name}`,
-                    characterId: `${characterId}`
+                    characterId: `${characterId}`                  
+
                    }, ) 
                     console.log("Added ability", response.data)  
                     } catch (error) {
