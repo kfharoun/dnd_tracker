@@ -11,6 +11,7 @@
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  
 }
 
 .welcomehome {
@@ -468,13 +469,49 @@ filter: brightness(100%)
 /* new campaign page */
 
 .NewCampaign{
-display: flex;
-justify-content: center;
-align-items: center;
-margin: 0 auto;
-flex-direction: column;
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  flex-direction: column;
+  font-family: "IM Fell DW Pica", serif;
 }
 .form {
-  background-color: #BBA58F;
+  background-color: #bba58fe5;
+  padding: 2em;
+  border-radius: 30px;
+  color:#523D35;
+  text-transform: lowercase;
+  text-align: center;
+}
+
+.newcampigntitle {
+  margin-bottom: 1em;
+  font-style: italic;
+}
+
+.characterbuttons{
+  display: flex;
+  justify-content: space-around;
+}
+
+.returnCL {
+  margin-left: 20em;
+  color:rgba(255, 255, 255, 0.702);
+  font-style: italic;
+}
+
+.campaignInfo {
+  max-height: 250px;
+}
+
+/* campaign page */
+
+.CampaignDetails {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 500px;
 }

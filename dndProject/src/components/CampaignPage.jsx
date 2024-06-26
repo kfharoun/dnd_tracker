@@ -39,7 +39,7 @@ export default function CampaignPage() {
     }
 
     return (
-        <div>
+        <div className="CampaignDetails">
             {/* Campaign Details */}
             <h2>Campaign Details</h2>
             <div>
