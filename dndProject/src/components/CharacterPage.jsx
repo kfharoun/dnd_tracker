@@ -113,6 +113,8 @@ export default function CharacterList(props) {
     }
   }
 
+  
+
   return loading ? (
     <h1>Loading...</h1>
   ) : character ? (
@@ -182,7 +184,7 @@ export default function CharacterList(props) {
     </div>
     
     <div className="charPageButtons">
-      <button className="abilityButton two">Ability Log</button>
+      <button className="abilityButton two" ><Link to={`/Abilities/character/${character._id}`}>Ability Log</Link></button>
       <button className="updateButton one" onClick={toggleModal}>Update Character</button>
     </div>
   </div>

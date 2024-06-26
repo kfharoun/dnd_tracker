@@ -1,6 +1,6 @@
 import axios from "axios"
 import { useState, useEffect} from "react"
-import { useNavigate, useParams } from "react-router-dom"
+import { Navigate, useNavigate, useParams } from "react-router-dom"
 import Dropdown from 'react-bootstrap/Dropdown'
 import DropdownButton from 'react-bootstrap/DropdownButton'
 import Accordion from 'react-bootstrap/Accordion'
@@ -14,23 +14,34 @@ export default function AbilityList () {
 
     const [character, setCharacter]= useState([])
 
-    // let { id } = useParams() added in after character button works
+    let { characterId } = useParams() 
+
+    let navigate = useNavigate()
+   
 
 
 
     useEffect(()=>{
         const getAbilities = async () => {
-            const response = await axios.get(`http://localhost:3001/Ability/character/${id}`)
+            const response = await axios.get(`http://localhost:3001/Ability/character/${characterId}`)
             setEquippedAbilities(response.data)
+            console.log('eqa',equippedAbilities)
             
         }
         getAbilities()
         const getCharacters = async () => {
-            const characterRes = await axios.get(`http://localhost:3001/Character/${id}`)
+            const characterRes = await axios.get(`http://localhost:3001/Character/${characterId}`)
             setCharacter(characterRes.data)
+            setClassFilter(characterRes.data.class_name)
+            setLevelFilter(characterRes.data.level)
+            
         }
         getCharacters()
-    })
+    }, [])
+
+    
+
+    
 
    
 
@@ -39,7 +50,7 @@ export default function AbilityList () {
           array.ability_equipped === false ? array.ability_equipped = true : array.ability_equipped = false
           
           abilities.forEach((abilities) => {
-            if (abilities.ability_name == array.ability_name) {
+            if (abilities.ability_name == array.ability_name && abilities.ability_class == character.class_name) {
                 abilities.ability_equipped = array.ability_equipped
                 abiltitiesEquipped.push(abilities)
                 const addEquipped = async() => {
@@ -48,7 +59,8 @@ export default function AbilityList () {
                     ability_name: abilities.ability_name,
                     level_learned: abilities.level_learned,
                     ability_equipped: abilities.ability_equipped,
-                    ability_class: `${id}`
+                    ability_class: `${character.class_name}`,
+                    characterId: `${characterId}`
                    }, ) 
                     console.log("Added ability", response.data)  
                     } catch (error) {
@@ -63,9 +75,16 @@ export default function AbilityList () {
         
      }
 
-    const [levelFilter, setLevelFilter] = useState(character.level)
+     const setFalse = (array, index) => {
+        console.log("array", array, "index", index)
+        array.ability_equipped = false
+        equippedAbilities.pop(index)
+        navigate(``)
+     }
 
-    const [classFilter, setClassFilter] = useState(character.class_name)
+    const [levelFilter, setLevelFilter] = useState()
+
+    const [classFilter, setClassFilter] = useState()
 
     const abilities = [
         // Wizard Spells
@@ -511,11 +530,10 @@ export default function AbilityList () {
     }
    
 
-    console.log('abilities', abilities)
-    console.log('CLASS', classFilter)
+    
 
     const levelAbilities = abilities.filter(omegaFilter)
-    console.log('level', levelFilter)
+    
 return (
     
             
@@ -554,7 +572,7 @@ return (
                             <h3> Character's equipped abilities</h3>
                             {
                                 equippedAbilities.map((equippedAbility, index)=> (
-                                    <div className="equipABilityDiv" key ={index}>
+                                    <div className="equipABilityDiv" key ={index} onClick={()=>setFalse(equippedAbility, index)} >
                                         <h3>{equippedAbility.ability_name}</h3>
 
                                     </div>
@@ -562,7 +580,7 @@ return (
                             }
                          </div>
 
-                         <div className ="chooseCharacter">
+                         {/* <div className ="chooseCharacter">
                             <h3>Select your character</h3>
                             {
                                 character.map((char, index) => (
@@ -571,7 +589,7 @@ return (
                                     </div>
                                 ))
                             }
-                         </div>
+                         </div> */}
 
                            
                          </div>
