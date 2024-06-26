@@ -470,22 +470,38 @@ export default function AbilityList () {
     let navigate = useNavigate()
 
     useEffect(()=>{
-        const getAbilities = async () => {
-            const response = await axios.get(`http://localhost:3001/Ability/character/${characterId}`)
-            setEquippedAbilities(response.data)
-            
-        }
-        getAbilities()
+        
         const getCharacters = async () => {
             const characterRes = await axios.get(`http://localhost:3001/Character/${characterId}`)
             setCharacter(characterRes.data)
             setClassFilter(characterRes.data.class_name)
             setLevelFilter(characterRes.data.level)
+            console.log ("lookey here",character)
             
         }
         getCharacters()
+
+
+
+
+
+        const getAbilities = async () => {
+            const response = await axios.get(`http://localhost:3001/Ability/character/${characterId}`)
+            setEquippedAbilities(response.data)
+            console.log ("look here",equippedAbilities)
+            
+        }
+        getAbilities()
+        console.log ("look here",equippedAbilities)
+
+
+
+
+
+
+
         
-        if (equippedAbilities.length  < 2 )
+        if ( displayedAbilities.length == 0 ){
         omgegaAbilities.forEach((levelAbility) => {
             const setAbilities = async () => {
                 const abilityRes = await axios.post(`http://localhost:3001/Ability`, {
@@ -497,9 +513,9 @@ export default function AbilityList () {
 
             },)
         }
-    setAbilities()})
+    setAbilities()})}
     }, [])
-
+  
     const setTrue = (array,index) =>{//array is filtered abilities
        console.log("THE FINAL SOLUTION", array)
         if (array.ability_equipped === false){
