@@ -515,3 +515,23 @@ filter: brightness(100%)
   margin: 0 auto;
   max-width: 500px;
 }
+
+.createnewchar{
+  font-style: italic;
+  margin-top: -10px;
+  color: rgba(255, 255, 255, 0.628);
+}
+
+.loreform{
+  max-height: 180px;
+}
+
+/* Ability List */
+
+.AbilityList{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0 auto;
+}
