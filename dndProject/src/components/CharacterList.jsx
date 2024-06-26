@@ -32,6 +32,7 @@ const CharacterList = () => {
   }, [setCharInfo, charInfo.names, charInfo.ids])
 
   return (
+    <div className='CharList'>
     <div className="CharacterList">
       {characters.map(character => (
         <Link
@@ -47,8 +48,12 @@ const CharacterList = () => {
             width="200px"
           />
         </Link>
+        
       ))}
+      
       <div className='charListImage'></div>
+    </div>
+    <Link className="newcharbutton"to={'/NewCharacter'}>Create a new character?</Link>
     </div>
   )
 }
