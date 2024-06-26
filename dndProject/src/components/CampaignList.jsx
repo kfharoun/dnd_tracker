@@ -33,6 +33,7 @@ export default function CampaignList() {
 
     return (
         <div className="CampaignList">
+            <div className="CampaignList2">
             <div className="CampaignListBack"></div>
             {campaigns.length > 0 ? (
                 campaigns.map((campaign) => (
@@ -48,6 +49,7 @@ export default function CampaignList() {
             ) : (
                 <p>No current campaigns, create one!</p>
             )}
+            </div>
             <Link to="/NewCampaign"><button className="newcampaignbutton one" onClick={handleNewCampaignClick}>New Campaign</button></Link>
         </div>
     );
