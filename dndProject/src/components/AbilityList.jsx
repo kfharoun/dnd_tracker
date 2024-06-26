@@ -8,6 +8,7 @@ import { Alert } from "react-bootstrap"
 
 
 export default function AbilityList () {
+    
     const abilities = [
         // Wizard Spells
 
@@ -448,13 +449,17 @@ export default function AbilityList () {
 
     const [classFilter, setClassFilter] = useState()
 
+    
+
     function omegaFilter (element){
-        
+        console.log('element', element)
         return  element.level_learned <= levelFilter &&  element.ability_class == classFilter && element.ability_equipped == false
         
     }
 
-    const levelAbilities = abilities.filter(omegaFilter)
+    let omgegaAbilities = abilities.filter(omegaFilter)
+
+   
     
 
     let abiltitiesEquipped = []
@@ -484,7 +489,9 @@ export default function AbilityList () {
             
         }
         getCharacters()
-        levelAbilities.forEach((levelAbility) => {
+        console.log("levelAbilities",levelAbilities.length)
+        
+            omgegaAbilities.forEach((levelAbility) => {
         const setAbilities = async () => {
             const abilityRes = await axios.post(`http://localhost:3001/Ability`, {
                 ability_name: levelAbility.ability_name,
@@ -538,13 +545,19 @@ export default function AbilityList () {
      const setFalse = (array, index) => {
         console.log("Equipped", equippedAbilities)
         console.log("array", array, "index", index)
-        // array.ability_equipped = false
+        array.ability_equipped = false
         console.log('id',array._id)
         const toggleEquip = async () => {
           const response = await axios.put(`http://localhost:3001/Ability/${array._id}`, {
-                ability_equipped: false
+                
+                ability_name: `${array.ability_name}`,
+                level_learned: `${array.level_learned}`,
+                ability_equipped: false,
+                ability_class: `${array.ability_class}`,
+                characterId: `${array.characterId}`
             },)
-        } 
+            navigate(``) } 
+        toggleEquip()
 
         console.log('TEST',equippedAbilities[index])        
         navigate(``)
@@ -564,7 +577,7 @@ export default function AbilityList () {
     const displayedAbilities = equippedAbilities.filter(equipFilter)
     console.log('displayedAbilities', displayedAbilities)
     
-    
+    const levelAbilities = equippedAbilities.filter(omegaFilter)
 
     console.log('displayed abilities', levelAbilities)  
     
