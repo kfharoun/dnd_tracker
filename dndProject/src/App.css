@@ -236,10 +236,15 @@
   justify-content: space-between;
   align-items: center;
   margin:0 auto;
-  width: 100vh;
+  width: 100vw;
   font-family: "IM Fell DW Pica", serif;
   color: #523D35;
+  padding-bottom: 60px; 
+  overflow-y: auto; 
+  height: calc(100vh - 120px); 
+  margin-top: 90px;
 }
+
 
 .char-list {
   max-width: 406px;
