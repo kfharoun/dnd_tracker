@@ -18,9 +18,6 @@ export default function AbilityList () {
     let { characterId } = useParams() 
 
     let navigate = useNavigate()
-   
-
-
 
     useEffect(()=>{
         const getAbilities = async () => {
@@ -40,13 +37,7 @@ export default function AbilityList () {
         getCharacters()
     }, [])
 
-    
-
-    
-
-   
-
-    const setTrue = (array,index) =>{
+    const setTrue = (array,index) =>{//array is filtered abilities
         if (array.ability_equipped === false){
             array.ability_equipped = true  
 
@@ -61,8 +52,7 @@ export default function AbilityList () {
                     level_learned: abilities.level_learned,
                     ability_equipped: abilities.ability_equipped,
                     ability_class: `${character.class_name}`,
-                    characterId: `${characterId}`                  
-
+                    characterId: `${characterId}`
                    }, ) 
                     console.log("Added ability", response.data)  
                     } catch (error) {
@@ -87,8 +77,7 @@ export default function AbilityList () {
         console.log("Equipped", equippedAbilities)
         console.log("array", array, "index", index)
         array.ability_equipped = false
-        console.log('TEST',equippedAbilities[index])
-        // equippedAbilities.pop(index)
+        console.log('TEST',equippedAbilities[index])        
         navigate(``)
      }
 
@@ -546,32 +535,16 @@ export default function AbilityList () {
     const displayedAbilities = equippedAbilities.filter(equipFilter)  
     const levelAbilities = abilities.filter(omegaFilter)
     
-return (
-    
+return (   
             
                 <div className ="AbilityList">
-                    {/* <DropdownButton id="drop-basic-button" title={classFilter} >
-                        <Dropdown.Item href="#/action-1" onClick={()=>setClassFilter("Barbarian")} >Barbarian</Dropdown.Item>
-                        <Dropdown.Item href="#/action-2" onClick={()=>setClassFilter("Bard")}>Bard</Dropdown.Item>
-                        <Dropdown.Item href="#/action-3" onClick={()=>setClassFilter("Cleric")}>Cleric</Dropdown.Item>
-                        <Dropdown.Item href="#/action-4" onClick={()=>setClassFilter("Druid")}>Druid</Dropdown.Item>
-                        <Dropdown.Item href="#/action-5" onClick={()=>setClassFilter("Fighter")}>Fighter</Dropdown.Item>
-                        <Dropdown.Item href="#/action-6" onClick={()=>setClassFilter("Monk")}>Monk</Dropdown.Item>
-                        <Dropdown.Item href="#/action-7" onClick={()=>setClassFilter("Paladin")}>Paladin</Dropdown.Item>
-                        <Dropdown.Item href="#/action-8" onClick={()=>setClassFilter("Ranger")}>Ranger</Dropdown.Item>
-                        <Dropdown.Item href="#/action-9" onClick={()=>setClassFilter("Rogue")}>Rogue</Dropdown.Item>
-                        <Dropdown.Item href="#/action-10" onClick={()=>setClassFilter("Sorcerer")}>Sorcerer</Dropdown.Item>
-                        <Dropdown.Item href="#/action-11" onClick={()=>setClassFilter("Warlock")}>Warlock</Dropdown.Item>
-                        <Dropdown.Item href="#/action-12" onClick={()=>setClassFilter("Wizard")}>Wizard</Dropdown.Item>
-                    </DropdownButton> */}
+                   
                     <h1>{character.class_name}</h1>
                     <h1>Character's Abilities!</h1>
-
                     
                          <div className ="chooseAbility">
                             <input type="number" value={levelFilter} onChange={e => setLevelFilter(e.target.value)} min = {1} max = {20} />
-                            <ul>
-                               
+                            <ul>                               
                                 {
                                     levelAbilities.map((levelAbility, index) => (
                                         <li key ={index} onClick={()=>setTrue(levelAbility,index)}>{levelAbility.ability_name}</li>
@@ -590,36 +563,12 @@ return (
                                     </div>
                                 ))
                             }
-                         </div>
-
-                         {/* <div className ="chooseCharacter">
-                            <h3>Select your character</h3>
-                            {
-                                character.map((char, index) => (
-                                    <div className="characterNames" key = {index}>
-                                        <h3>{char.character_name}</h3>
-                                    </div>
-                                ))
-                            }
-                         </div> */}
+                         </div>                       
 
                            
                          </div>
-                 
-
-                
-                
-            
         )
-        
-    
 }
-
-
-
-
-
-
 
 
 
@@ -638,3 +587,18 @@ return (
                             </Accordion.Item>
 
                          </Accordion> */}
+
+                          {/* <DropdownButton id="drop-basic-button" title={classFilter} >
+                        <Dropdown.Item href="#/action-1" onClick={()=>setClassFilter("Barbarian")} >Barbarian</Dropdown.Item>
+                        <Dropdown.Item href="#/action-2" onClick={()=>setClassFilter("Bard")}>Bard</Dropdown.Item>
+                        <Dropdown.Item href="#/action-3" onClick={()=>setClassFilter("Cleric")}>Cleric</Dropdown.Item>
+                        <Dropdown.Item href="#/action-4" onClick={()=>setClassFilter("Druid")}>Druid</Dropdown.Item>
+                        <Dropdown.Item href="#/action-5" onClick={()=>setClassFilter("Fighter")}>Fighter</Dropdown.Item>
+                        <Dropdown.Item href="#/action-6" onClick={()=>setClassFilter("Monk")}>Monk</Dropdown.Item>
+                        <Dropdown.Item href="#/action-7" onClick={()=>setClassFilter("Paladin")}>Paladin</Dropdown.Item>
+                        <Dropdown.Item href="#/action-8" onClick={()=>setClassFilter("Ranger")}>Ranger</Dropdown.Item>
+                        <Dropdown.Item href="#/action-9" onClick={()=>setClassFilter("Rogue")}>Rogue</Dropdown.Item>
+                        <Dropdown.Item href="#/action-10" onClick={()=>setClassFilter("Sorcerer")}>Sorcerer</Dropdown.Item>
+                        <Dropdown.Item href="#/action-11" onClick={()=>setClassFilter("Warlock")}>Warlock</Dropdown.Item>
+                        <Dropdown.Item href="#/action-12" onClick={()=>setClassFilter("Wizard")}>Wizard</Dropdown.Item>
+                    </DropdownButton> */}
