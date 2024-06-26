@@ -48,7 +48,7 @@ export default function AbilityList () {
                     ability_name: abilities.ability_name,
                     level_learned: abilities.level_learned,
                     ability_equipped: abilities.ability_equipped,
-                    ability_class: abilities.ability_class
+                    ability_class: `${id}`
                    }, ) 
                     console.log("Added ability", response.data)  
                     } catch (error) {
