@@ -16,7 +16,7 @@ export default function Main() {
                 <Route path="/" element={<Home />} />
                 <Route path="/Character" element={<CharacterList />} />
                 <Route path="/Campaign" element={<CampaignList />} />
-                <Route path="/Abilities" element={<AbilityList />} />
+                <Route path="/Abilities/character/:characterId" element={<AbilityList />} />
                 <Route path="/Character/:id" element={<CharacterPage />} />
                 <Route path="/Campaign/:id" element={<CampaignPage />} />
                 <Route path="/NewCampaign" element={<NewCampaign />} />
