@@ -6,8 +6,11 @@ import DropdownButton from 'react-bootstrap/DropdownButton'
 import Accordion from 'react-bootstrap/Accordion'
 import { Alert } from "react-bootstrap"
 
-const allAbilities = [
-    // Wizard Spells
+
+export default function AbilityList () {
+    
+    const abilities = [
+        // Wizard Spells
 
     { "ability_name": "Magic Missile", "level_learned": 1, "ability_class": "Wizard", "ability_equipped": false },
     { "ability_name": "Mage Armor", "level_learned": 1, "ability_class": "Wizard", "ability_equipped": false },
@@ -394,64 +397,212 @@ const allAbilities = [
 
 // Warlock Spells
 
-    { "ability_name": "Eldritch Blast", "level_learned": 1, "ability_class": "Warlock", "ability_equipped": false },
-    { "ability_name": "Hex", "level_learned": 1, "ability_class": "Warlock", "ability_equipped": false },
-    { "ability_name": "Armor of Agathys", "level_learned": 1, "ability_class": "Warlock", "ability_equipped": false },
-    { "ability_name": "Hellish Rebuke", "level_learned": 1, "ability_class": "Warlock", "ability_equipped": false },
-    { "ability_name": "Witch Bolt", "level_learned": 1, "ability_class": "Warlock", "ability_equipped": false },
-    { "ability_name": "Mirror Image", "level_learned": 2, "ability_class": "Warlock", "ability_equipped": false },
-    { "ability_name": "Misty Step", "level_learned": 2, "ability_class": "Warlock", "ability_equipped": false },
-    { "ability_name": "Hold Person", "level_learned": 2, "ability_class": "Warlock", "ability_equipped": false },
-    { "ability_name": "Invisibility", "level_learned": 2, "ability_class": "Warlock", "ability_equipped": false },
-    { "ability_name": "Darkness", "level_learned": 2, "ability_class": "Warlock", "ability_equipped": false },
-    { "ability_name": "Counterspell", "level_learned": 3, "ability_class": "Warlock", "ability_equipped": false },
-    { "ability_name": "Fly", "level_learned": 3, "ability_class": "Warlock", "ability_equipped": false },
-    { "ability_name": "Fireball", "level_learned": 3, "ability_class": "Warlock", "ability_equipped": false },
-    { "ability_name": "Stinking Cloud", "level_learned": 3, "ability_class": "Warlock", "ability_equipped": false },
-    { "ability_name": "Fear", "level_learned": 3, "ability_class": "Warlock", "ability_equipped": false },
-    { "ability_name": "Banishment", "level_learned": 4, "ability_class": "Warlock", "ability_equipped": false },
-    { "ability_name": "Dimension Door", "level_learned": 4, "ability_class": "Warlock", "ability_equipped": false },
-    { "ability_name": "Blight", "level_learned": 4, "ability_class": "Warlock", "ability_equipped": false },
-    { "ability_name": "Phantasmal Killer", "level_learned": 4, "ability_class": "Warlock", "ability_equipped": false },
-    { "ability_name": "Greater Invisibility", "level_learned": 4, "ability_class": "Warlock", "ability_equipped": false },
-    { "ability_name": "Hold Monster", "level_learned": 5, "ability_class": "Warlock", "ability_equipped": false },
-    { "ability_name": "Cloudkill", "level_learned": 5, "ability_class": "Warlock", "ability_equipped": false },
-    { "ability_name": "Contact Other Plane", "level_learned": 5, "ability_class": "Warlock", "ability_equipped": false },
-    { "ability_name": "Dominate Person", "level_learned": 5, "ability_class": "Warlock", "ability_equipped": false },
-    { "ability_name": "Infernal Calling", "level_learned": 5, "ability_class": "Warlock", "ability_equipped": false },
-    { "ability_name": "Planar Binding", "level_learned": 5, "ability_class": "Warlock", "ability_equipped": false },
-    { "ability_name": "Blight", "level_learned": 6, "ability_class": "Warlock", "ability_equipped": false },
-    { "ability_name": "Create Undead", "level_learned": 6, "ability_class": "Warlock", "ability_equipped": false },
-    { "ability_name": "Eyebite", "level_learned": 6, "ability_class": "Warlock", "ability_equipped": false },
-    { "ability_name": "Flesh to Stone", "level_learned": 6, "ability_class": "Warlock", "ability_equipped": false },
-    { "ability_name": "Mass Suggestion", "level_learned": 6, "ability_class": "Warlock", "ability_equipped": false },
-    { "ability_name": "True Seeing", "level_learned": 6, "ability_class": "Warlock", "ability_equipped": false },
-    { "ability_name": "Circle of Death", "level_learned": 7, "ability_class": "Warlock", "ability_equipped": false },
-    { "ability_name": "Finger of Death", "level_learned": 7, "ability_class": "Warlock", "ability_equipped": false },
-    { "ability_name": "Forcecage", "level_learned": 7, "ability_class": "Warlock", "ability_equipped": false },
-    { "ability_name": "Plane Shift", "level_learned": 7, "ability_class": "Warlock", "ability_equipped": false },
-    { "ability_name": "Scrying", "level_learned": 7, "ability_class": "Warlock", "ability_equipped": false },
-    { "ability_name": "Arcane Gate", "level_learned": 8, "ability_class": "Warlock", "ability_equipped": false },
-    { "ability_name": "Demiplane", "level_learned": 8, "ability_class": "Warlock", "ability_equipped": false },
-    { "ability_name": "Dominate Monster", "level_learned": 8, "ability_class": "Warlock", "ability_equipped": false },
-    { "ability_name": "Feeblemind", "level_learned": 8, "ability_class": "Warlock", "ability_equipped": false },
-    { "ability_name": "Glibness", "level_learned": 8, "ability_class": "Warlock", "ability_equipped": false },
-    { "ability_name": "Power Word Stun", "level_learned": 8, "ability_class": "Warlock", "ability_equipped": false },
-    { "ability_name": "Time Stop", "level_learned": 9, "ability_class": "Warlock", "ability_equipped": false },
-    { "ability_name": "True Polymorph", "level_learned": 9, "ability_class": "Warlock", "ability_equipped": false },
-    { "ability_name": "Wish", "level_learned": 9, "ability_class": "Warlock", "ability_equipped": false }
-]
+        { "ability_name": "Eldritch Blast", "level_learned": 1, "ability_class": "Warlock", "ability_equipped": false },
+        { "ability_name": "Hex", "level_learned": 1, "ability_class": "Warlock", "ability_equipped": false },
+        { "ability_name": "Armor of Agathys", "level_learned": 1, "ability_class": "Warlock", "ability_equipped": false },
+        { "ability_name": "Hellish Rebuke", "level_learned": 1, "ability_class": "Warlock", "ability_equipped": false },
+        { "ability_name": "Witch Bolt", "level_learned": 1, "ability_class": "Warlock", "ability_equipped": false },
+        { "ability_name": "Mirror Image", "level_learned": 2, "ability_class": "Warlock", "ability_equipped": false },
+        { "ability_name": "Misty Step", "level_learned": 2, "ability_class": "Warlock", "ability_equipped": false },
+        { "ability_name": "Hold Person", "level_learned": 2, "ability_class": "Warlock", "ability_equipped": false },
+        { "ability_name": "Invisibility", "level_learned": 2, "ability_class": "Warlock", "ability_equipped": false },
+        { "ability_name": "Darkness", "level_learned": 2, "ability_class": "Warlock", "ability_equipped": false },
+        { "ability_name": "Counterspell", "level_learned": 3, "ability_class": "Warlock", "ability_equipped": false },
+        { "ability_name": "Fly", "level_learned": 3, "ability_class": "Warlock", "ability_equipped": false },
+        { "ability_name": "Fireball", "level_learned": 3, "ability_class": "Warlock", "ability_equipped": false },
+        { "ability_name": "Stinking Cloud", "level_learned": 3, "ability_class": "Warlock", "ability_equipped": false },
+        { "ability_name": "Fear", "level_learned": 3, "ability_class": "Warlock", "ability_equipped": false },
+        { "ability_name": "Banishment", "level_learned": 4, "ability_class": "Warlock", "ability_equipped": false },
+        { "ability_name": "Dimension Door", "level_learned": 4, "ability_class": "Warlock", "ability_equipped": false },
+        { "ability_name": "Blight", "level_learned": 4, "ability_class": "Warlock", "ability_equipped": false },
+        { "ability_name": "Phantasmal Killer", "level_learned": 4, "ability_class": "Warlock", "ability_equipped": false },
+        { "ability_name": "Greater Invisibility", "level_learned": 4, "ability_class": "Warlock", "ability_equipped": false },
+        { "ability_name": "Hold Monster", "level_learned": 5, "ability_class": "Warlock", "ability_equipped": false },
+        { "ability_name": "Cloudkill", "level_learned": 5, "ability_class": "Warlock", "ability_equipped": false },
+        { "ability_name": "Contact Other Plane", "level_learned": 5, "ability_class": "Warlock", "ability_equipped": false },
+        { "ability_name": "Dominate Person", "level_learned": 5, "ability_class": "Warlock", "ability_equipped": false },
+        { "ability_name": "Infernal Calling", "level_learned": 5, "ability_class": "Warlock", "ability_equipped": false },
+        { "ability_name": "Planar Binding", "level_learned": 5, "ability_class": "Warlock", "ability_equipped": false },
+        { "ability_name": "Blight", "level_learned": 6, "ability_class": "Warlock", "ability_equipped": false },
+        { "ability_name": "Create Undead", "level_learned": 6, "ability_class": "Warlock", "ability_equipped": false },
+        { "ability_name": "Eyebite", "level_learned": 6, "ability_class": "Warlock", "ability_equipped": false },
+        { "ability_name": "Flesh to Stone", "level_learned": 6, "ability_class": "Warlock", "ability_equipped": false },
+        { "ability_name": "Mass Suggestion", "level_learned": 6, "ability_class": "Warlock", "ability_equipped": false },
+        { "ability_name": "True Seeing", "level_learned": 6, "ability_class": "Warlock", "ability_equipped": false },
+        { "ability_name": "Circle of Death", "level_learned": 7, "ability_class": "Warlock", "ability_equipped": false },
+        { "ability_name": "Finger of Death", "level_learned": 7, "ability_class": "Warlock", "ability_equipped": false },
+        { "ability_name": "Forcecage", "level_learned": 7, "ability_class": "Warlock", "ability_equipped": false },
+        { "ability_name": "Plane Shift", "level_learned": 7, "ability_class": "Warlock", "ability_equipped": false },
+        { "ability_name": "Scrying", "level_learned": 7, "ability_class": "Warlock", "ability_equipped": false },
+        { "ability_name": "Arcane Gate", "level_learned": 8, "ability_class": "Warlock", "ability_equipped": false },
+        { "ability_name": "Demiplane", "level_learned": 8, "ability_class": "Warlock", "ability_equipped": false },
+        { "ability_name": "Dominate Monster", "level_learned": 8, "ability_class": "Warlock", "ability_equipped": false },
+        { "ability_name": "Feeblemind", "level_learned": 8, "ability_class": "Warlock", "ability_equipped": false },
+        { "ability_name": "Glibness", "level_learned": 8, "ability_class": "Warlock", "ability_equipped": false },
+        { "ability_name": "Power Word Stun", "level_learned": 8, "ability_class": "Warlock", "ability_equipped": false },
+        { "ability_name": "Time Stop", "level_learned": 9, "ability_class": "Warlock", "ability_equipped": false },
+        { "ability_name": "True Polymorph", "level_learned": 9, "ability_class": "Warlock", "ability_equipped": false },
+        { "ability_name": "Wish", "level_learned": 9, "ability_class": "Warlock", "ability_equipped": false }
+    ]
+    
+    const [levelFilter, setLevelFilter] = useState()
 
-export default function AbilityList() {
-    const [abilities, setAbilities] = useState(allAbilities);
-  const [equippedAbilities, setEquippedAbilities] = useState([]);
-  const [levelFilter, setLevelFilter] = useState(0);
-  const [classFilter, setClassFilter] = useState('');
-  const [character, setCharacter] = useState({});
-  const { characterId } = useParams();
-  const navigate = useNavigate();
+    const [classFilter, setClassFilter] = useState()
 
-  
+    function omegaFilter (element){
+        
+        return  element.level_learned <= levelFilter &&  element.ability_class == classFilter && element.ability_equipped == false
+        
+    }
+
+    const levelAbilities = abilities.filter(omegaFilter)
+    
+
+    let abiltitiesEquipped = []
+
+    const [equippedAbilities, setEquippedAbilities] = useState([])
+
+    const [character, setCharacter]= useState([])
+
+    let { characterId } = useParams() 
+
+    let navigate = useNavigate()
+
+    useEffect(()=>{
+        const getAbilities = async () => {
+            const response = await axios.get(`http://localhost:3001/Ability/character/${characterId}`)
+            setEquippedAbilities(response.data)
+            
+            
+            
+        }
+        getAbilities()
+        const getCharacters = async () => {
+            const characterRes = await axios.get(`http://localhost:3001/Character/${characterId}`)
+            setCharacter(characterRes.data)
+            setClassFilter(characterRes.data.class_name)
+            setLevelFilter(characterRes.data.level)
+            
+        }
+        getCharacters()
+        levelAbilities.forEach((levelAbility) => {
+        const setAbilities = async () => {
+            const abilityRes = await axios.post(`http://localhost:3001/Ability`, {
+                ability_name: levelAbility.ability_name,
+                level_learned: levelAbility.level_learned,
+                ability_equipped: levelAbility.ability_equipped,
+                ability_class: `${character.class_name}`,
+                characterId: `${characterId}`
+
+            },)
+        }
+    setAbilities()})
+    }, [])
+
+    const setTrue = (array,index) =>{//array is filtered abilities
+       
+        if (array.ability_equipped === false){
+            array.ability_equipped = true  
+
+          abilities.forEach((abilities) => {
+           
+            if (abilities.ability_name == array.ability_name && abilities.ability_class == character.class_name) {
+                abilities.ability_equipped = array.ability_equipped
+                abiltitiesEquipped.push(abilities)
+                const addEquipped = async() => {
+                    try{
+                   const response = await axios.post(`http://localhost:3001/Ability`,{
+                    ability_name: abilities.ability_name,
+                    level_learned: abilities.level_learned,
+                    ability_equipped: abilities.ability_equipped,
+                    ability_class: `${character.class_name}`,
+                    characterId: `${characterId}`
+                   }, ) 
+                    console.log("Added ability", response.data)  
+                    } catch (error) {
+                        console.error('Slippery fingers! Could not equip ability!', error)
+                    }
+                }
+                addEquipped()
+                
+                navigate('')        
+            }            
+          })
+          
+          navigate('')
+        } else{
+
+        }
+        
+     }
+
+     const setFalse = (array, index) => {
+        console.log("Equipped", equippedAbilities)
+        console.log("array", array, "index", index)
+        // array.ability_equipped = false
+        console.log('id',array._id)
+        const toggleEquip = async () => {
+          const response = await axios.put(`http://localhost:3001/Ability/${array._id}`, {
+                ability_equipped: false
+            },)
+        } 
+        toggleEquip()
+        console.log('TEST',equippedAbilities[index])        
+        navigate(``)
+     }
+
+    
+
+     
+
+
+    
+
+    function equipFilter (element) {
+        return element.ability_equipped == true
+    }
+
+    const displayedAbilities = equippedAbilities.filter(equipFilter)
+    console.log('displayedAbilities', displayedAbilities)
+    
+    
+
+    console.log('displayed abilities', levelAbilities)  
+    
+return (   
+            
+                <div className ="AbilityList">
+                   
+                    <h1>Add {character.class_name} Abilities!</h1>
+                   
+                    
+                         <div className ="chooseAbility">
+                            <input type="number" value={levelFilter} onChange={e => setLevelFilter(e.target.value)} min = {1} max = {20} />
+                            <ul>                               
+                                {
+                                    levelAbilities.map((levelAbility, index) => (
+                                        <li key ={index} onClick={()=>setTrue(levelAbility,index)}>{levelAbility.ability_name}</li>
+                                    ))
+                                }
+                            </ul>
+
+                         </div>
+                         <div className="equippedAbilities">
+                            <h3> {character.character_name}'s equipped abilities</h3>
+                            {
+                                displayedAbilities.map((displayedAbility, index)=> (
+                                    <div className="equipABilityDiv" key ={index} onClick={()=>setFalse(displayedAbility, index)} >
+                                        <h3>{displayedAbility.ability_name}</h3>
+
+                                    </div>
+                                ))
+                            }
+                         </div>                       
+
+                           
+                         </div>
+        )
+}
 
 
 
