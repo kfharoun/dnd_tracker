@@ -51,7 +51,7 @@ h1 {
   transition: all .3s ease;
 }
 
-.abilityButton, .updateButton, .btn-primary {
+.abilityButton, .updateButton, .btn-primary, .newcampaignbutton {
   padding: 0.4em 1.2em;
   font-size: 1em;
   font-weight: 500;
@@ -85,6 +85,19 @@ h1 {
   box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.332) !important;
 }
 
+.newcharbutton {
+  position: fixed;
+  padding: .3em .4em .3em .4em;
+  margin-top: 55em;
+  z-index: 2;
+  color: #ccd8c5;
+}
+
+.newcharbutton:hover{
+  letter-spacing: 1px;
+  color: white;
+}
+ 
 .one {
   transform: rotate(-3deg);
 }

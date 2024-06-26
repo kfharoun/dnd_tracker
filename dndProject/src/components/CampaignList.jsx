@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function CampaignList() {
     const [campaigns, setCampaigns] = useState([]);
@@ -32,8 +33,7 @@ export default function CampaignList() {
 
     return (
         <div className="CampaignList">
-            <h1>Campaign List!</h1>
-            <button onClick={handleNewCampaignClick}>New Campaign</button>
+            <div className="CampaignListBack"></div>
             {campaigns.map((campaign) => (
                 <div
                     className="campaignDiv"
@@ -41,9 +41,10 @@ export default function CampaignList() {
                     onClick={() => handleCampaignClick(campaign._id)}
                     style={{ cursor: "pointer" }}
                 >
-                    <h3>{campaign.campaign_name}</h3>
+                    <h3 className="campaignNameList">{campaign.campaign_name}</h3>
                 </div>
             ))}
+            <Link to="/NewCampaign"><button className="newcampaignbutton one" onClick={handleNewCampaignClick}>New Campaign</button></Link>
         </div>
     );
 }

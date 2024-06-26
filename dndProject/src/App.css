@@ -11,6 +11,7 @@
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  
 }
 
 .welcomehome {
@@ -191,22 +192,37 @@
 .CharacterList::-webkit-scrollbar {
   display: none;
 }
-
+.CharList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: column;
+  margin: 0 auto;
+}
 .charPic {
   width: 200px; 
   height: 190px; 
   object-fit: cover;
   border-radius: 30px;
+  filter:brightness(80%);
+  transition: all .3s ease;
+}
+
+.charPic:hover {
+  filter:brightness(100%);
 }
 
 .charListName {
   color: #959D90;
   font-style: italic;
-  font-size: 1.2em;
+  font-size: 1.1em;
   background-color: #223030;
   padding: 20px;
   border-radius: 30px;
   text-align: center;
+  z-index: 3;
 }
 
 
@@ -387,4 +403,115 @@
   scrollbar-width: none; 
   -ms-overflow-style: none;
   max-height: 330px; 
+}
+
+.returncharacter {
+  display: flex;
+  justify-content: center;
+}
+
+.returncharacter:hover{
+  color:#efefe9a1;
+  letter-spacing: 1px;
+}
+
+/* CAMPAIGN LIST */
+
+.CampaignList{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  margin: 0 auto;
+  gap: 90px;
+}
+
+.CampaignListBack {
+  background-image: url("../../dndProject/src/images/campaignback.svg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  filter: blur(1px);
+}
+
+.campaignDiv {
+  font-family: "Cinzel Decorative", sans-serif; 
+  color: white;
+}
+
+.campaignNameList {
+  text-align: center;
+  background-color: #959d90d7;
+  padding: 1em 4em 1em 4em;
+  border-radius: 30px;
+  font-size: 2em;
+  box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.276);
+  width: 27em;
+  filter: brightness(80%);
+  transition: all .3s ease;
+}
+
+.campaignNameList:hover {
+filter: brightness(100%)
+}
+
+.newcampaignbutton {
+  font-family: "IM Fell DW Pica", serif;
+}
+
+/* new campaign page */
+
+.NewCampaign{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  flex-direction: column;
+  font-family: "IM Fell DW Pica", serif;
+}
+.form {
+  background-color: #bba58fe5;
+  padding: 2em;
+  border-radius: 30px;
+  color:#523D35;
+  text-transform: lowercase;
+  text-align: center;
+}
+
+.newcampigntitle {
+  margin-bottom: 1em;
+  font-style: italic;
+}
+
+.characterbuttons{
+  display: flex;
+  justify-content: space-around;
+}
+
+.returnCL {
+  margin-left: 20em;
+  color:rgba(255, 255, 255, 0.702);
+  font-style: italic;
+}
+
+.campaignInfo {
+  max-height: 250px;
+}
+
+/* campaign page */
+
+.CampaignDetails {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 500px;
 }
