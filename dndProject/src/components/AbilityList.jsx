@@ -4,6 +4,7 @@ import { Navigate, useNavigate, useParams } from "react-router-dom"
 import Dropdown from 'react-bootstrap/Dropdown'
 import DropdownButton from 'react-bootstrap/DropdownButton'
 import Accordion from 'react-bootstrap/Accordion'
+import { Alert } from "react-bootstrap"
 
 
 export default function AbilityList () {
@@ -46,9 +47,9 @@ export default function AbilityList () {
    
 
     const setTrue = (array,index) =>{
-        
-          array.ability_equipped === false ? array.ability_equipped = true : array.ability_equipped = false
-          
+        if (array.ability_equipped === false){
+            array.ability_equipped = true  
+
           abilities.forEach((abilities) => {
             if (abilities.ability_name == array.ability_name && abilities.ability_class == character.class_name) {
                 abilities.ability_equipped = array.ability_equipped
@@ -69,16 +70,24 @@ export default function AbilityList () {
                 }
                 addEquipped()
                 console.log("here",abilities.ability_equipped,"break", abilities)
-                console.log('equipped', abiltitiesEquipped)            
+                console.log('equipped', abiltitiesEquipped)   
+                navigate('')        
             }            
           })
+          
+          navigate('')
+        } else{
+
+        }
         
      }
 
      const setFalse = (array, index) => {
+        console.log("Equipped", equippedAbilities)
         console.log("array", array, "index", index)
         array.ability_equipped = false
-        equippedAbilities.pop(index)
+        console.log('TEST',equippedAbilities[index])
+        // equippedAbilities.pop(index)
         navigate(``)
      }
 
@@ -525,13 +534,15 @@ export default function AbilityList () {
 
     function omegaFilter (element){
         
-        return  element.level_learned <= levelFilter &&  element.ability_class == classFilter
+        return  element.level_learned <= levelFilter &&  element.ability_class == classFilter && element.ability_equipped == false
         
     }
-   
 
-    
+    function equipFilter (element) {
+        return element.ability_equipped == true
+    }
 
+    const displayedAbilities = equippedAbilities.filter(equipFilter)  
     const levelAbilities = abilities.filter(omegaFilter)
     
 return (
@@ -571,9 +582,9 @@ return (
                          <div className="equippedAbilities">
                             <h3> Character's equipped abilities</h3>
                             {
-                                equippedAbilities.map((equippedAbility, index)=> (
-                                    <div className="equipABilityDiv" key ={index} onClick={()=>setFalse(equippedAbility, index)} >
-                                        <h3>{equippedAbility.ability_name}</h3>
+                                displayedAbilities.map((displayedAbility, index)=> (
+                                    <div className="equipABilityDiv" key ={index} onClick={()=>setFalse(displayedAbility, index)} >
+                                        <h3>{displayedAbility.ability_name}</h3>
 
                                     </div>
                                 ))
