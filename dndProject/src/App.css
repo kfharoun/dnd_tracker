@@ -426,7 +426,7 @@
   margin: 0 auto;
 }
 
-.CampaignList2 {
+/* .CampaignList2 {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -443,7 +443,7 @@
 
 .CampaignList2::-webkit-scrollbar {
   display: none; 
-}
+} */
 
 .CampaignListBack {
   background-image: url("../../dndProject/src/images/campaignback.svg");
