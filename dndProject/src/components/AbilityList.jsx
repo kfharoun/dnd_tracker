@@ -38,10 +38,13 @@ export default function AbilityList () {
     }, [])
 
     const setTrue = (array,index) =>{//array is filtered abilities
+        console.log('array',array)
+        console.log('character class name', character.class_name)
         if (array.ability_equipped === false){
             array.ability_equipped = true  
 
           abilities.forEach((abilities) => {
+            console.log('is this working')
             if (abilities.ability_name == array.ability_name && abilities.ability_class == character.class_name) {
                 abilities.ability_equipped = array.ability_equipped
                 abiltitiesEquipped.push(abilities)
@@ -532,15 +535,18 @@ export default function AbilityList () {
         return element.ability_equipped == true
     }
 
-    const displayedAbilities = equippedAbilities.filter(equipFilter)  
+    const displayedAbilities = equippedAbilities.filter(equipFilter)
+    
     const levelAbilities = abilities.filter(omegaFilter)
+
+    console.log('displayed abilities', levelAbilities)  
     
 return (   
             
                 <div className ="AbilityList">
                    
-                    <h1>{character.class_name}</h1>
-                    <h1>Character's Abilities!</h1>
+                    <h1>Add {character.class_name} Abilities!</h1>
+                   
                     
                          <div className ="chooseAbility">
                             <input type="number" value={levelFilter} onChange={e => setLevelFilter(e.target.value)} min = {1} max = {20} />
@@ -554,7 +560,7 @@ return (
 
                          </div>
                          <div className="equippedAbilities">
-                            <h3> Character's equipped abilities</h3>
+                            <h3> {character.character_name}'s equipped abilities</h3>
                             {
                                 displayedAbilities.map((displayedAbility, index)=> (
                                     <div className="equipABilityDiv" key ={index} onClick={()=>setFalse(displayedAbility, index)} >
