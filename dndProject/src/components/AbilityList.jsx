@@ -8,86 +8,6 @@ import { Alert } from "react-bootstrap"
 
 
 export default function AbilityList () {
-
-    let abiltitiesEquipped = []
-
-    const [equippedAbilities, setEquippedAbilities] = useState([])
-
-    const [character, setCharacter]= useState([])
-
-    let { characterId } = useParams() 
-
-    let navigate = useNavigate()
-
-    useEffect(()=>{
-        const getAbilities = async () => {
-            const response = await axios.get(`http://localhost:3001/Ability/character/${characterId}`)
-            setEquippedAbilities(response.data)
-            console.log('eqa',equippedAbilities)
-            
-        }
-        getAbilities()
-        const getCharacters = async () => {
-            const characterRes = await axios.get(`http://localhost:3001/Character/${characterId}`)
-            setCharacter(characterRes.data)
-            setClassFilter(characterRes.data.class_name)
-            setLevelFilter(characterRes.data.level)
-            
-        }
-        getCharacters()
-    }, [])
-
-    const setTrue = (array,index) =>{//array is filtered abilities
-        console.log('array',array)
-        console.log('character class name', character.class_name)
-        if (array.ability_equipped === false){
-            array.ability_equipped = true  
-
-          abilities.forEach((abilities) => {
-            console.log('is this working')
-            if (abilities.ability_name == array.ability_name && abilities.ability_class == character.class_name) {
-                abilities.ability_equipped = array.ability_equipped
-                abiltitiesEquipped.push(abilities)
-                const addEquipped = async() => {
-                    try{
-                   const response = await axios.post(`http://localhost:3001/Ability`,{
-                    ability_name: abilities.ability_name,
-                    level_learned: abilities.level_learned,
-                    ability_equipped: abilities.ability_equipped,
-                    ability_class: `${character.class_name}`,
-                    characterId: `${characterId}`
-                   }, ) 
-                    console.log("Added ability", response.data)  
-                    } catch (error) {
-                        console.error('Slippery fingers! Could not equip ability!', error)
-                    }
-                }
-                addEquipped()
-                console.log("here",abilities.ability_equipped,"break", abilities)
-                console.log('equipped', abiltitiesEquipped)   
-                navigate('')        
-            }            
-          })
-          
-          navigate('')
-        } else{
-
-        }
-        
-     }
-
-     const setFalse = (array, index) => {
-        console.log("Equipped", equippedAbilities)
-        console.log("array", array, "index", index)
-        array.ability_equipped = false
-        console.log('TEST',equippedAbilities[index])        
-        navigate(``)
-     }
-
-    const [levelFilter, setLevelFilter] = useState()
-
-    const [classFilter, setClassFilter] = useState()
-
     const abilities = [
         // Wizard Spells
 
@@ -522,8 +442,11 @@ export default function AbilityList () {
         { "ability_name": "Time Stop", "level_learned": 9, "ability_class": "Warlock", "ability_equipped": false },
         { "ability_name": "True Polymorph", "level_learned": 9, "ability_class": "Warlock", "ability_equipped": false },
         { "ability_name": "Wish", "level_learned": 9, "ability_class": "Warlock", "ability_equipped": false }
-    ]    
+    ]
+    
+    const [levelFilter, setLevelFilter] = useState()
 
+    const [classFilter, setClassFilter] = useState()
 
     function omegaFilter (element){
         
@@ -531,13 +454,117 @@ export default function AbilityList () {
         
     }
 
+    const levelAbilities = abilities.filter(omegaFilter)
+    
+
+    let abiltitiesEquipped = []
+
+    const [equippedAbilities, setEquippedAbilities] = useState([])
+
+    const [character, setCharacter]= useState([])
+
+    let { characterId } = useParams() 
+
+    let navigate = useNavigate()
+
+    useEffect(()=>{
+        const getAbilities = async () => {
+            const response = await axios.get(`http://localhost:3001/Ability/character/${characterId}`)
+            setEquippedAbilities(response.data)
+            
+            
+            
+        }
+        getAbilities()
+        const getCharacters = async () => {
+            const characterRes = await axios.get(`http://localhost:3001/Character/${characterId}`)
+            setCharacter(characterRes.data)
+            setClassFilter(characterRes.data.class_name)
+            setLevelFilter(characterRes.data.level)
+            
+        }
+        getCharacters()
+        levelAbilities.forEach((levelAbility) => {
+        const setAbilities = async () => {
+            const abilityRes = await axios.post(`http://localhost:3001/Ability`, {
+                ability_name: levelAbility.ability_name,
+                level_learned: levelAbility.level_learned,
+                ability_equipped: levelAbility.ability_equipped,
+                ability_class: `${character.class_name}`,
+                characterId: `${characterId}`
+
+            },)
+        }
+    setAbilities()})
+    }, [])
+
+    const setTrue = (array,index) =>{//array is filtered abilities
+       
+        if (array.ability_equipped === false){
+            array.ability_equipped = true  
+
+          abilities.forEach((abilities) => {
+           
+            if (abilities.ability_name == array.ability_name && abilities.ability_class == character.class_name) {
+                abilities.ability_equipped = array.ability_equipped
+                abiltitiesEquipped.push(abilities)
+                const addEquipped = async() => {
+                    try{
+                   const response = await axios.post(`http://localhost:3001/Ability`,{
+                    ability_name: abilities.ability_name,
+                    level_learned: abilities.level_learned,
+                    ability_equipped: abilities.ability_equipped,
+                    ability_class: `${character.class_name}`,
+                    characterId: `${characterId}`
+                   }, ) 
+                    console.log("Added ability", response.data)  
+                    } catch (error) {
+                        console.error('Slippery fingers! Could not equip ability!', error)
+                    }
+                }
+                addEquipped()
+                
+                navigate('')        
+            }            
+          })
+          
+          navigate('')
+        } else{
+
+        }
+        
+     }
+
+     const setFalse = (array, index) => {
+        console.log("Equipped", equippedAbilities)
+        console.log("array", array, "index", index)
+        // array.ability_equipped = false
+        console.log('id',array._id)
+        const toggleEquip = async () => {
+          const response = await axios.put(`http://localhost:3001/Ability/${array._id}`, {
+                ability_equipped: false
+            },)
+        } 
+
+        console.log('TEST',equippedAbilities[index])        
+        navigate(``)
+     }
+
+    
+
+     
+
+
+    
+
     function equipFilter (element) {
         return element.ability_equipped == true
     }
 
     const displayedAbilities = equippedAbilities.filter(equipFilter)
+    console.log('displayedAbilities', displayedAbilities)
     
-    const levelAbilities = abilities.filter(omegaFilter)
+    
 
     console.log('displayed abilities', levelAbilities)  
     
