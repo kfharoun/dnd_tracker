@@ -485,7 +485,7 @@ export default function AbilityList () {
         }
         getCharacters()
         
-        if (equippedAbilities.length == 0 )
+        if (equippedAbilities.length  < 2 )
         omgegaAbilities.forEach((levelAbility) => {
             const setAbilities = async () => {
                 const abilityRes = await axios.post(`http://localhost:3001/Ability`, {
