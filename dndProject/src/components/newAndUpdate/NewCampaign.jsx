@@ -3,6 +3,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import NewCharacter from "./NewCharacter"
+import { Link } from "react-router-dom";
 
 export default function NewCampaign() {
     const [campaignName, setCampaignName] = useState("");
@@ -31,55 +32,62 @@ export default function NewCampaign() {
 
     return (
         <div className="NewCampaign">
-             <div className="CampaignListBack"></div>
-             <div className="form">
-            <h1>Starting a new adventure?</h1>
+        <div className="CampaignListBack"></div>
+        <Link className="returnCL" to="/Campaign">return to campaign list</Link>
+        <div className="form">
+        
+            <h1 className="newcampigntitle">Starting a new adventure?</h1>
             
-            <form onSubmit={handleCreateCampaign}>
-                <label>
-                    Campaign Name:
+            <form onSubmit={handleCreateCampaign} className="campaign-form">
+                <div className="form-group">
+                    <label htmlFor="campaignName">Campaign Name</label>
                     <input 
                         type="text" 
+                        id="campaignName"
+                        className="form-control"
                         value={campaignName}
                         onChange={(e) => setCampaignName(e.target.value)}
                         required 
                     />
-                </label>
-                <br />
-                <label>
-                    Campaign Info:
-                    <textarea
-                        value={campaignInfo}
-                        onChange={(e) => setCampaignInfo(e.target.value)}
-                        required
-                    />
-                </label>
-                <br />
-                <label>
-                    Dungeon Master:
+                </div>
+                <div className="form-group">
+                    <label htmlFor="dungeonMaster">Dungeon Master</label>
                     <input 
                         type="text" 
+                        id="dungeonMaster"
+                        className="form-control"
                         value={dungeonMaster}
                         onChange={(e) => setDungeonMaster(e.target.value)}
                         required 
                     />
-                </label>
-                <br />
-                <label>
-                    Players (comma separated):
+                </div>
+                <div className="form-group">
+                    <label htmlFor="players">Players (comma separated)</label>
                     <input 
                         type="text" 
+                        id="players"
+                        className="form-control"
                         value={players}
                         onChange={(e) => setPlayers(e.target.value)}
                         required 
                     />
-                </label>
-                <br />
-                
-                <button type="submit">Create Campaign</button>
-                <button onClick={handleNewCharacter}>Create Character</button>
+                <div className="form-group">
+                    <label htmlFor="campaignInfo">Campaign Info</label>
+                    <textarea
+                        id="campaignInfo"
+                        className="form-control campaignInfo"
+                        value={campaignInfo}
+                        onChange={(e) => setCampaignInfo(e.target.value)}
+                        required
+                    />
+                </div>
+                </div>
+                <div className="characterbuttons">
+                <button type="submit" className="btn btn-primary two">Create Campaign</button>
+                <button type="button" className="btn btn-primary one" onClick={handleNewCharacter}>Create Character</button>
+                </div>
             </form>
-            </div>
         </div>
-    );
+    </div>
+)
 }
