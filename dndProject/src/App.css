@@ -515,3 +515,13 @@ filter: brightness(100%)
   margin: 0 auto;
   max-width: 500px;
 }
+
+.createnewchar{
+  font-style: italic;
+  margin-top: -10px;
+  color: rgba(255, 255, 255, 0.628);
+}
+
+.loreform{
+  max-height: 180px;
+}
