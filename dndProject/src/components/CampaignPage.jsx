@@ -4,27 +4,31 @@ import { useParams, useNavigate } from "react-router-dom";
 
 export default function CampaignPage() {
     const [characterInfo, setCharacterInfo] = useState([]);
-    const [campaign, setCampaign] = useState({});
-    const [loading, setLoading] = useState(true);
     const [allCharacters, setAllCharacters] = useState([]);
+    const [campaign, setCampaign] = useState({});
     const [selectedCharacter, setSelectedCharacter] = useState("");
+    const [loading, setLoading] = useState(true);
     const { id } = useParams();
     const navigate = useNavigate();
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                console.log("Fetching campaign details with ID:", id);
                 const campaignResponse = await axios.get(`http://localhost:3001/Campaign/${id}`);
                 const campaignData = campaignResponse.data;
                 setCampaign(campaignData);
 
-                console.log("Fetching characters for campaign ID:", id);
-                const characterResponse = await axios.get(`http://localhost:3001/Character/campaign/${id}`);
-                setCharacterInfo(characterResponse.data);
+                // Fetch characters already in this campaign
+                if (campaignData._id) {
+                    const characterResponse = await axios.get(`http://localhost:3001/Character/campaign/${id}`);
+                    setCharacterInfo(characterResponse.data);
+                } else {
+                    console.log('No character ID found in campaign data');
+                    setCharacterInfo([]);
+                }
 
-                console.log("Fetching all characters");
-                const allCharacterResponse = await axios.get("http://localhost:3001/Character");
+                // Fetch all characters
+                const allCharacterResponse = await axios.get(`http://localhost:3001/Character`);
                 setAllCharacters(allCharacterResponse.data);
 
                 setLoading(false);
@@ -33,32 +37,26 @@ export default function CampaignPage() {
                 setLoading(false);
             }
         };
-
-        if (id) {
-            fetchData();
-        } else {
-            console.error('No campaign ID provided');
-            setLoading(false);
-        }
+        fetchData();
     }, [id]);
 
     const handleNewCharacterClick = () => {
         navigate(`/NewCharacter?campaignId=${id}`);
     };
 
-    const handleAddExistingCharacter = async () => {
-        try {
-            if (selectedCharacter) {
-                console.log("Adding character to campaign:", selectedCharacter);
+    const handleImportCharacter = async () => {
+        if (selectedCharacter) {
+            try {
                 await axios.put(`http://localhost:3001/Character/${selectedCharacter}`, {
-                    campaignId: id
+                    campaignId: id,
                 });
-                // Refresh character list for this campaign
+                // Refresh character list
                 const characterResponse = await axios.get(`http://localhost:3001/Character/campaign/${id}`);
                 setCharacterInfo(characterResponse.data);
+                setSelectedCharacter("");
+            } catch (error) {
+                console.error('Error importing character:', error);
             }
-        } catch (error) {
-            console.error('Error updating character:', error);
         }
     };
 
@@ -98,21 +96,21 @@ export default function CampaignPage() {
 
             <button className="newCharacterButton" onClick={handleNewCharacterClick}>New Character</button>
 
-            <h2>Add Existing Character</h2>
-            <select
-                value={selectedCharacter}
-                onChange={(e) => setSelectedCharacter(e.target.value)}
-            >
-                <option value="">Select Character</option>
-                {allCharacters
-                    .filter(char => char.campaignId !== id && !char.campaignId)
-                    .map((character) => (
+            <div style={{ marginTop: '20px' }}>
+                <h2>Import Character</h2>
+                <select
+                    value={selectedCharacter}
+                    onChange={(e) => setSelectedCharacter(e.target.value)}
+                >
+                    <option value="">Select a character</option>
+                    {allCharacters.map((character) => (
                         <option key={character._id} value={character._id}>
                             {character.character_name}
                         </option>
-                ))}
-            </select>
-            <button onClick={handleAddExistingCharacter}>Add Character</button>
+                    ))}
+                </select>
+                <button onClick={handleImportCharacter}>Import Character</button>
+            </div>
         </div>
     );
 }
