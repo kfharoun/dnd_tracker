@@ -445,7 +445,8 @@
   color: white;
 }
 
-.campaignName {
+.campaignNameList {
+  text-align: center;
   background-color: #959d90d7;
   padding: 1em 4em 1em 4em;
   border-radius: 30px;
@@ -456,7 +457,7 @@
   transition: all .3s ease;
 }
 
-.campaignName:hover {
+.campaignNameList:hover {
 filter: brightness(100%)
 }
 
@@ -464,3 +465,16 @@ filter: brightness(100%)
   font-family: "IM Fell DW Pica", serif;
 }
 
+/* new campaign page */
+
+.NewCampaign{
+display: flex;
+justify-content: center;
+align-items: center;
+margin: 0 auto;
+flex-direction: column;
+
+}
+.form {
+  background-color: #BBA58F;
+}

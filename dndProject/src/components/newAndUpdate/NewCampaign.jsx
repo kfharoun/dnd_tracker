@@ -30,8 +30,11 @@ export default function NewCampaign() {
       };
 
     return (
-        <div>
-            <h1>Create New Campaign</h1>
+        <div className="NewCampaign">
+             <div className="CampaignListBack"></div>
+             <div className="form">
+            <h1>Starting a new adventure?</h1>
+            
             <form onSubmit={handleCreateCampaign}>
                 <label>
                     Campaign Name:
@@ -72,9 +75,11 @@ export default function NewCampaign() {
                     />
                 </label>
                 <br />
+                
                 <button type="submit">Create Campaign</button>
                 <button onClick={handleNewCharacter}>Create Character</button>
             </form>
+            </div>
         </div>
     );
 }
