@@ -10,7 +10,7 @@ export default function CampaignList() {
     useEffect(() => {
         const getCampaigns = async () => {
             try {
-                const response = await axios.get(`http://localhost:3001/Campaign`);
+                const response = await axios.get('http://localhost:3001/Campaign');
                 setCampaigns(response.data);
             } catch (error) {
                 console.error("Error fetching campaigns", error);
@@ -33,17 +33,23 @@ export default function CampaignList() {
 
     return (
         <div className="CampaignList">
+            <div className="CampaignList2">
             <div className="CampaignListBack"></div>
-            {campaigns.map((campaign) => (
-                <div
-                    className="campaignDiv"
-                    key={campaign._id}
-                    onClick={() => handleCampaignClick(campaign._id)}
-                    style={{ cursor: "pointer" }}
-                >
-                    <h3 className="campaignNameList">{campaign.campaign_name}</h3>
-                </div>
-            ))}
+            {campaigns.length > 0 ? (
+                campaigns.map((campaign) => (
+                    <div
+                        className="campaignDiv"
+                        key={campaign._id}
+                        onClick={() => handleCampaignClick(campaign._id)}
+                        style={{ cursor: "pointer" }}
+                    >
+                        <h3 className="campaignNameList">{campaign.campaign_name}</h3>
+                    </div>
+                ))
+            ) : (
+                <p>No current campaigns, create one!</p>
+            )}
+            </div>
             <Link to="/NewCampaign"><button className="newcampaignbutton one" onClick={handleNewCampaignClick}>New Campaign</button></Link>
         </div>
     );

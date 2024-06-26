@@ -138,6 +138,7 @@ export default function CharacterList(props) {
       <p className="charLoreText">{character.lore}</p>
     </div>
     <Link to="/Character" className='returncharacter'>return to character list</Link>
+
   </div>
   <div className="char-list-two">
   
@@ -184,7 +185,7 @@ export default function CharacterList(props) {
     </div>
     
     <div className="charPageButtons">
-      <button className="abilityButton two" ><Link to={`/Abilities/character/${character._id}`}>Ability Log</Link></button>
+    <Link to={`/Abilities/character/${character._id}`}><button className="abilityButton two" >Ability Log</button></Link>
       <button className="updateButton one" onClick={toggleModal}>Update Character</button>
     </div>
   </div>

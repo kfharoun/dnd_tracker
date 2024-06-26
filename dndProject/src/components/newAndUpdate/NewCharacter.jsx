@@ -27,7 +27,7 @@ const NewCharacter = ({ campaignId }) => {
   const [characterData, setCharacterData] = useState({
     character_name: "",
     played_by: "",
-    character_image: "",
+    character_image: "https://www.gamersdecide.com/sites/default/files/styles/news_images/public/screenhunter_02_6.jpg",
     race: "",
     class_name: "",
     subclass_name: "",
