@@ -1,6 +1,6 @@
 import axios from "axios"
 import { useState, useEffect} from "react"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import Dropdown from 'react-bootstrap/Dropdown'
 import DropdownButton from 'react-bootstrap/DropdownButton'
 import Accordion from 'react-bootstrap/Accordion'
@@ -14,16 +14,19 @@ export default function AbilityList () {
 
     const [character, setCharacter]= useState([])
 
+    // let { id } = useParams() added in after character button works
+
 
 
     useEffect(()=>{
         const getAbilities = async () => {
-            const response = await axios.get(`http://localhost:3001/Ability`)
+            const response = await axios.get(`http://localhost:3001/Ability/character/${id}`)
             setEquippedAbilities(response.data)
+            
         }
         getAbilities()
         const getCharacters = async () => {
-            const characterRes = await axios.get(`http://localhost:3001/Character`)
+            const characterRes = await axios.get(`http://localhost:3001/Character/${id}`)
             setCharacter(characterRes.data)
         }
         getCharacters()
@@ -60,9 +63,9 @@ export default function AbilityList () {
         
      }
 
-    const [levelFilter, setLevelFilter] = useState(1)
+    const [levelFilter, setLevelFilter] = useState(character.level)
 
-    const [classFilter, setClassFilter] = useState("Choose Your Class")
+    const [classFilter, setClassFilter] = useState(character.class_name)
 
     const abilities = [
         // Wizard Spells
@@ -500,20 +503,13 @@ export default function AbilityList () {
         { "ability_name": "Wish", "level_learned": 9, "ability_class": "Warlock", "ability_equipped": false }
     ]    
 
-    // function filterLevel (element){
-    //     return element.level_learned <= levelFilter 
-    // }
-
-    // function filterClass (element){
-    //    return element.ability_class == classFilter
-    // }
 
     function omegaFilter (element){
         
         return  element.level_learned <= levelFilter &&  element.ability_class == classFilter
         
     }
-    // console.log("level", element.level_learned)
+   
 
     console.log('abilities', abilities)
     console.log('CLASS', classFilter)
