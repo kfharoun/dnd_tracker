@@ -27,7 +27,7 @@ const NewCharacter = ({ campaignId }) => {
   const [characterData, setCharacterData] = useState({
     character_name: "",
     played_by: "",
-    character_image: "https://www.gamersdecide.com/sites/default/files/styles/news_images/public/screenhunter_02_6.jpg",
+    character_image: "",
     race: "",
     class_name: "",
     subclass_name: "",
@@ -87,7 +87,8 @@ const NewCharacter = ({ campaignId }) => {
       setCharacterData({
         character_name: "",
         played_by: "",
-        character_image:"",
+        character_image:
+"",
         race: "",
         class_name: "",
         subclass_name: "",
@@ -117,7 +118,7 @@ const NewCharacter = ({ campaignId }) => {
         <h2 className="createnewchar">Create New Character</h2>
         <Form onSubmit={handleSubmit} className="needs-validation" noValidate>
   <Row>
-    <Col lg={4}>
+    <Col lg={4} md={3} sm={3}>
       {/* Character Name */}
       <Form.Group controlId="formCharacterName">
         <Form.Label>Character Name</Form.Label>
@@ -202,16 +203,17 @@ const NewCharacter = ({ campaignId }) => {
     
     </Col>
 
-    <Col lg={4}>
+    <Col lg={4} md={3} sm={3}>
     {/* Character Image */}
     <Form.Group controlId="formCharImage">
         <Form.Label>Image</Form.Label>
         <Form.Control
           type="text"
-          name="character_image"
+          name="char_image"
           value={characterData.character_image}
           onChange={handleChange}
           placeholder="url, optional"
+          required
         />
         <Form.Control.Feedback type="invalid">
           Please enter the character's armor class.
@@ -279,7 +281,7 @@ const NewCharacter = ({ campaignId }) => {
       
     </Col>
 
-    <Col lg={4}>
+    <Col lg={4} md={3}sm={2}> 
       
 
       {/* Dexterity */}
@@ -357,8 +359,8 @@ const NewCharacter = ({ campaignId }) => {
         </Form.Control.Feedback>
       </Form.Group>
     </Col>
-  </Row>
-
+  
+          <Col lg={12} md={3} sm={4}>
   {/* Lore */}
   <Form.Group controlId="formLore">
     <Form.Label>Lore</Form.Label>
@@ -397,7 +399,8 @@ const NewCharacter = ({ campaignId }) => {
       Please select a campaign.
     </Form.Control.Feedback>
   </Form.Group>
-
+  </Col>
+  </Row>
   {/* Submit Button */}
   <Button variant="primary" type="submit">
     Create Character
