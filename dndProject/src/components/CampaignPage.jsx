@@ -66,39 +66,46 @@ export default function CampaignPage() {
 
     return (
         <div className="CampaignDetails">
-            <h2 className="CampaignDetailTitle">Campaign Details</h2>
+            <div className="divAndList">
+            <div className="charPageBack"></div>
             <div className="CampaignDetailDesc">
                 <h3 className="campaignname">{campaign.campaign_name}</h3>
                 <p className="campaigninfo">{campaign.campaign_info}</p>
                 <p className="dm">Dungeon Master: {campaign.dungeon_master}</p>
                 <p className="players">Players: {campaign.players ? campaign.players.join(', ') : ''}</p>
             </div>
-
+            <div className="characterdetails">
+            
             <h2 className="CharacterDetailTitle">Characters on this journey</h2>
+            <div className="characterdet">
             {characterInfo.length > 0 ? (
                 characterInfo.map((character) => (
+                    
                     <div
-                        className="CharacterDetailCharacterList"
+                        className="CharacterDetailCharacterList list"
                         key={character._id}
                         style={{ display: 'flex', alignItems: 'center', marginBottom: '10px', cursor: 'pointer' }}
                         onClick={() => navigate(`/Character/${character._id}`)}
                     >
                         <img
-                            className="CharacterDetailImage"
+                            className="CharacterDetailImage list"
                             src={character.character_image}
-                            alt={`${character.character_name}`}
-                            style={{ width: '50px', height: '50px', borderRadius: '50%', marginRight: '10px' }}
+                            alt={`image of ${character.character_name}`}
                         />
                         <h3 className="CharacterDetailCharName">{character.character_name}</h3>
                     </div>
+                    
+                    
                 ))
             ) : (
                 <p>No one has yet taken this path. Add a character?</p>
             )}
-
+            </div>
+            </div>
+            
+            </div>
+            <div className="ImportCharacter" style={{ marginTop: '20px' }}>
             <button className="btn btn-primary one newchar-button" onClick={handleNewCharacterClick}>New Character</button>
-
-            <div className="ImportCharacter " style={{ marginTop: '20px' }}>
                 <h2 className="ImportCharText">Import Character</h2>
                 <select
                     className="importcharselect"
@@ -112,6 +119,7 @@ export default function CampaignPage() {
                         </option>
                     ))}
                 </select>
+                
                 <button className="btn btn-primary importcharbutton" onClick={handleImportCharacter}>Import Character</button>
             </div>
         </div>
