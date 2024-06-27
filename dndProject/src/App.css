@@ -711,9 +711,29 @@ filter: brightness(100%)
   font-size: 17px;
 }
 
-/* .dmname::after, .playerlist::after {
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  color:#523D35;
+  font-size: 14px;
+  width: 200px; 
+  font-family:  "IM Fell DW Pica", serif;
+  text-transform: lowercase;
+}
 
-} */
+
+select:focus {
+  outline: none; /* Remove default outline */
+}
+
+
+select option:checked {
+  color: #fff;
+}
 
 .dmname {
   margin-bottom: 1em;
@@ -721,6 +741,11 @@ filter: brightness(100%)
 
 .loreform{
   max-height: 180px;
+}
+
+.ImportCharText{
+  display: flex;
+  flex-direction: column;
 }
 
 @media (max-width: 768px) {
