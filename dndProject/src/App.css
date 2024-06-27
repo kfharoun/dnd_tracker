@@ -247,6 +247,11 @@
   border-radius: 30px;
   padding: 41px;
   box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.258);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
 }
 
 .char-list-two{
@@ -274,19 +279,19 @@
 .stat-info p {
   margin: 0px 10px;
 }
-.charLore {
+.charLoreText {
   background-color: #e8d9cdb3; 
   overflow: auto;
   max-height: 220px; 
   border-radius: 30px; 
   padding: 12px;
-  margin: 0 1.5em 1.5em 1.5em;
+  margin-bottom: 1.2em;
 
   scrollbar-width: none; 
   -ms-overflow-style: none; 
 }
 
-.charLore::-webkit-scrollbar {
+.charLoreText::-webkit-scrollbar {
   display: none; 
 }
 .charPageBack {
@@ -531,14 +536,127 @@ filter: brightness(100%)
   align-items: center;
   flex-direction: column;
   margin: 0 auto;
-  max-width: 500px;
+  font-family: "IM Fell DW Pica", serif;
 }
 
-.createnewchar{
-  font-style: italic;
-  margin-top: -10px;
-  color: rgba(255, 255, 255, 0.628);
+.divAndList {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10%;
 }
+
+.ImportCharacter{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  gap: 5%;
+  width: 100vw;
+}
+
+.CampaignDetailDesc{
+  display: flex;
+  flex-direction: column;
+  background-color: #BBA58F;
+  padding: 8em;
+  height: 600px;
+  min-width: 406px;
+  max-width: 406px;
+  background-color: #bba58fa0;
+  border-radius: 30px;
+  padding: 41px;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.258);
+}
+
+
+.characterdetails {
+  background-color: #BBA58F;
+  display: flex;
+  flex-direction: column;
+  background-color: #BBA58F;
+  padding: 8em;
+  height: 600px;
+  min-width: 406px;
+  max-width: 406px;
+  background-color: #bba58fa0;
+  border-radius: 30px;
+  padding: 41px;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.258);
+  flex-direction: row;
+  flex-wrap: wrap;
+  
+}
+.characterdet {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+  overflow: auto;
+  max-height: 400px;
+  width: 400px;
+  transition: all .3s ease;
+  scrollbar-width: none; 
+  -ms-overflow-style: none; 
+}
+
+.CharacterDetailCharacterList {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.CharacterDetailImage {
+  width: 145px;
+  height: 145px;
+  object-fit: cover;
+  border-radius: 30px;
+  filter: brightness(60%);
+  transition: all .3s ease;
+}
+
+.CharacterDetailCharName {
+  color: white;
+  font-size: medium;
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 1; 
+  text-transform: uppercase;
+  font-weight: 600;
+  line-height: 160%;
+  transition: opacity .3s ease;
+  font-family: "Cinzel Decorative", sans-serif;
+  text-shadow: 1px 2px 2px black;
+}
+
+.characterdet::-webkit-scrollbar {
+  display: none; 
+}
+
+.CharacterDetailCharacterList:hover .CharacterDetailImage {
+  filter: brightness(100%);
+  width: 150px;
+  height: 150px;
+}
+
+.CharacterDetailCharacterList:hover .CharacterDetailCharName {
+  opacity: 0; 
+}
+
+.campaignname {
+  font-family: "Cinzel Decorative", sans-serif;
+  color: white;
+  font-size: 23px;
+}
+
+
+
 
 .loreform{
   max-height: 180px;
@@ -588,3 +706,9 @@ filter: brightness(100%)
   margin: 0 auto;
 }
 
+
+.createnewchar{
+  font-style: italic;
+  margin-top: -10px;
+  color: rgba(255, 255, 255, 0.628);
+}

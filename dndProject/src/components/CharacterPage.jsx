@@ -134,8 +134,8 @@ export default function CharacterList(props) {
     <p className="campaignName">
       {campaignName}
     </p>
-    <div className="charLore">
-      <p className="charLoreText">{character.lore}</p>
+    <div className="charLoreText">
+      <p className="charpageLoreText">{character.lore}</p>
     </div>
     <Link to="/Character" className='returncharacter'>return to character list</Link>
 
