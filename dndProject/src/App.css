@@ -711,9 +711,9 @@ filter: brightness(100%)
   font-size: 17px;
 }
 
-.dmname::after, .playerlist::after {
-  
-}
+/* .dmname::after, .playerlist::after {
+
+} */
 
 .dmname {
   margin-bottom: 1em;
