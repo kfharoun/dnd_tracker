@@ -19,13 +19,8 @@ export default function CampaignPage() {
                 setCampaign(campaignData);
 
                 // Fetch characters already in this campaign
-                if (campaignData._id) {
-                    const characterResponse = await axios.get(`http://localhost:3001/Character/campaign/${id}`);
-                    setCharacterInfo(characterResponse.data);
-                } else {
-                    console.log('No character ID found in campaign data');
-                    setCharacterInfo([]);
-                }
+                const characterResponse = await axios.get(`http://localhost:3001/Character/campaign/${id}`);
+                setCharacterInfo(characterResponse.data);
 
                 // Fetch all characters
                 const allCharacterResponse = await axios.get(`http://localhost:3001/Character`);
@@ -64,67 +59,68 @@ export default function CampaignPage() {
         return <div>Loading...</div>;
     }
 
+    // Create a Set of IDs of characters already in the campaign
+    const characterIdsInCampaign = new Set(characterInfo.map(character => character._id));
+
+    // Filter all characters to exclude those already in the campaign
+    const availableCharacters = allCharacters.filter(character => !characterIdsInCampaign.has(character._id));
+
     return (
         <div className="CampaignDetails">
             <div className="divAndList">
-            <div className="charPageBack"></div>
-            <div className="CampaignDetailDesc">
-                <h3 className="campaignname">{campaign.campaign_name}</h3>
-                <p className="dm">Dungeon Master</p>
-                <p className="dm dmname">{campaign.dungeon_master}</p>
-                <p className="players playertitle">Players </p>
-                <p className="players playerlist">{campaign.players ? campaign.players.join(', ') : ''}</p>
-                <p className="campaigninfo">{campaign.campaign_info}</p>
-            </div>
-            <div className="characterdetails">
-            
-            <h2 className="CharacterDetailTitle">Characters on this journey</h2>
-            <div className="characterdet">
-            {characterInfo.length > 0 ? (
-                characterInfo.map((character) => (
-                    
-                    <div
-                        className="CharacterDetailCharacterList list"
-                        key={character._id}
-                        style={{ display: 'flex', alignItems: 'center', marginBottom: '10px', cursor: 'pointer' }}
-                        onClick={() => navigate(`/Character/${character._id}`)}
-                    >
-                        <img
-                            className="CharacterDetailImage list"
-                            src={character.character_image}
-                            alt={`image of ${character.character_name}`}
-                        />
-                        <h3 className="CharacterDetailCharName">{character.character_name}</h3>
+
+                <div className="charPageBack"></div>
+                <div className="CampaignDetailDesc">
+                    <h3 className="campaignname">{campaign.campaign_name}</h3>
+                    <p className="campaigninfo">{campaign.campaign_info}</p>
+                    <p className="dm">Dungeon Master: {campaign.dungeon_master}</p>
+                    <p className="players">Players: {campaign.players ? campaign.players.join(', ') : ''}</p>
+                </div>
+                <div className="characterdetails">
+                    <h2 className="CharacterDetailTitle">Characters on this journey</h2>
+                    <div className="characterdet">
+                        {characterInfo.length > 0 ? (
+                            characterInfo.map((character) => (
+                                <div
+                                    className="CharacterDetailCharacterList list"
+                                    key={character._id}
+                                    style={{ display: 'flex', alignItems: 'center', marginBottom: '10px', cursor: 'pointer' }}
+                                    onClick={() => navigate(`/Character/${character._id}`)}
+                                >
+                                    <img
+                                        className="CharacterDetailImage list"
+                                        src={character.character_image}
+                                        alt={`image of ${character.character_name}`}
+                                    />
+                                    <h3 className="CharacterDetailCharName">{character.character_name}</h3>
+                                </div>
+                            ))
+                        ) : (
+                            <p>No one has yet taken this path. Add a character?</p>
+                        )}
+
                     </div>
-                    
-                    
-                ))
-            ) : (
-                <p>No one has yet taken this path. Add a character?</p>
-            )}
-            </div>
-            </div>
-            
+                </div>
             </div>
             <div className="ImportCharacter" style={{ marginTop: '20px' }}>
-                <div className="CampaignPageStuff">
-                <h2 className="ImportCharText">Import Character</h2>
-                <select
-                    className="importcharselect"
-                    value={selectedCharacter}
-                    onChange={(e) => setSelectedCharacter(e.target.value)}
-                >
-                    <option value="">Select a character</option>
-                    {allCharacters.map((character) => (
-                        <option className="importcharoption" key={character._id} value={character._id}>
-                            {character.character_name}
-                        </option>
-                        
-                    ))}
-                </select>
-                
-                <button className="btn btn-primary importcharbutton" onClick={handleImportCharacter}>Import Character</button>
-                
+
+                <div>
+                    <button className="btn btn-primary one newchar-button" onClick={handleNewCharacterClick}>New Character</button>
+                    <h2 className="ImportCharText">Import Character</h2>
+                    <select
+                        className="importcharselect"
+                        value={selectedCharacter}
+                        onChange={(e) => setSelectedCharacter(e.target.value)}
+                    >
+                        <option value="">Select a character</option>
+                        {availableCharacters.map((character) => (
+                            <option className="importcharoption" key={character._id} value={character._id}>
+                                {character.character_name}
+                            </option>
+                        ))}
+                    </select>
+                    <button className="btn btn-primary importcharbutton" onClick={handleImportCharacter}>Import Character</button>
+
                 </div>
                 <button className="btn btn-primary newchar-button" onClick={handleNewCharacterClick}>Create New Character</button>
             </div>
