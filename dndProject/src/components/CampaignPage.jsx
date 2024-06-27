@@ -68,6 +68,7 @@ export default function CampaignPage() {
     return (
         <div className="CampaignDetails">
             <div className="divAndList">
+
                 <div className="charPageBack"></div>
                 <div className="CampaignDetailDesc">
                     <h3 className="campaignname">{campaign.campaign_name}</h3>
@@ -97,10 +98,12 @@ export default function CampaignPage() {
                         ) : (
                             <p>No one has yet taken this path. Add a character?</p>
                         )}
+
                     </div>
                 </div>
             </div>
             <div className="ImportCharacter" style={{ marginTop: '20px' }}>
+
                 <div>
                     <button className="btn btn-primary one newchar-button" onClick={handleNewCharacterClick}>New Character</button>
                     <h2 className="ImportCharText">Import Character</h2>
@@ -117,7 +120,9 @@ export default function CampaignPage() {
                         ))}
                     </select>
                     <button className="btn btn-primary importcharbutton" onClick={handleImportCharacter}>Import Character</button>
+
                 </div>
+                <button className="btn btn-primary newchar-button" onClick={handleNewCharacterClick}>Create New Character</button>
             </div>
         </div>
     );

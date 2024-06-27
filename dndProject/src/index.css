@@ -125,6 +125,9 @@ button:focus-visible, button:focus{
   outline: none;
 }
 
+.importcharbutton {
+  margin-top: 1em;
+}
 
 
 /* button:focus,

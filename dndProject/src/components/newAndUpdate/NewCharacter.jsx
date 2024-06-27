@@ -5,6 +5,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Form, Row, Col, Button } from "react-bootstrap";
 
+const defaultImageUrl = "https://www.gamersdecide.com/sites/default/files/styles/news_images/public/screenhunter_02_6.jpg"
+
 const classesOptions = [
   "Artificer",
   "Barbarian",
@@ -27,7 +29,7 @@ const NewCharacter = ({ campaignId }) => {
   const [characterData, setCharacterData] = useState({
     character_name: "",
     played_by: "",
-    character_image: "",
+    character_image: "url, optional",
     race: "",
     class_name: "",
     subclass_name: "",
@@ -78,17 +80,25 @@ const NewCharacter = ({ campaignId }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      // Check if character_image is still "url, optional", then set it to defaultImageUrl
+      const imageData = {
+        ...characterData,
+        character_image: characterData.character_image === "url, optional" ? defaultImageUrl : characterData.character_image,
+      };
+  
+      // Make a single API call to create the character
       const response = await axios.post(
         "http://localhost:3001/Character",
-        characterData
+        imageData
       );
+  
       console.log("Character created:", response.data);
-
+  
+      // Reset form fields after successful character creation
       setCharacterData({
         character_name: "",
         played_by: "",
-        character_image:
-"",
+        character_image: "url, optional",
         race: "",
         class_name: "",
         subclass_name: "",
@@ -104,12 +114,14 @@ const NewCharacter = ({ campaignId }) => {
         lore: "",
         campaignId: campaignId,
       });
-
+  
+      // Navigate to the campaign page after successful creation
       navigate(`/campaign/${characterData.campaignId}`);
     } catch (error) {
       console.error("Error creating character:", error);
     }
   };
+  
 
   return (
     <div className="NewCharacter NewCampaign">
@@ -209,7 +221,7 @@ const NewCharacter = ({ campaignId }) => {
         <Form.Label>Image</Form.Label>
         <Form.Control
           type="text"
-          name="char_image"
+          name="character_image"
           value={characterData.character_image}
           onChange={handleChange}
           placeholder="url, optional"
@@ -218,6 +230,7 @@ const NewCharacter = ({ campaignId }) => {
         <Form.Control.Feedback type="invalid">
           Please enter the character's armor class.
         </Form.Control.Feedback>
+        {/* Display the image */}
       </Form.Group>
       {/* Level */}
       <Form.Group controlId="formLevel">

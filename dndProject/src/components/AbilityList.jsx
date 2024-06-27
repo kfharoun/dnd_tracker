@@ -449,9 +449,8 @@ export default function AbilityList () {
 
     const [classFilter, setClassFilter] = useState()
 
-    const [potentialAbilities, setPotentialAbilities] = useState()
-
-    
+    const [potentialAbilities, setPotentialAbilities] = useState("jason")   
+    console.log('GIDEION',potentialAbilities)
 
     function omegaFilter (element){
         
@@ -475,29 +474,27 @@ export default function AbilityList () {
 
     const displayedAbilities = equippedAbilities.filter(equipFilter)
 
-
-
-    useEffect(()=>{
-        
-        
+    useEffect(()=>{  
         
         const getCharacters = async () => {
             const characterRes = await axios.get(`http://localhost:3001/Character/${characterId}`)
             setCharacter(characterRes.data)
             setClassFilter(characterRes.data.class_name)
             setLevelFilter(characterRes.data.level)
-            console.log('hum')
-            
-            
-        }
-        
-
-        const getAbilities = async () => {
-            const response = await axios.get(`http://localhost:3001/Ability/character/${characterId}`)
+            const response = await axios.get(`http://localhost:3001/Ability/character/${characterId}`)            
             setEquippedAbilities(response.data)
             
-            if ( response.data.length == 0 || omgegaAbilities.ability_name != response.data.ability_name){
+        }         
+       
+        const getAbilities = async () => {
+            
+            const response = await axios.get(`http://localhost:3001/Ability/character/${characterId}`)
+            
+            setEquippedAbilities(response.data) 
+            
+            if ( response.data.length == 0 || omgegaAbilities.ability_name != response.data.ability_name || character.class_name == "undefined" ){
                 omgegaAbilities.forEach((levelAbility) => {
+                    
                     const setAbilities = async () => {
                         const abilityRes = await axios.post(`http://localhost:3001/Ability`, {
                             ability_name: levelAbility.ability_name,
@@ -507,58 +504,31 @@ export default function AbilityList () {
                             characterId: `${characterId}`
         
                     },)
-                    setPotentialAbilities(abilityRes)
+                    setPotentialAbilities(abilityRes)                    
                 }
-                
-            setAbilities()})}
-            
+                                
+            setAbilities()})
+        }            
         }
 
-        console.log("and then look here", equippedAbilities)
-        
-
-
         async function getData () {
+           
+           
             const Data = await Promise.all([
                 getCharacters(),
                 getAbilities()
             ])
-            
+            window.location.refresh()
         }
-
         getData()
-        console.log ("look here",equippedAbilities)
-
-
+        
     } ,[levelFilter])
 
+    
 
 
-    // useEffect(()=> {
-    //     const getAbilities = async () => {
-    //         const response = await axios.get(`http://localhost:3001/Ability/character/${characterId}`)
-    //         setEquippedAbilities(response.data)
-    //         console.log ("look here",equippedAbilities)
-    //         if ( response.data.length == 0 || omgegaAbilities.ability_name != response.data.ability_name){
-    //             omgegaAbilities.forEach((levelAbility) => {
-    //                 const setAbilities = async () => {
-    //                     const abilityRes = await axios.post(`http://localhost:3001/Ability`, {
-    //                         ability_name: levelAbility.ability_name,
-    //                         level_learned: levelAbility.level_learned,
-    //                         ability_equipped: levelAbility.ability_equipped,
-    //                         ability_class: `${character.class_name}`,
-    //                         characterId: `${characterId}`
-        
-    //                 },)
-    //             }
-    //         setAbilities()})}
-            
-    //     }
-    //     getAbilities()
-    //     console.log ("look here",equippedAbilities)
-        
-      
-    // }, [levelFilter])
+
+    
   
     const setTrue = (array,index) =>{//array is filtered abilities
        
