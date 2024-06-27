@@ -68,10 +68,10 @@ export default function CampaignPage() {
         <div className="CampaignDetails">
             <h2 className="CampaignDetailTitle">Campaign Details</h2>
             <div className="CampaignDetailDesc">
-                <h3>{campaign.campaign_name}</h3>
-                <p>{campaign.campaign_info}</p>
-                <p>Dungeon Master: {campaign.dungeon_master}</p>
-                <p>Players: {campaign.players ? campaign.players.join(', ') : ''}</p>
+                <h3 className="campaignname">{campaign.campaign_name}</h3>
+                <p className="campaigninfo">{campaign.campaign_info}</p>
+                <p className="dm">Dungeon Master: {campaign.dungeon_master}</p>
+                <p className="players">Players: {campaign.players ? campaign.players.join(', ') : ''}</p>
             </div>
 
             <h2 className="CharacterDetailTitle">Characters on this journey</h2>
