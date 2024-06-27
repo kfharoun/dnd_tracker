@@ -107,8 +107,7 @@ export default function CampaignPage() {
             
             </div>
             <div className="ImportCharacter" style={{ marginTop: '20px' }}>
-                <div>
-            <button className="btn btn-primary one newchar-button" onClick={handleNewCharacterClick}>New Character</button>
+                <div className="CampaignPageStuff">
                 <h2 className="ImportCharText">Import Character</h2>
                 <select
                     className="importcharselect"
@@ -125,7 +124,9 @@ export default function CampaignPage() {
                 </select>
                 
                 <button className="btn btn-primary importcharbutton" onClick={handleImportCharacter}>Import Character</button>
+                
                 </div>
+                <button className="btn btn-primary newchar-button" onClick={handleNewCharacterClick}>Create New Character</button>
             </div>
         </div>
     );
