@@ -601,6 +601,7 @@ export default function AbilityList () {
 return (   
             
                 <div className ="AbilityList">
+                    <div className="charPageBack"></div>
                    
                     <h1>Add {character.class_name} Abilities!</h1>
                    
@@ -617,7 +618,8 @@ return (
 
                          </div>
                          <div className="equippedAbilities">
-                            <h3> {character.character_name}'s equipped abilities</h3>
+                            <h3> {character.character_name}</h3>
+                            <h3>Equipped abilities</h3>
                             {
                                 displayedAbilities.map((displayedAbility, index)=> (
                                     <div className="equipABilityDiv" key ={index} onClick={()=>setFalse(displayedAbility, index)} >
