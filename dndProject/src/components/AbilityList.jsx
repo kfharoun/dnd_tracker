@@ -601,36 +601,40 @@ export default function AbilityList () {
 return (   
             
                 <div className ="AbilityList">
+                    <div className="bothabs">
+
                     <div className="charPageBack"></div>
-                   
-                    <h1>Add {character.class_name} Abilities!</h1>
-                   
+                   <div className ="chooseAbility">
                     
-                         <div className ="chooseAbility">
-                            <input type="number" value={levelFilter} onChange={e => setLevelFilter(e.target.value)} min = {1} max = {20} />
-                            <ul>                               
+                    <h3 className="unequipped">UnEquipped</h3>
+                   <div className="unequippeddiv">
+                    
+                         
+                            {/* <input type="number" value={levelFilter} onChange={e => setLevelFilter(e.target.value)} min = {1} max = {20} /> */}
                                 {
                                     levelAbilities.map((levelAbility, index) => (
-                                        <li key ={index} onClick={()=>setTrue(levelAbility,index)}>{levelAbility.ability_name}</li>
+                                        <p className="equippable" key ={index} onClick={()=>setTrue(levelAbility,index)}>{levelAbility.ability_name}</p>
                                     ))
-                                }
-                            </ul>
-
+                                }                              
+                            </div>
                          </div>
                          <div className="equippedAbilities">
-                            <h3> {character.character_name}</h3>
-                            <h3>Equipped abilities</h3>
+                            <h3 className="abilitylistcharname abilitylisttext"> {character.character_name}</h3>
+                            <h3 abilitylistlevel abilitylisttext>level  {character.level} {character.class_name}</h3>
+                            
+                            <h3 abilitylistabilities abilitylisttext>Equipped abilities</h3>
+                            <div className="equippeddiv">
                             {
                                 displayedAbilities.map((displayedAbility, index)=> (
                                     <div className="equipABilityDiv" key ={index} onClick={()=>setFalse(displayedAbility, index)} >
-                                        <h3>{displayedAbility.ability_name}</h3>
+                                        <p>{displayedAbility.ability_name}</p>
 
                                     </div>
                                 ))
                             }
                          </div>                       
-
-                           
+                            </div>
+                           </div>
                          </div>
         )
 }

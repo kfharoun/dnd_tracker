@@ -785,20 +785,67 @@ select option:checked {
   }
 }
 
-
+.createnewchar{
+  font-style: italic;
+  margin-top: -10px;
+  color: rgba(255, 255, 255, 0.628);
+}
 /* Ability List */
 
 .AbilityList{
   display: flex;
   align-items: center;
+  flex-direction: row-reverse;
   justify-content: center;
   flex-direction: column;
+  width: 100vw;
   margin: 0 auto;
+  color:#523D35;
+}
+
+.bothabs{
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 15%;
 }
 
 
-.createnewchar{
-  font-style: italic;
-  margin-top: -10px;
-  color: rgba(255, 255, 255, 0.628);
+.chooseAbility, .equippedAbilities {
+  padding: 8em;
+  height: 600px;
+  min-width: 406px;
+  max-width: 406px;
+  background-color: #bba58fd5;
+  border-radius: 30px;
+  padding: 41px;
+  text-align: center;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.258);
+  font-family:  "IM Fell DW Pica", serif;
+}
+
+
+.equipABilityDiv, .equippable {
+  background-color: #E8D9CD;
+  width: 300px; 
+  margin-bottom: 10px; 
+  background-color: #e8d9cdb3;
+  border-radius: 30px;
+  margin: 0 1em 1em 1em;
+  padding: 0 1em 0 1em;
+  text-transform: lowercase;
+  font-size: 1.1em;
+}
+
+.equippeddiv, .unequippeddiv {
+  overflow: auto;
+  max-height: 420px; 
+  border-radius: 30px; 
+  padding-top: 10px;
+  scrollbar-width: none; 
+  -ms-overflow-style: none; 
+}
+
+.unequippeddiv {
+  max-height: 490px; 
+  margin-top:20px;
 }
