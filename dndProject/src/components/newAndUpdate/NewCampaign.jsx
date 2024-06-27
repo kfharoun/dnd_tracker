@@ -84,7 +84,7 @@ export default function NewCampaign() {
                 </div>
                 <div className="characterbuttons">
                 <button type="submit" className="btn btn-primary two">Create Campaign</button>
-                <button type="button" className="btn btn-primary one" onClick={handleNewCharacter}>Create Character</button>
+                {/* <button type="button" className="btn btn-primary one" onClick={handleNewCharacter}>Create Character</button> */}
                 </div>
             </form>
         </div>
