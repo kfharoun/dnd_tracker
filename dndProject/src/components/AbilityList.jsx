@@ -449,6 +449,8 @@ export default function AbilityList () {
 
     const [classFilter, setClassFilter] = useState()
 
+    const [potentialAbilities, setPotentialAbilities] = useState()
+
     
 
     function omegaFilter (element){
@@ -473,7 +475,10 @@ export default function AbilityList () {
 
     const displayedAbilities = equippedAbilities.filter(equipFilter)
 
+
+
     useEffect(()=>{
+        
         
         
         const getCharacters = async () => {
@@ -481,21 +486,17 @@ export default function AbilityList () {
             setCharacter(characterRes.data)
             setClassFilter(characterRes.data.class_name)
             setLevelFilter(characterRes.data.level)
-            console.log ("lookey here",character)
-            console.log ("lookey here",character)
+            console.log('hum')
+            
             
         }
-        getCharacters()
-
-
-
-
+        
 
         const getAbilities = async () => {
             const response = await axios.get(`http://localhost:3001/Ability/character/${characterId}`)
             setEquippedAbilities(response.data)
-            console.log ("look here",equippedAbilities)
-            if ( response.data.length == 0 ){
+            
+            if ( response.data.length == 0 || omgegaAbilities.ability_name != response.data.ability_name){
                 omgegaAbilities.forEach((levelAbility) => {
                     const setAbilities = async () => {
                         const abilityRes = await axios.post(`http://localhost:3001/Ability`, {
@@ -506,27 +507,61 @@ export default function AbilityList () {
                             characterId: `${characterId}`
         
                     },)
+                    setPotentialAbilities(abilityRes)
                 }
+                
             setAbilities()})}
             
         }
-        getAbilities()
+
+        console.log("and then look here", equippedAbilities)
+        
+
+
+        async function getData () {
+            const Data = await Promise.all([
+                getCharacters(),
+                getAbilities()
+            ])
+            
+        }
+
+        getData()
         console.log ("look here",equippedAbilities)
 
 
+    } ,[levelFilter])
 
 
 
-
-
+    // useEffect(()=> {
+    //     const getAbilities = async () => {
+    //         const response = await axios.get(`http://localhost:3001/Ability/character/${characterId}`)
+    //         setEquippedAbilities(response.data)
+    //         console.log ("look here",equippedAbilities)
+    //         if ( response.data.length == 0 || omgegaAbilities.ability_name != response.data.ability_name){
+    //             omgegaAbilities.forEach((levelAbility) => {
+    //                 const setAbilities = async () => {
+    //                     const abilityRes = await axios.post(`http://localhost:3001/Ability`, {
+    //                         ability_name: levelAbility.ability_name,
+    //                         level_learned: levelAbility.level_learned,
+    //                         ability_equipped: levelAbility.ability_equipped,
+    //                         ability_class: `${character.class_name}`,
+    //                         characterId: `${characterId}`
+        
+    //                 },)
+    //             }
+    //         setAbilities()})}
+            
+    //     }
+    //     getAbilities()
+    //     console.log ("look here",equippedAbilities)
         
       
-    }, [levelFilter])
-    console.log('LOOK SON LOOK RIGHT HERE', character)
-    console.log('WOJSOJODJFOSJFOJ', equippedAbilities)
+    // }, [levelFilter])
   
     const setTrue = (array,index) =>{//array is filtered abilities
-       console.log("THE FINAL SOLUTION", array)
+       
         if (array.ability_equipped === false){
             array.ability_equipped = true  
 
@@ -544,7 +579,7 @@ export default function AbilityList () {
                     ability_class: `${character.class_name}`,
                     characterId: `${characterId}`
                    }, ) 
-                    console.log("Added ability", response.data)  
+                      
                     } catch (error) {
                         console.error('Slippery fingers! Could not equip ability!', error)
                     }
@@ -563,10 +598,9 @@ export default function AbilityList () {
      }
 
      const setFalse = (array, index) => {
-        console.log("Equipped", equippedAbilities)
-        console.log("array", array, "index", index)
+       
         array.ability_equipped = false
-        console.log('id',array._id)
+        
         const toggleEquip = async () => {
             console.log('code is running')
           const response = await axios.put(`http://localhost:3001/Ability/${array._id}`, {
@@ -592,11 +626,7 @@ export default function AbilityList () {
     }
 
     
-    console.log('displayedAbilities', displayedAbilities)
-    
-    
-
-    console.log('displayed abilities', levelAbilities)  
+   
     
 return (   
             
