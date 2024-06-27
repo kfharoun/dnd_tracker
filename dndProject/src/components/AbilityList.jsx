@@ -521,7 +521,7 @@ export default function AbilityList () {
 
         
       
-    }, [])
+    }, [levelFilter])
     console.log('LOOK SON LOOK RIGHT HERE', character)
     console.log('WOJSOJODJFOSJFOJ', equippedAbilities)
   

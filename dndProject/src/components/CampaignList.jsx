@@ -1,19 +1,32 @@
-import axios from "axios";
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+import axios from "axios"
+import { useState, useEffect, useContext } from "react"
+import { useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
+import DataContext from "../DataContext"
 
 export default function CampaignList() {
     const [campaigns, setCampaigns] = useState([]);
     const navigate = useNavigate();
+    const { camInfo, setCamInfo, updateCamInfo } = useContext(DataContext)
 
     useEffect(() => {
         const getCampaigns = async () => {
             try {
                 const response = await axios.get('http://localhost:3001/Campaign');
                 setCampaigns(response.data);
+                const campaignInfo = response.data.map(campaign => ({
+                    name: campaign.campaign_name,
+                    id: campaign._id
+                }))
             } catch (error) {
                 console.error("Error fetching campaigns", error);
+            }
+
+            if (camInfo.names.length === 0 && camInfo.ids.length ===0) {
+                setCamInfo({
+                    names: campaignInfo.map(campaign => campaign.name),
+                    ids: campaignInfo.map(campaign => campaign.id)
+                })
             }
         };
         getCampaigns();
