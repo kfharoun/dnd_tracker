@@ -21,7 +21,8 @@ export default function NewCampaign() {
                 dungeon_master: dungeonMaster,
                 players: players.split(',').map(player => player.trim())
             });
-            navigate(`/campaign/${response.data._id}`);
+            const newResponse = await axios.get(`http://localhost:3001/Campaign/search/${campaignName}`)
+            navigate(`/Campaign/${newResponse.data._id}`);
         } catch (error) {
             console.error('Error creating campaign', error);
         }

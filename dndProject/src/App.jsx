@@ -12,6 +12,11 @@ function App() {
     ids: []
   })
 
+  const [camInfo, setCamInfo] = useState({
+    names: [],
+    ids: []
+  })
+
   useEffect(() => {
     const contextData = async () => {
         const response = await axios.get('http://localhost:3001/Character')
@@ -20,6 +25,16 @@ function App() {
         setCharInfo({ names, ids })
       }
        contextData()
+  }, [])
+
+  useEffect(() => {
+    const contextData = async () => {
+      const response = await axios.get('http://localhost:3001/Campaign')
+      const names = response.data.map(campaign => campaign.campaign_name)
+      const ids = response.data.map(campaign => campaign._id)
+      setCamInfo ({names, ids})
+    }
+    contextData()
   }, [])
 
   const updateCharInfo = (name, id) => {
@@ -40,9 +55,29 @@ function App() {
     })
   }
 
+  const updateCamInfo = (name, id) => {
+    const updatedNames =[...camInfo.names]
+    const updatedIds = [...camInfo.ids]
+    const index = updatedIds.indesOf(id)
+
+    if (index !== -1){
+      updatedNames[index] = name
+    } else {
+      updatedNames.push(name)
+      updatedIds.push(ids)
+    }
+
+    setCamInfo({
+      names:updatedNames,
+      ids: updatedIds
+    })
+
+
+  }
+
   return (
     <div className="App">
-      <DataContext.Provider value={{ charInfo, setCharInfo, updateCharInfo }}>
+      <DataContext.Provider value={{ charInfo, setCharInfo, updateCharInfo , camInfo, setCamInfo, updateCamInfo}}>
         <Header />
         <Main />
         <Footer />

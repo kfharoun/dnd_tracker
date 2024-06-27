@@ -5,6 +5,7 @@ import DataContext from '../DataContext'
 
 const NavBar = () => {
   const { charInfo } = useContext(DataContext)
+  const { camInfo } = useContext(DataContext)
 
   return (
     <div className="NavBar">
@@ -12,7 +13,10 @@ const NavBar = () => {
       <div className='navGroup'>
         <NavDropdown title="campaigns" id="campaigns-dropdown">
           <NavDropdown.Item as={Link} to="/Campaign">All Campaigns</NavDropdown.Item>
-          <NavDropdown.Item as={Link} to="/Campaign/:campaignId">Campaign Name</NavDropdown.Item>
+          {camInfo.names && camInfo.names.map((name,index) => (
+
+          <NavDropdown.Item as={Link} to={`/Campaign/${camInfo.ids[index]}`} key={index}>Campaign Name</NavDropdown.Item>
+        ))}
         </NavDropdown>
         <NavDropdown title="characters" id="characters-dropdown">
           <NavDropdown.Item as={Link} to="/Character">All Characters</NavDropdown.Item>
