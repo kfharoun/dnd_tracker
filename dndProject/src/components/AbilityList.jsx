@@ -449,9 +449,8 @@ export default function AbilityList () {
 
     const [classFilter, setClassFilter] = useState()
 
-    const [potentialAbilities, setPotentialAbilities] = useState()
-
-    
+    const [potentialAbilities, setPotentialAbilities] = useState("jason")   
+    console.log('GIDEION',potentialAbilities)
 
     function omegaFilter (element){
         
@@ -475,78 +474,61 @@ export default function AbilityList () {
 
     const displayedAbilities = equippedAbilities.filter(equipFilter)
 
-
-
-    useEffect(()=>{
+    useEffect(()=>{  
         
-        
-        
-        const getAllData = async () => {
-            try {
-                const characterRes = await axios.get(`http://localhost:3001/Character/${characterId}`)
-                setCharacter(characterRes.data)
-                setClassFilter(characterRes.data.class_name)
-                setLevelFilter(characterRes.data.level)
-    
-              
-                const abilitiesRes = await axios.get(`http://localhost:3001/Ability/character/${characterId}`)
-                setEquippedAbilities(abilitiesRes.data)
-    
-               
-                if (abilitiesRes.data.length === 0 || omgegaAbilities.ability_name !== abilitiesRes.data.ability_name) {
-                    omgegaAbilities.forEach(async (levelAbility) => {
-                        try {
-                            const abilityRes = await axios.post(`http://localhost:3001/Ability`, {
-                                ability_name: levelAbility.ability_name,
-                                level_learned: levelAbility.level_learned,
-                                ability_equipped: levelAbility.ability_equipped,
-                                ability_class: character.class_name,
-                                characterId: characterId
-                            })
-                            setPotentialAbilities(abilityRes.data)
-                        } catch (error) {
-                            console.error('tell me why', error)
-                        }
-                    })
-                }
-            } catch (error) {
-                console.error('whyyyy', error)
-            }
-        }
- 
-        const refreshData = () => {
-            getAllData()
-        }
-    
-        refreshData()
-    
-    }, [characterId, omgegaAbilities])
-
-    // useEffect(()=> {
-    //     const getAbilities = async () => {
-    //         const response = await axios.get(`http://localhost:3001/Ability/character/${characterId}`)
-    //         setEquippedAbilities(response.data)
-    //         console.log ("look here",equippedAbilities)
-    //         if ( response.data.length == 0 || omgegaAbilities.ability_name != response.data.ability_name){
-    //             omgegaAbilities.forEach((levelAbility) => {
-    //                 const setAbilities = async () => {
-    //                     const abilityRes = await axios.post(`http://localhost:3001/Ability`, {
-    //                         ability_name: levelAbility.ability_name,
-    //                         level_learned: levelAbility.level_learned,
-    //                         ability_equipped: levelAbility.ability_equipped,
-    //                         ability_class: `${character.class_name}`,
-    //                         characterId: `${characterId}`
-        
-    //                 },)
-    //             }
-    //         setAbilities()})}
+        const getCharacters = async () => {
+            const characterRes = await axios.get(`http://localhost:3001/Character/${characterId}`)
+            setCharacter(characterRes.data)
+            setClassFilter(characterRes.data.class_name)
+            setLevelFilter(characterRes.data.level)
+            const response = await axios.get(`http://localhost:3001/Ability/character/${characterId}`)            
+            setEquippedAbilities(response.data)
             
-    //     }
-    //     getAbilities()
-    //     console.log ("look here",equippedAbilities)
+        }         
+       
+        const getAbilities = async () => {
+            
+            const response = await axios.get(`http://localhost:3001/Ability/character/${characterId}`)
+            
+            setEquippedAbilities(response.data) 
+            
+            if ( response.data.length == 0 || omgegaAbilities.ability_name != response.data.ability_name || character.class_name == "undefined" ){
+                omgegaAbilities.forEach((levelAbility) => {
+                    
+                    const setAbilities = async () => {
+                        const abilityRes = await axios.post(`http://localhost:3001/Ability`, {
+                            ability_name: levelAbility.ability_name,
+                            level_learned: levelAbility.level_learned,
+                            ability_equipped: levelAbility.ability_equipped,
+                            ability_class: `${character.class_name}`,
+                            characterId: `${characterId}`
         
-      
-    // }, [levelFilter])
+                    },)
+                    setPotentialAbilities(abilityRes)                    
+                }
+                                
+            setAbilities()})
+        }            
+        }
+
+        async function getData () {
+           
+           
+            const Data = await Promise.all([
+                getCharacters(),
+                getAbilities()
+            ])
+            window.location.refresh()
+        }
+        getData()
+        
+    } ,[levelFilter])
+
+    
+
+
+
+    
   
     const setTrue = (array,index) =>{//array is filtered abilities
        
