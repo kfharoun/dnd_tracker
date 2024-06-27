@@ -22,7 +22,7 @@ export default function NewCampaign() {
                 players: players.split(',').map(player => player.trim())
             });
             const newResponse = await axios.get(`http://localhost:3001/Campaign/search/${campaignName}`)
-            navigate(`/Campaign/${newResponse.data._id}`);
+            navigate(`/Campaign/${response.data.newCampaign._id}`);
         } catch (error) {
             console.error('Error creating campaign', error);
         }
@@ -92,3 +92,5 @@ export default function NewCampaign() {
     </div>
 )
 }
+
+  
