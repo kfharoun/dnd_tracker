@@ -576,6 +576,8 @@ filter: brightness(100%)
 }
 
 
+
+
 /* Ability List */
 
 .AbilityList{
@@ -585,3 +587,4 @@ filter: brightness(100%)
   flex-direction: column;
   margin: 0 auto;
 }
+
