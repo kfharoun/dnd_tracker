@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import Modal from 'react-bootstrap/Modal'
+import Button from 'react-bootstrap/Button'
 
 export default function CampaignPage() {
     const [characterInfo, setCharacterInfo] = useState([]);
@@ -8,6 +10,8 @@ export default function CampaignPage() {
     const [campaign, setCampaign] = useState({});
     const [selectedCharacter, setSelectedCharacter] = useState("");
     const [loading, setLoading] = useState(true);
+    const [showDeleteModal, setShowDeleteModal] = useState(false);
+    
     const { id } = useParams();
     const navigate = useNavigate();
 
@@ -55,27 +59,40 @@ export default function CampaignPage() {
         }
     };
 
-    if (loading) {
-        return <div>Loading...</div>;
+    
+
+    const handleDeleteCampaign = async () => {
+        try {
+            await axios.delete(`http://localhost:3001/Campaign/${id}`)
+            navigate('/Campaign')
+        } catch (error) {
+            console.error('cant delete:', error);
+        }
     }
 
-    // Create a Set of IDs of characters already in the campaign
+    const handleCloseDeleteModal = () => {
+        setShowDeleteModal(false)
+    }
+
+    if (loading) {
+        return <div>Loading...</div>
+    }
+
+    
     const characterIdsInCampaign = new Set(characterInfo.map(character => character._id));
 
-    // Filter all characters to exclude those already in the campaign
+   
     const availableCharacters = allCharacters.filter(character => !characterIdsInCampaign.has(character._id));
 
     return (
         <div className="CampaignDetails">
             <div className="divAndList">
-
                 <div className="charPageBack"></div>
                 <div className="CampaignDetailDesc">
                     <h3 className="campaignname">{campaign.campaign_name}</h3>
                     <p className="dm">Dungeon Master: {campaign.dungeon_master}</p>
                     <p className="players">Players: {campaign.players ? campaign.players.join(', ') : ''}</p>
                     <p className="campaigninfo">{campaign.campaign_info}</p>
-                    
                 </div>
                 <div className="characterdetails">
                     <h2 className="CharacterDetailTitle">Characters on this journey</h2>
@@ -94,17 +111,17 @@ export default function CampaignPage() {
                                         alt={`image of ${character.character_name}`}
                                     />
                                     <h3 className="CharacterDetailCharName">{character.character_name}</h3>
+                                    
                                 </div>
                             ))
                         ) : (
                             <p>No one has yet taken this path. Add a character?</p>
                         )}
-
                     </div>
                 </div>
             </div>
+            
             <div className="ImportCharacter" style={{ marginTop: '20px' }}>
-
                 <div className="CampaignPageStuff"> 
                     <h2 className="ImportCharText">Import Character</h2>
                     <select
@@ -120,10 +137,29 @@ export default function CampaignPage() {
                         ))}
                     </select>
                     <button className="btn btn-primary importcharbutton" onClick={handleImportCharacter}>Import Character</button>
-
                 </div>
                 <button className="btn btn-primary newchar-button" onClick={handleNewCharacterClick}>Create New Character</button>
+            </div>
+
+            {/* Delete Campaign Modal */}
+            <Modal show={showDeleteModal} onHide={handleCloseDeleteModal} aria-labelledby="contained-modal-title-vcenter"
+            centered>
+                <Modal.Header>
+                    <Modal.Title>Are you sure?</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>This will permanently delete your campaign!</Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleCloseDeleteModal}>Cancel</Button>
+                    <Button variant="danger" onClick={handleDeleteCampaign}>Delete</Button>
+                </Modal.Footer>
+            </Modal>
+
+            {/* trigger delete campaign modal */}
+            <div>
+            <a className="deleteButtonList" href="#" onClick={() => setShowDeleteModal(true)}>Delete Campaign</a>
             </div>
         </div>
     );
 }
+
+
