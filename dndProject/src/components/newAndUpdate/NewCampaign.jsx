@@ -21,6 +21,7 @@ export default function NewCampaign() {
                 dungeon_master: dungeonMaster,
                 players: players.split(',').map(player => player.trim())
             });
+            
             const newResponse = await axios.get(`http://localhost:3001/Campaign/search/${campaignName}`)
             navigate(`/Campaign/${response.data.newCampaign._id}`);
         } catch (error) {
