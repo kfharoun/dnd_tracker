@@ -620,19 +620,20 @@ return (
                          </div>
                          <div className="equippedAbilities">
                             <h3 className="abilitylistcharname abilitylisttext"> {character.character_name}</h3>
-                            <h3 abilitylistlevel abilitylisttext>level  {character.level} {character.class_name}</h3>
+                            <h3 className="abilitylistlevel abilitylisttext">level  {character.level} {character.class_name}</h3>
                             
-                            <h3 abilitylistabilities abilitylisttext>Equipped abilities</h3>
+                            <h3 className="abilitylistabilities abilitylisttext">Equipped Abilities</h3>
                             <div className="equippeddiv">
                             {
                                 displayedAbilities.map((displayedAbility, index)=> (
-                                    <div className="equipABilityDiv" key ={index} onClick={()=>setFalse(displayedAbility, index)} >
-                                        <p>{displayedAbility.ability_name}</p>
+                                    <div  key ={index} onClick={()=>setFalse(displayedAbility, index)} >
+                                        <p className="equipABilityDiv">{displayedAbility.ability_name}</p>
 
                                     </div>
+                                    
                                 ))
                             }
-                         </div>                       
+                         </div>                        
                             </div>
                            </div>
                          </div>

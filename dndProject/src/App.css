@@ -371,6 +371,13 @@
   gap: 100px;
 }
 
+.deleteButton{
+  color:#523D35;
+  z-index: 2;
+  text-transform: lowercase;
+  cursor: pointer;
+}
+
 .modal-content {
   font-family: "IM Fell DW Pica", serif;
   background-color: #bba58fcf;
@@ -442,7 +449,7 @@
   height: calc(100vh - 250px);
   max-height: calc(100vh - 80px);
   width: 100%; 
-  padding-top: 40%; 
+  padding-top: 100px; 
   margin-bottom: 10px;
 }
 
@@ -653,6 +660,14 @@ filter: brightness(100%)
   -ms-overflow-style: none; 
 }
 
+.deleteButtonList{
+  color: rgba(255, 255, 255, 0.668);
+  text-transform: lowercase;
+}
+
+.deleteButtonList:hover {
+  color:white;
+}
 .importcharoption, .importcharselect {
   background-color: #E8D9CD;
   border: none;
@@ -798,7 +813,6 @@ select option:checked {
   flex-direction: row-reverse;
   justify-content: center;
   flex-direction: column;
-  width: 100vw;
   margin: 0 auto;
   color:#523D35;
 }
@@ -806,7 +820,7 @@ select option:checked {
 .bothabs{
   display: flex;
   flex-direction: row-reverse;
-  gap: 15%;
+  gap: 10%;
 }
 
 
@@ -831,15 +845,20 @@ select option:checked {
   background-color: #e8d9cdb3;
   border-radius: 30px;
   margin: 0 1em 1em 1em;
-  padding: 0 1em 0 1em;
+  
   text-transform: lowercase;
   font-size: 1.1em;
 }
 
+.equippable, .equipABilityDiv{
+  padding: .5em 1em .5em 1em;
+}
+
 .equippeddiv, .unequippeddiv {
   overflow: auto;
-  max-height: 420px; 
+  max-height: 370px; 
   border-radius: 30px; 
+  letter-spacing: 3px;
   padding-top: 10px;
   scrollbar-width: none; 
   -ms-overflow-style: none; 
@@ -848,4 +867,26 @@ select option:checked {
 .unequippeddiv {
   max-height: 490px; 
   margin-top:20px;
+}
+
+.abilitylistcharname{
+  font-family: "Cinzel Decorative", sans-serif;
+  color: #EFEFE9;
+  font-size: 32px;
+}
+
+.abilitylistlevel {
+  font-style: italic;
+  color: #EFEFE9;
+  font-size: 16px;
+}
+
+.abilitylistabilities{
+  font-style: italic;
+  margin-top: .6em;
+  font-size: 32px;
+}
+.unequipped{
+  font-style: italic;
+  font-size: 32px;
 }
