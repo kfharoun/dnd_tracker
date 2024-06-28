@@ -54,7 +54,7 @@
   top: 0;
   left: 0;
   z-index: -1;
-  filter: blur(1px);
+  /* filter: blur(1px); */
 }
 
 
@@ -173,6 +173,13 @@
   filter: blur(1px);
 }
 
+.characterDiv {
+  position: relative;
+  margin-top: 30px;
+  margin-left: 10px;
+}
+
+
 .CharacterList {
   display: flex;
   flex-wrap: wrap;
@@ -180,13 +187,15 @@
   align-items: center;
   align-content: flex-start; 
   max-width: 50em;
-  margin: auto; 
-  gap: 5em; 
+  margin: 0 auto; 
+  gap: 5em;
   overflow-y: auto; 
   height: calc(100vh - 200px);
   max-height: calc(100vh - 80px); 
   scrollbar-width: none; 
   -ms-overflow-style: none; 
+  position: relative;
+  width: 100%;
 }
 
 .CharacterList::-webkit-scrollbar {
@@ -202,27 +211,43 @@
   margin: 0 auto;
 }
 .charPic {
-  width: 200px; 
-  height: 190px; 
+  width: 200px;
+  height: 190px;
   object-fit: cover;
   border-radius: 30px;
-  filter:brightness(80%);
-  transition: all .3s ease;
+  filter: brightness(60%);
+  transition: all 0.3s ease;
 }
 
-.charPic:hover {
-  filter:brightness(100%);
+.characterDiv:hover .charPic{
+  filter: brightness(100%);
+  transform: scale(1.02);
 }
 
 .charListName {
-  color: #959D90;
+  color: white;
   font-style: italic;
-  font-size: 1.1em;
-  background-color: #223030;
+  font-size: 1.3em;
   padding: 20px;
   border-radius: 30px;
   text-align: center;
   z-index: 3;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  font-family: "Cinzel Decorative", sans-serif;
+  transition: opacity 0.3s ease;
+  text-transform: uppercase;
+  font-weight: 600;
+  line-height: 160%;
+  transition: opacity .3s ease;
+  font-family: "Cinzel Decorative", sans-serif;
+  text-shadow: 1px 2px 2px black;
+}
+
+.characterDiv:hover .charListName {
+  opacity: 0;
 }
 
 

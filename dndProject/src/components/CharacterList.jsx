@@ -40,13 +40,16 @@ const CharacterList = () => {
           to={`/character/${character._id}`}
           className="characterDiv"
         >
-          <h3 className='charListName'>{character.character_name}</h3>
+            <div className='chartextlist'>
+            <h3 className='charListName'>{character.character_name}</h3>
+            </div>
+          
           <img
-            className='charPic'
             src={character.character_image}
             alt={`image of ${character.character_name}`}
-            width="200px"
+            className='charPic'
           />
+          
         </Link>
         
       ))}
