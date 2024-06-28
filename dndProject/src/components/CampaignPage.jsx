@@ -1,10 +1,12 @@
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
+import DataContext from '../DataContext'
 
 export default function CampaignPage() {
+    const { camInfo } = useContext(DataContext)
     const [characterInfo, setCharacterInfo] = useState([]);
     const [allCharacters, setAllCharacters] = useState([]);
     const [campaign, setCampaign] = useState({});
