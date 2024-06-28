@@ -533,6 +533,8 @@ filter: brightness(100%)
 
 .campaignInfo {
   max-height: 250px;
+  scrollbar-width: none; 
+  -ms-overflow-style: none; 
 }
 
 /* campaign page */
@@ -756,6 +758,8 @@ select option:checked {
 
 .loreform{
   max-height: 180px;
+    scrollbar-width: none;   
+     -ms-overflow-style: none; 
 }
 
 .CampaignPageStuff{
@@ -898,3 +902,4 @@ select option:checked {
   font-style: italic;
   font-size: 32px;
 }
+
