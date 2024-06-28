@@ -41,9 +41,13 @@ Created by:
 
 Assisted by:
 [chatgpt](https://chatgpt.com)
+
 [MDNWebDocs]https://developer.mozilla.org/en-US/
+
 [W3Schools]https://www.w3schools.com/
+
 [React.Dev]https://react.dev/
+
 All images are property of Wizards of the Coast and Larian Studios
 
 
