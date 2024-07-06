@@ -24,7 +24,7 @@ const CharacterList = () => {
           })
         }
       } catch (error) {
-        console.error('Error fetching characters:', error)
+        console.error('cant get characters:', error)
       }
     }
 
