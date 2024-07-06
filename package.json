@@ -6,7 +6,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npm-run-all --parallel start:data start:dndProject",
-   "heroku-postbuild": "npm-run-all --parallel build:data build:dndProject",
     "dev": "npm-run-all --parallel dev:data dev:dndProject",
     "dev:data": "cd data && npm run dev",
     "dev:dndProject": "cd dndProject && npm run dev",
