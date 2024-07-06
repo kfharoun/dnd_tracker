@@ -6,9 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "dev": "nodemon server.js -e css,ejs,js,json"
+    "dev": "nodemon server.js -e css,ejs,js,json",
+    "dev:data": "cd data && npm run dev",
+    "dev:dndProject": "cd dndProject && npm run dev"
   },
-
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -23,3 +24,4 @@
     "nodemon": "^3.1.4"
   }
 }
+
