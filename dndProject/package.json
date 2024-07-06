@@ -8,8 +8,7 @@
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "start": "vite",
-    "heroku-postbuild": "vite build"
+    "start": "vite"
   },
   "dependencies": {
     "axios": "^1.7.2",
@@ -41,5 +40,6 @@
   "author": "",
   "license": "ISC"
 }
+
 
 
